@@ -3,4 +3,8 @@ from django.views import View
 
 
 class HomePage(View):
-    pass
+
+    template_name = 'index.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
