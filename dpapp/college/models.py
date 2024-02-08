@@ -85,3 +85,20 @@ class Department(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Auditory(models.Model):
+
+    class Meta:
+        verbose_name = 'Аудитория'
+        verbose_name_plural = 'Аудитории'
+        ordering = ('number',)
+
+    number = models.CharField(max_length=10, help_text='Номер аудитории', verbose_name='Номер')
+    department = models.ForeignKey(Department, related_name='auditory_department_to_department_id_fkey', on_delete=models.PROTECT, default=None, verbose_name='Площадка')
+
+    def __str__(self):
+        return f'{self.number}'
+
+    def is_department(self):
+        return self.department

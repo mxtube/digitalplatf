@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import SiteSettings, CustomPerson, Department
+from .models import SiteSettings, CustomPerson, Department, Auditory
 
 
 @admin.register(SiteSettings)
@@ -60,3 +60,10 @@ class DepartmentAdmin(admin.ModelAdmin):
         ('Общая информация', {'fields': ('name', 'short_name'), }),
         ('Контакты', {'fields': ('phone', 'coordinate'), }),
     )
+
+
+@admin.register(Auditory)
+class AuditoryAdmin(admin.ModelAdmin):
+
+    list_display = ('number', 'department', )
+    list_filter = ['department__name']
