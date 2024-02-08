@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import SiteSettings, CustomPerson
+from .models import SiteSettings, CustomPerson, Department
 
 
 @admin.register(SiteSettings)
@@ -49,3 +49,14 @@ class CustomUserAdmin(UserAdmin):
 
     list_display = ('get_fullname', 'username', 'email', 'last_login', 'is_active',)
     list_display_links = ('get_fullname', 'username', 'email',)
+
+
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+
+    list_display = ('name',)
+
+    fieldsets = (
+        ('Общая информация', {'fields': ('name', 'short_name'), }),
+        ('Контакты', {'fields': ('phone', 'coordinate'), }),
+    )
