@@ -1,6 +1,56 @@
+import re
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
+
+
+class SingletonModel(models.Model):
+    """
+    https://evileg.com/en/post/576/#header_SingletonModel
+    """
+    class Meta:
+        abstract = True
+
+    def save(self, *args, **kwargs):
+        self.__class__.objects.exclude(id=self.id).delete()
+        super(SingletonModel, self).save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        try:
+            return cls.objects.get()
+        except cls.DoesNotExist:
+            return cls()
+
+
+class SiteSettings(SingletonModel):
+    class Meta:
+        verbose_name = 'Настройки'
+        verbose_name_plural = 'Настройки'
+
+    site_name = models.CharField(verbose_name='Название сайта', max_length=256, default='Цифровая платформа')
+    logotype = models.ImageField(verbose_name='Логотип', upload_to='site/img', name='logotype')
+
+    # Contacts
+    contact_description = models.CharField(verbose_name='Контактная информация', help_text='Дополнительная контактная информация. Отображается под заголовком.', max_length=100, blank=True, null=True)
+    phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], verbose_name='Телефон', help_text='Номер телефона в формате: +999999999', max_length=17, blank=True, null=True)
+    email = models.EmailField(verbose_name='Электронная почта', help_text='Пример: example@mail.ru', blank=True, null=True)
+    address = models.CharField(verbose_name='Адрес', help_text='Пример: 129344, г. Москва, Проспект мира д.1', max_length=100, blank=True, null=True)
+
+    # Social Network
+    vk_link = models.URLField(verbose_name='Вконтакте', blank=True, null=True)
+    youtube_link = models.URLField(verbose_name='YouTube', blank=True, null=True)
+    odnoklassniki_link = models.URLField(verbose_name='Одноклассники', blank=True, null=True)
+    dzen_link = models.URLField(verbose_name='Дзен', blank=True, null=True)
+    telegram_link = models.URLField(verbose_name='Telegram', blank=True, null=True)
+    whatsapp_link = models.URLField(verbose_name='WhatsApp', blank=True, null=True)
+
+    def __str__(self):
+        return 'Настройки'
+
+    def is_contacts(self):
+        return True if self.contact_description is not None or self.phone is not None or self.email is not None or self.address is not None else False
+
 
 class CustomPerson(AbstractUser):
     """ Extension for basic user model """
