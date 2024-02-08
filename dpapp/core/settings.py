@@ -137,9 +137,9 @@ STATICFILES_DIRS = ['core/static']
 # MEDIA Files
 # https://docs.djangoproject.com/en/5.0/ref/settings/#media-root
 
-MEDIA_URL = '../data/'
+MEDIA_URL = '../dpdata/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '../data/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../dpdata/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
