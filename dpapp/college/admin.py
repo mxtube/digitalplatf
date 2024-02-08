@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import SiteSettings
+from django.contrib.auth.admin import UserAdmin
+from .models import SiteSettings, CustomPerson
 
 
 @admin.register(SiteSettings)
@@ -31,3 +32,20 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(CustomPerson)
+class CustomUserAdmin(UserAdmin):
+
+    model = CustomPerson
+
+    add_fieldsets = (*UserAdmin.add_fieldsets, ('Дополнительная информация', {
+        'fields': ('middle_name', 'mobile', 'birthday', 'note', 'alternative_email',
+    )}))
+
+    fieldsets = (*UserAdmin.fieldsets, ('Дополнительная информация', {
+        'fields': ('middle_name', 'mobile', 'birthday', 'note', 'alternative_email',)}
+    ))
+
+    list_display = ('get_fullname', 'username', 'email', 'last_login', 'is_active',)
+    list_display_links = ('get_fullname', 'username', 'email',)
