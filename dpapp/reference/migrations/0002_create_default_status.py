@@ -12,12 +12,12 @@ class Migration(migrations.Migration):
 
         objs = Status.objects.bulk_create(
             [
-                Status(name='Создан'),
-                Status(name='Принят'),
-                Status(name='В работе'),
-                Status(name='Готово к выдаче'),
-                Status(name='Завершен'),
-                Status(name='Отменено')
+                Status(id=1, name='Создан'),
+                Status(id=2, name='Принят'),
+                Status(id=3, name='В работе'),
+                Status(id=4, name='Готово к выдаче'),
+                Status(id=5, name='Завершен'),
+                Status(id=6, name='Отменено')
             ]
         )
 
