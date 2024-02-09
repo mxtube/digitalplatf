@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profession
+from .models import Profession, Discipline
 
 
 @admin.register(Profession)
@@ -20,3 +20,11 @@ class ProfessionAdmin(admin.ModelAdmin):
             'classes': ('wide',),
         }),
     )
+
+
+@admin.register(Discipline)
+class DisciplineAdmin(admin.ModelAdmin):
+
+    list_display = ('name', )
+    list_display_links = ('name', )
+    search_fields = ('name',)
