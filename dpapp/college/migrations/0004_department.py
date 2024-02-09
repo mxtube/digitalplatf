@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('short_name', models.CharField(help_text='Сокращенное название', max_length=50, verbose_name='Сокращение')),
                 ('phone', models.CharField(blank=True, help_text='Введите номер телефона в формате: +999999999', max_length=17, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$')], verbose_name='Телефон')),
                 ('coordinate', models.CharField(blank=True, help_text='Введите адрес расположения площадки', max_length=500, verbose_name='Адрес')),
-                ('supervisor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL, verbose_name='Руководитель')),
+                ('supervisor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='department_supervisor_to_customperson_id_fkey', to=settings.AUTH_USER_MODEL, verbose_name='Руководитель')),
             ],
             options={
                 'verbose_name': 'Площадка',

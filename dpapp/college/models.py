@@ -80,7 +80,7 @@ class Department(models.Model):
     short_name = models.CharField(max_length=50, verbose_name='Сокращение', help_text='Сокращенное название')
     phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, verbose_name='Телефон', help_text='Введите номер телефона в формате: +999999999', blank=True)
     coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки', blank=True)
-    supervisor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Руководитель', null=True, blank=True)
+    supervisor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Руководитель', null=True, blank=True, related_name='department_supervisor_to_customperson_id_fkey')
 
     def __str__(self):
         return f'{self.name}'
@@ -94,7 +94,7 @@ class Auditory(models.Model):
         ordering = ('number',)
 
     number = models.CharField(max_length=10, help_text='Номер аудитории', verbose_name='Номер')
-    department = models.ForeignKey(Department, related_name='auditory_department_to_department_id_fkey', on_delete=models.PROTECT, default=None, verbose_name='Площадка')
+    department = models.ForeignKey(Department, on_delete=models.PROTECT, default=None, verbose_name='Площадка', related_name='auditory_department_to_department_id_fkey')
 
     def __str__(self):
         return f'{self.number}'

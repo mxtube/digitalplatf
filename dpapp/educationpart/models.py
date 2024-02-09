@@ -13,7 +13,7 @@ class Profession(models.Model):
     number = models.CharField(max_length=20, verbose_name='Код', help_text='Номер специальности. Пример: "09.02.07"')
     name = models.CharField(max_length=70, verbose_name='Наименование', db_index=True, help_text='Полное наименование специальности. Пример: "Информационные системы и программирование"')
     shortname = models.CharField(max_length=25, verbose_name='Идентификатор учебных групп', help_text='Префикс используемый в названиях учебных групп. Пример: "ИСиП", "СИТ')
-    department = models.ForeignKey(Department, on_delete=models.PROTECT, verbose_name='Площадка', help_text='Основная площадка')
+    department = models.ForeignKey(Department, on_delete=models.PROTECT, verbose_name='Площадка', help_text='Основная площадка', related_name='profession_department_to_department_id_fkey')
 
     def __str__(self):
         return f'{self.number} {self.name}'
