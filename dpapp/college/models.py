@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
-
+from django.contrib import admin
 
 class SingletonModel(models.Model):
     """
@@ -63,11 +63,10 @@ class CustomPerson(AbstractUser):
     def __str__(self):
         return f'{self.last_name} {self.first_name} {self.middle_name}'
 
+    @property
+    @admin.display(description="ФИО")
     def get_fullname(self):
-        self.verbose_name = 'ФИО'
         return f'{self.last_name} {self.first_name} {self.middle_name}'
-
-    get_fullname.short_description = 'ФИО'
 
 
 class Department(models.Model):
