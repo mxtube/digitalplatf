@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # modules
     'college.apps.CollegeConfig',
     'educationpart.apps.EducationpartConfig',
+    'schedule.apps.ScheduleConfig',
 ]
 
 MIDDLEWARE = [
