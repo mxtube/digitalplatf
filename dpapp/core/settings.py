@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'college.apps.CollegeConfig',
     'educationpart.apps.EducationpartConfig',
     'schedule.apps.ScheduleConfig',
+    'reference.apps.ReferenceConfig',
 ]
 
 MIDDLEWARE = [
