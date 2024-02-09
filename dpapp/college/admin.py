@@ -16,6 +16,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
             'classes': ('wide',),
         }),
         ('Социальные сети', {
+            'description': 'Ссылки на социальные сети, отображаемые на страницах сайта.',
             'fields': ('vk_link', 'youtube_link', 'odnoklassniki_link', 'dzen_link', 'telegram_link', 'whatsapp_link',),
         }),
     )
