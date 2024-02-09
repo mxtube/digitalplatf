@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.contrib import admin
 
+
 class SingletonModel(models.Model):
     """
     https://evileg.com/en/post/576/#header_SingletonModel
@@ -97,7 +98,4 @@ class Auditory(models.Model):
     department = models.ForeignKey(Department, on_delete=models.PROTECT, default=None, verbose_name='Площадка', related_name='auditory_department_to_department_id_fkey')
 
     def __str__(self):
-        return f'{self.number}'
-
-    def is_department(self):
-        return self.department
+        return f'{self.department} {self.number}'
