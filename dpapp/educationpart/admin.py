@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profession, Discipline
+from .models import Profession, Discipline, Studygroup
 
 
 @admin.register(Profession)
@@ -28,3 +28,16 @@ class DisciplineAdmin(admin.ModelAdmin):
     list_display = ('name', )
     list_display_links = ('name', )
     search_fields = ('name',)
+
+
+@admin.register(Studygroup)
+class StudyGroupAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'admin_name', 'profession', 'supervisor', 'assistant',)
+    list_display_links = ('name', 'admin_name',)
+    list_filter = ('department', 'profession',)
+
+    fieldsets = (
+        ('Информация о группе', {'fields': (('name', 'admin_name'), 'start_edu', 'profession', 'department'), }),
+        ('Права доступа', {'fields': ('supervisor', 'assistant'), }),
+    )
