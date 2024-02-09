@@ -25,6 +25,7 @@ class SingletonModel(models.Model):
 
 
 class SiteSettings(SingletonModel):
+
     class Meta:
         verbose_name = 'Настройки'
         verbose_name_plural = 'Настройки'
@@ -46,6 +47,9 @@ class SiteSettings(SingletonModel):
     telegram_link = models.URLField(verbose_name='Telegram', blank=True, null=True)
     whatsapp_link = models.URLField(verbose_name='WhatsApp', blank=True, null=True)
 
+    def __repr__(self):
+        return f'{self.__class__}'
+
     def __str__(self):
         return 'Настройки'
 
@@ -60,6 +64,9 @@ class CustomPerson(AbstractUser):
     birthday = models.DateField(max_length=10, blank=True, null=True, verbose_name='Дата рождения')
     note = models.TextField(max_length=200, verbose_name='Примечание', blank=True)
     alternative_email = models.EmailField(blank=True, verbose_name='Альтернативный адрес электронной почты')
+
+    def __repr__(self):
+        return f'{self.__class__}: {self.pk} {self.username}'
 
     def __str__(self):
         return f'{self.last_name} {self.first_name} {self.middle_name}'
@@ -83,6 +90,9 @@ class Department(models.Model):
     coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки', blank=True)
     supervisor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Руководитель', null=True, blank=True, related_name='department_supervisor_to_customperson_id_fkey')
 
+    def __repr__(self):
+        return f'{self.__class__}: {self.pk} {self.name}'
+
     def __str__(self):
         return f'{self.name}'
 
@@ -96,6 +106,9 @@ class Auditory(models.Model):
 
     number = models.CharField(max_length=10, help_text='Номер аудитории', verbose_name='Номер')
     department = models.ForeignKey(Department, on_delete=models.PROTECT, default=None, verbose_name='Площадка', related_name='auditory_department_to_department_id_fkey')
+
+    def __repr__(self):
+        return f'{self.__class__}: {self.pk} {self.department} {self.number}'
 
     def __str__(self):
         return f'{self.department} {self.number}'
