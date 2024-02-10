@@ -59,6 +59,7 @@ class SiteSettings(SingletonModel):
 
 class CustomPerson(AbstractUser):
     """ Extension for basic user model """
+    userpic = models.ImageField(upload_to='img/userpic/', verbose_name='Изображение', help_text='Изображение пользователя', blank=True, null=True)
     middle_name = models.CharField(max_length=50, verbose_name='Отчество', blank=True)
     mobile = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, help_text='Введите номер телефона в формате: +999999999', verbose_name='Телефон', blank=True)
     birthday = models.DateField(max_length=10, blank=True, null=True, verbose_name='Дата рождения')

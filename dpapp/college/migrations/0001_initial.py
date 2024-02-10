@@ -30,6 +30,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
+                ('userpic', models.ImageField(blank=True, help_text='Изображение пользователя', null=True, upload_to='img/userpic/', verbose_name='Изображение')),
                 ('middle_name', models.CharField(blank=True, max_length=50, verbose_name='Отчество')),
                 ('mobile', models.CharField(blank=True, help_text='Введите номер телефона в формате: +999999999', max_length=17, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$')], verbose_name='Телефон')),
                 ('birthday', models.DateField(blank=True, max_length=10, null=True, verbose_name='Дата рождения')),
