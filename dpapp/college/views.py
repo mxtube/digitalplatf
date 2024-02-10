@@ -7,5 +7,6 @@ class HomePage(View):
     template_name = 'index.html'
 
     def get(self, request):
-        context = {'title': SiteSettings().site_name}
+        site_settings = SiteSettings()
+        context = {'title': site_settings.site_name}
         return render(request, self.template_name, context=context)
