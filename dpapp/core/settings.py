@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'educationpart.apps.EducationpartConfig',
     'schedule.apps.ScheduleConfig',
     'reference.apps.ReferenceConfig',
+    'schedule_parsing.parsing',
 ]
 
 MIDDLEWARE = [
