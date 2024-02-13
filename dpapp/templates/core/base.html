@@ -13,6 +13,15 @@
 				<div class="inner">
 					<header id="header">
 						<a href="{% url 'homepage' %}" class="logo"><strong>{{ title }} </strong> {{ subtitle }}</a>
+						<ul class="icons">
+						{% if not request.user.is_authenticated %}
+                            <li><a href="" class="icon"><i class="fa-solid fa-arrow-right-to-bracket"></i> Вход</a></li>
+                        {% else %}
+                            <li>Приветствую,
+								<a href="" class="icon solid"><strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong></a>
+								<a href="" class="icon solid">Выйти <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                        {% endif %}
+						</ul>
 					</header>
 					<section>
 						<div class="content">
@@ -23,13 +32,13 @@
 			</div>
 			<div id="sidebar">
 				<div class="inner">
-
 						<!-- Logo -->
 						{% if site_settings.logotype != '' %}
-						<span class="image fit"><img src="{% get_media_prefix %}{{ site_settings.logotype }}" alt=""/></span>
+						<span class="image fit"><a href="{% url 'homepage' %}"><img src="{% get_media_prefix %}{{ site_settings.logotype }}" alt=""/></a></span>
 						{% else %}
-						<span class="image fit"><img src="{% static 'images/univer_logo.png' %}" alt=""/></span>
+						<span class="image fit"><a href="{% url 'homepage' %}"><img src="{% static 'images/univer_logo.png' %}" alt=""/></a></span>
 						{% endif %}
+
 						<!-- Menu -->
 						<nav id="menu">
 							<header class="major">
