@@ -142,7 +142,7 @@ STATICFILES_DIRS = ['core/static']
 # MEDIA Files
 # https://docs.djangoproject.com/en/5.0/ref/settings/#media-root
 
-MEDIA_URL = '../dpdata/'
+MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '../dpdata/')
 
