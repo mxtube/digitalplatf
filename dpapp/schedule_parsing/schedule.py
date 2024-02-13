@@ -17,7 +17,8 @@ class Schedule:
         return f'{self.date}, {self.department}'
 
     def add_event(self, event):
-        return self.schedule_data.append(event.__dict__)
+        self.schedule_data.append(event.__dict__)
+        return self.schedule_data
 
     def display_group(self, name: str):
         return list(
