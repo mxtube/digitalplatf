@@ -13,14 +13,6 @@
 				<div class="inner">
 					<header id="header">
 						<a href="{% url 'homepage' %}" class="logo"><strong>{{ title }} </strong> {{ subtitle }}</a>
-						<ul class="icons">
-							{% if site_settings.vk_link  %}<li><a href="{{ site_settings.vk_link }}" class="icon brands fa-vk"></a></li>{% endif %}
-							{% if site_settings.youtube_link  %}<li><a href="{{ site_settings.youtube_link }}" class="icon brands fa-youtube"></a></li>{% endif %}
-							{% if site_settings.odnoklassniki_link  %}<li><a href="{{ site_settings.odnoklassniki_link }}" class="icon brands fa-odnoklassniki"></a></li>{% endif %}
-							{% if site_settings.dzen_link  %}<li><a href="{{ site_settings.dzen_link }}" class="icon brands fa-yandex"></a></li>{% endif %}
-							{% if site_settings.telegram_link  %}<li><a href="{{ site_settings.telegram_link }}" class="icon brands fa-telegram-plane"></a></li>{% endif %}
-							{% if site_settings.whatsapp_link  %}<li><a href="{{ site_settings.whatsapp_link }}" class="icon brands fa-whatsapp"></a></li>{% endif %}
-						</ul>
 					</header>
 					<section>
 						<div class="content">
@@ -65,7 +57,17 @@
 
 						<!-- Footer -->
 						<footer id="footer">
-							<p class="copyright" align="center">Digital Platform 2024 &copy; Все права защищены.</br>Дизайн: <a href="https://html5up.net">HTML5 UP</a><br>Разработано <a href="https://t.me/KirillKuznetsov">Kirill Kuznetsov</a></p>
+							<div style="text-align: center;">
+								<ul class="icons">
+									{% if site_settings.vk_link  %}<li><a href="{{ site_settings.vk_link }}" class="icon brands fa-vk"></a></li>{% endif %}
+									{% if site_settings.youtube_link  %}<li><a href="{{ site_settings.youtube_link }}" class="icon brands fa-youtube"></a></li>{% endif %}
+									{% if site_settings.odnoklassniki_link  %}<li><a href="{{ site_settings.odnoklassniki_link }}" class="icon brands fa-odnoklassniki"></a></li>{% endif %}
+									{% if site_settings.dzen_link  %}<li><a href="{{ site_settings.dzen_link }}" class="icon brands fa-yandex"></a></li>{% endif %}
+									{% if site_settings.telegram_link  %}<li><a href="{{ site_settings.telegram_link }}" class="icon brands fa-telegram-plane"></a></li>{% endif %}
+									{% if site_settings.whatsapp_link  %}<li><a href="{{ site_settings.whatsapp_link }}" class="icon brands fa-whatsapp"></a></li>{% endif %}
+								</ul>
+								<p class="copyright">Digital Platform 2024 &copy; Все права защищены.</br>Дизайн: <a href="https://html5up.net">HTML5 UP</a><br>Разработано: <a href="https://t.me/KirillKuznetsov">Kirill Kuznetsov</a></p>
+							</div>
 						</footer>
 
 				</div>
