@@ -11,3 +11,14 @@ Digital Platform написана на Python и Django и использует 
 ```text
 pip install -r requirements.txt
 ```
+
+
+# Debug
+
+Parsing
+```python
+import datetime
+from schedule_parsing.parsing import Parsing
+parse = Parsing(filename='FridayEven.xlsx', department='ЦИКТ', date=datetime.date.today())
+print(parse.parse())
+```
