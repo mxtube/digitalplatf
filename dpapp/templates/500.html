@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<header class="main">
+    <h1>500</h1>
+    <h3>ошибка сервера</h3>
+</header>
+<p>На сервере произошла непредвиденная ошибка.<br>Пожалуйста, подождите она вскоре будет исправлена.</p>
+<p>Перейдите на <a href="{% url 'homepage' %}">Главную страницу</a></p>
+{% endblock %}
