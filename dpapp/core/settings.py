@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'college.context_proccessors.load_settings',
+                'college.context_proccessors.departments',
             ],
         },
     },

@@ -45,6 +45,15 @@
 							</header>
 							<ul>
 								<li><a href="{% url 'homepage' %}">Главная</a></li>
+								{% if departments %}
+								<li><span class="opener">Расписание</span>
+									<ul>
+										{% for department in departments %}
+										<li><a href="/schedule/{{ department.shortname }}">{{ department.name }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+								{% endif %}
 							</ul>
 						</nav>
 
