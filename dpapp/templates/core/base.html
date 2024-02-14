@@ -14,12 +14,11 @@
 					<header id="header">
 						<a href="{% url 'homepage' %}" class="logo"><strong>{{ title }} </strong> {{ subtitle }}</a>
 						<ul class="icons">
-						{% if not request.user.is_authenticated %}
-                            <li><a href="" class="icon"><i class="fa-solid fa-arrow-right-to-bracket"></i> Вход</a></li>
+						{% if user.is_authenticated %}
+                            Приветствую,
+							<a href="" class="icon solid"><strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong></a>
                         {% else %}
-                            <li>Приветствую,
-								<a href="" class="icon solid"><strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong></a>
-								<a href="" class="icon solid">Выйти <i class="fa-solid fa-right-from-bracket"></i></a></li>
+							<li><a href="{% url 'login' %}" class="icon"><i class="fa-solid fa-arrow-right-to-bracket"></i> Вход</a></li>
                         {% endif %}
 						</ul>
 					</header>
