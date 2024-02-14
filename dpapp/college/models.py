@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.contrib import admin
+from django.urls import reverse
 
 
 class SingletonModel(models.Model):
@@ -96,6 +97,10 @@ class Department(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    def get_absolute_url(self):
+        # TODO: Переделать в short_name
+        return reverse('schedule_home', args=[str(self.pk)])
 
 
 class Auditory(models.Model):

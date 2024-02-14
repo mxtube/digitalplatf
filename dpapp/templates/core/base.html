@@ -49,7 +49,7 @@
 								<li><span class="opener">Расписание</span>
 									<ul>
 										{% for department in departments %}
-										<li><a href="/schedule/{{ department.short_name }}">{{ department.name }}</a></li>
+										<li><a href="{{ department.get_absolute_url }}">{{ department.name }}</a></li>
 										{% endfor %}
 									</ul>
 								</li>

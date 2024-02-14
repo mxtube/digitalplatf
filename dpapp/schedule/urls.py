@@ -19,5 +19,5 @@ from django.urls import path
 from .views import ScheduleHome
 
 urlpatterns = [
-    path('', ScheduleHome.as_view(), name='schedule_home')
+    path('<int:pk>', ScheduleHome.as_view(), name='schedule_home'),
 ]
