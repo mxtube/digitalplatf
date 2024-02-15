@@ -3,6 +3,14 @@ from educationpart.models import Studygroup
 from college.models import Department
 
 
+class NumberWeek(models.Model):
+
+    name = models.CharField(max_length=15, unique=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+
 class Stream(models.Model):
 
     class Meta:
