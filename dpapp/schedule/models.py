@@ -11,6 +11,15 @@ class NumberWeek(models.Model):
         return f'{self.name}'
 
 
+class DayWeek(models.Model):
+
+    name = models.CharField(max_length=15)
+    week = models.ForeignKey(NumberWeek, on_delete=models.PROTECT, related_name='dayweek_week_to_numberweek_id_fkey')
+
+    def __str__(self):
+        return f'{self.name}'
+
+
 class Stream(models.Model):
 
     class Meta:
