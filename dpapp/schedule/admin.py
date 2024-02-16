@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Stream, GroupStream, Couple, ScheduleCalendarMark
+from .models import Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar
 
 
 @admin.register(Stream)
@@ -26,3 +26,10 @@ class CoupleAdmin(admin.ModelAdmin):
 class ScheduleCalendarMarkAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'symbol',)
+
+
+@admin.register(ScheduleCalendar)
+class ScheduleCalendarAdmin(admin.ModelAdmin):
+
+    list_display = ('start_week', 'end_week', 'group', 'mark')
+    list_filter = ('group__department', 'group__name', 'start_week',)
