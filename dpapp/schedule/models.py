@@ -29,6 +29,9 @@ class Stream(models.Model):
 
     number = models.CharField(max_length=30, verbose_name='Наименование потока', help_text='Пример: "1 поток", "2 поток"')
 
+    def __str__(self):
+        return f'{self.number}'
+
 
 class GroupStream(models.Model):
 
@@ -39,6 +42,9 @@ class GroupStream(models.Model):
 
     group = models.ForeignKey(Studygroup, on_delete=models.PROTECT, verbose_name='Группа', null=True, related_name='groupstream_group_to_studygroup_id_fkey')
     stream = models.ForeignKey(Stream, on_delete=models.PROTECT, verbose_name='Поток', null=True, related_name='groupstream_stream_to_stream_id_fkey')
+
+    def __str__(self):
+        return f'{self.stream} {self.group}'
 
 
 class Couple(models.Model):
