@@ -65,3 +65,18 @@ class Couple(models.Model):
 
     def __str__(self):
         return f'{self.number}'
+
+
+class ScheduleCalendarMark(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Обозначение календарного графика'
+        verbose_name_plural = 'Обозначения календарного графика'
+        ordering = ('name',)
+
+    name = models.CharField(max_length=100, verbose_name='Наименование', unique=True)
+    symbol = models.CharField(max_length=5, verbose_name='Символ', help_text='Символ отображаемый в графике', blank=True, null=True, unique=True)
+
+    def __str__(self):
+        return f'{self.symbol} {self.name}'
