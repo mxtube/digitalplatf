@@ -93,6 +93,17 @@ if DEBUG:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get(''),
+            'USER': os.environ.get(''),
+            'PASSWORD': os.environ.get(''),
+            'HOST': os.environ.get(''),
+            'PORT': os.environ.get('')
+        }
+    }
 
 # Auth
 # https://docs.djangoproject.com/en/5.0/topics/auth/customizing/
