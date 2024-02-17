@@ -59,7 +59,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Общая информация', {'fields': ('name', 'short_name'), }),
-        ('Контакты', {'fields': ('phone', 'coordinate'), }),
+        ('Контакты', {'fields': ('phone', 'coordinate', 'supervisor'), }),
     )
 
 
