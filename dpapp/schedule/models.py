@@ -116,3 +116,21 @@ class BaseSchedule(models.Model):
     def __str__(self):
         return f'{self.dayweek} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
+
+class ChangeSchedule(models.Model):
+
+    class Meta:
+        verbose_name = 'Замена'
+        verbose_name_plural = 'Замены'
+        ordering = ('date',)
+
+    date = models.DateField(verbose_name='Дата')
+    couple = models.ForeignKey(Couple, verbose_name='Номер пары', on_delete=models.PROTECT, related_name='chgsched_couple_to_couple_id_fkey')
+    group = models.ForeignKey(Studygroup, verbose_name='Группа', on_delete=models.PROTECT, related_name='chgsched_studygroup_to_studygroup_id_fkey')
+    auditory = models.ForeignKey(Auditory, verbose_name='Аудитория', on_delete=models.PROTECT, related_name='chgsched_auditory_to_auditory_id_fkey')
+    discipline = models.ForeignKey(Discipline, verbose_name='Дисциплина', on_delete=models.PROTECT, related_name='chgsched_discipline_to_discipline_id_fkey')
+    teacher = models.ForeignKey(CustomPerson, verbose_name='Преподаватель', on_delete=models.PROTECT, related_name='chgsched_teacher_to_customperson_id_fkey')
+
+    def __str__(self):
+        return f'{self.date} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
+
