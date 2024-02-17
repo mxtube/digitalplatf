@@ -24,7 +24,7 @@ class DayWeek(models.Model):
         return f'{self.__class__}: {self.pk} {self.name} {self.week}'
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name} {self.week}'
 
 
 class Stream(models.Model):
