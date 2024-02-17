@@ -149,3 +149,5 @@ class ChangeSchedule(models.Model):
     def __str__(self):
         return f'{self.date} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
+    def has_date(self) -> bool:
+        return True if self.date else False
