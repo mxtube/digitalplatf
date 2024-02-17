@@ -55,7 +55,8 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
 
-    list_display = ('name',)
+    list_display = ('name', 'short_name', 'supervisor', 'coordinate', 'phone')
+    list_display_links = list_display
 
     fieldsets = (
         ('Общая информация', {'fields': ('name', 'short_name'), }),
