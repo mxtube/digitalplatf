@@ -34,7 +34,7 @@ class Stream(models.Model):
         verbose_name_plural = 'Потоки'
         ordering = ('number',)
 
-    number = models.CharField(max_length=30, verbose_name='Наименование потока', help_text='Пример: "1 поток", "2 поток"')
+    number = models.CharField(max_length=30, verbose_name='Наименование потока', help_text='Пример:"1 поток","2 поток"')
 
     def __repr__(self):
         return f'{self.__class__}: {self.pk} {self.number}'
