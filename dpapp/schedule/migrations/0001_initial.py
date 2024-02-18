@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='Stream',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('number', models.CharField(help_text='Пример: "1 поток", "2 поток"', max_length=30, verbose_name='Наименование потока')),
+                ('number', models.CharField(help_text='Пример:"1 поток","2 поток"', max_length=30, verbose_name='Наименование потока')),
             ],
             options={
                 'verbose_name': 'Поток',

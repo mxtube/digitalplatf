@@ -86,7 +86,7 @@ class Department(models.Model):
         verbose_name_plural = 'Площадки'
         ordering = ('short_name',)
 
-    name = models.CharField(max_length=200, verbose_name='Наименование', help_text='Полоное наименование')
+    name = models.CharField(max_length=200, verbose_name='Наименование', help_text='Полное наименование')
     short_name = models.CharField(max_length=50, verbose_name='Сокращение', help_text='Сокращенное название')
     phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, verbose_name='Телефон', help_text='Введите номер телефона в формате: +999999999', blank=True)
     coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки', blank=True)
