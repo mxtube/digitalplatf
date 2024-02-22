@@ -30,8 +30,8 @@ class DayWeek(models.Model):
 class Stream(models.Model):
 
     class Meta:
-        verbose_name = 'Поток'
-        verbose_name_plural = 'Потоки'
+        verbose_name = 'Распределение групп потоков - обозначения'
+        verbose_name_plural = 'Распределение групп потоков - обозначения'
         ordering = ('number',)
 
     number = models.CharField(max_length=30, verbose_name='Наименование потока', help_text='Пример:"1 поток","2 поток"')
@@ -46,8 +46,8 @@ class Stream(models.Model):
 class GroupStream(models.Model):
 
     class Meta:
-        verbose_name = 'Распределение потока'
-        verbose_name_plural = 'Распределение потоков'
+        verbose_name = 'Распределение групп потока'
+        verbose_name_plural = 'Распределение групп потоков'
         ordering = ('stream',)
 
     group = models.ForeignKey(Studygroup, on_delete=models.PROTECT, verbose_name='Группа', null=True,
@@ -88,8 +88,8 @@ class ScheduleCalendarMark(models.Model):
 
     class Meta:
 
-        verbose_name = 'Обозначение календарного графика'
-        verbose_name_plural = 'Обозначения календарного графика'
+        verbose_name = 'График учебного процесса - обозначения'
+        verbose_name_plural = 'График учебного процесса - обозначения'
         ordering = ('name',)
 
     name = models.CharField(max_length=100, verbose_name='Наименование', unique=True)
