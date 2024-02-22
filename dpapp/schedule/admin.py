@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule, UploadScheduleBase
-from .views import UploadBaseSchedule
+from .models import Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule, UploadScheduleBase, UploadScheduleChange
+from .views import UploadBaseSchedule, UploadChangeSchedule
 from django.urls import path
 
 
@@ -13,6 +13,17 @@ class UploadBaseScheduleAdmin(admin.ModelAdmin):
     def get_urls(self):
         view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
         return [path('', UploadBaseSchedule.as_view(), name=view_name),]
+
+
+@admin.register(UploadScheduleChange)
+class UploadScheduleChangeAdmin(admin.ModelAdmin):
+    # TODO: Разобраться с ссылкой
+
+    model = UploadScheduleChange
+
+    def get_urls(self):
+        view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
+        return [path('', UploadChangeSchedule.as_view(), name=view_name),]
 
 
 @admin.register(Stream)
