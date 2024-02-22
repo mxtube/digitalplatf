@@ -12,6 +12,13 @@ Digital Platform написана на Python и Django и использует 
 pip install -r requirements.txt
 ```
 
+Для работы с препроцессором CSS используйте программу [Prepros](https://prepros.io). Сборка статических файлов осуществляется с помощью команды:
+```text
+./manage.py collectstatic --no-input -i sass
+```
+
+# Файлы
+Все пользовательские файлы храняться в директории project/dpdata. 
 
 # Debug
 
