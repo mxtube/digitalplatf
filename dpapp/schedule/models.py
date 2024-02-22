@@ -169,3 +169,10 @@ class ChangeSchedule(models.Model):
 
     def has_date(self) -> bool:
         return True if self.date else False
+
+
+class UploadScheduleBase(models.Model):
+
+    class Meta:
+        verbose_name = 'Загрузить расписание на семестр'
+        verbose_name_plural = 'Загрузить расписание на семестр'

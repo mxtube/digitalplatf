@@ -2,6 +2,7 @@ import datetime
 from django.shortcuts import render
 from django.views import View
 from college.models import Department
+from schedule.forms import UploadBaseScheduleForm
 
 
 class ScheduleHome(View):
@@ -14,3 +15,12 @@ class ScheduleHome(View):
         self.context['subtitle'] = department.short_name
         self.context['date'] = datetime.date.today().strftime('%Y-%m-%d')
         return render(request, template_name=self.template_name, context=self.context)
+
+
+class UploadBaseSchedule(View):
+
+    template_name = 'admin/upload_schedule.html'
+
+    def get(self, request):
+        context = {'form_title': 'Загрузить расписание на семестр', 'form': UploadBaseScheduleForm()}
+        return render(request, template_name=self.template_name, context=context)
