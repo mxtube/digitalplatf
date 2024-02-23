@@ -16,8 +16,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import HomePage
+from .views import HomePage, ProfilePage
 
 urlpatterns = [
-    path('', HomePage.as_view(), name='homepage')
+    path('', HomePage.as_view(), name='homepage'),
+    path('accounts/profile/', ProfilePage.as_view(), name='profile'),
 ]

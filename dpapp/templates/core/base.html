@@ -16,7 +16,7 @@
 						<ul class="icons">
 						{% if user.is_authenticated %}
                             Приветствую,
-							<a href="" class="icon solid"><strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong></a>
+							<a href="{% url 'profile' %}" class="icon solid"><strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong></a>
                         {% else %}
 							<li><a href="{% url 'login' %}" class="icon"><i class="fa-solid fa-arrow-right-to-bracket"></i> Вход</a></li>
                         {% endif %}
