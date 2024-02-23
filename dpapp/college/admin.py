@@ -8,7 +8,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Общая информация', {
-            'fields': (('site_name', 'logotype',)),
+            'fields': (('site_name', 'short_site_name', 'logotype', 'description',)),
             'description': '',
         }),
         ('Контактная информация', {

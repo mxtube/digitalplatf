@@ -31,8 +31,10 @@ class SiteSettings(SingletonModel):
         verbose_name = 'Настройки'
         verbose_name_plural = 'Настройки'
 
-    site_name = models.CharField(verbose_name='Название сайта', max_length=256, default='Цифровая платформа')
+    site_name = models.CharField(verbose_name='Полное название сайта', max_length=256, default='Цифровая платформа')
+    short_site_name = models.CharField(verbose_name='Краткое название сайта', max_length=19, help_text='Например, одним словом')
     logotype = models.ImageField(verbose_name='Логотип', upload_to='site/img', name='logotype')
+    description = models.TextField(verbose_name='Описание главной страницы')
 
     # Contacts
     contact_description = models.CharField(verbose_name='Контактная информация', help_text='Дополнительная контактная информация. Отображается под заголовком.', max_length=100, blank=True, null=True)
