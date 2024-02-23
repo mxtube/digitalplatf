@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'ckeditor',
+    'ckeditor_uploader',
+
     # modules
     'college.apps.CollegeConfig',
     'educationpart.apps.EducationpartConfig',
@@ -181,3 +184,10 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+# CKEditor
+# https://django-ckeditor.readthedocs.io/en/latest/#installation
+
+# TODO: изменить путь сохранения файлов для разных типов
+CKEDITOR_UPLOAD_PATH = 'ckeditor/'

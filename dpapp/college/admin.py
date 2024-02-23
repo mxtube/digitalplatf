@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import SiteSettings, CustomPerson, Department, Auditory
+from .forms import SiteSettingsAdminForm
 
 
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
+
+    form = SiteSettingsAdminForm
 
     fieldsets = (
         ('Общая информация', {
