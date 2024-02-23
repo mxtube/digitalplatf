@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
                 ('number', models.CharField(help_text='Пример:"1 поток","2 поток"', max_length=30, verbose_name='Наименование потока')),
             ],
             options={
-                'verbose_name': 'Поток',
-                'verbose_name_plural': 'Потоки',
+                'verbose_name': 'Распределение групп потоков - обозначения',
+                'verbose_name_plural': 'Распределение групп потоков - обозначения',
                 'ordering': ('number',),
             },
         ),

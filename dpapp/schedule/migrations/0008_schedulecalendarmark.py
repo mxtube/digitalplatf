@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100, unique=True, verbose_name='Наименование')),
                 ('symbol', models.CharField(blank=True, unique=True, help_text='Символ отображаемый в графике', max_length=5, null=True, verbose_name='Символ')),
             ],
-            options={'ordering': ('name',), 'verbose_name': 'Обозначение календарного графика', 'verbose_name_plural': 'Обозначения календарного графика'},
+            options={'ordering': ('name',), 'verbose_name': 'График учебного процесса - обозначения', 'verbose_name_plural': 'График учебного процесса - обозначения'},
         ),
     ]

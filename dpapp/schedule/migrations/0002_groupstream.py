@@ -20,8 +20,8 @@ class Migration(migrations.Migration):
                 ('stream', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='groupstream_stream_to_stream_id_fkey', to='schedule.stream', verbose_name='Поток')),
             ],
             options={
-                'verbose_name': 'Распределение потока',
-                'verbose_name_plural': 'Распределение потоков',
+                'verbose_name': 'Распределение групп потока',
+                'verbose_name_plural': 'Распределение групп потоков',
                 'ordering': ('stream',),
             },
         ),
