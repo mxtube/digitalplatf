@@ -108,6 +108,12 @@ else:
         }
     }
 
+
+# Fixtures
+# https://docs.djangoproject.com/en/5.0/howto/initial-data/
+FIXTURE_DIRS = []
+
+
 # Auth
 # https://docs.djangoproject.com/en/5.0/topics/auth/customizing/
 
