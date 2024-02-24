@@ -183,3 +183,13 @@ class UploadScheduleChange(models.Model):
     class Meta:
         verbose_name = 'Загрузить изменение в расписание'
         verbose_name_plural = 'Загрузить изменение в расписание'
+
+
+class DashboardSchedule(models.Model):
+    pass
+
+
+
+
+
+
