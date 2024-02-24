@@ -69,7 +69,7 @@ class Couple(models.Model):
         verbose_name_plural = 'Расписание звонков'
         ordering = ('stream',)
 
-    stream = models.ForeignKey('Stream', on_delete=models.PROTECT, verbose_name='Поток',
+    stream = models.ForeignKey(Stream, on_delete=models.PROTECT, verbose_name='Поток',
                                related_name='couple_stream_to_stream_id_fkey')
     number = models.CharField(max_length=200, verbose_name='Номер пары', help_text='Пример: "1 пара", "2 пара"')
     time_start = models.TimeField(verbose_name='Начало', help_text='Время начала урока')
@@ -186,7 +186,10 @@ class UploadScheduleChange(models.Model):
 
 
 class DashboardSchedule(models.Model):
-    pass
+
+    class Meta:
+        verbose_name = 'Dashboard'
+        verbose_name_plural = 'Dashboard'
 
 
 

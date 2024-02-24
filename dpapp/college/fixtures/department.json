@@ -1,0 +1,68 @@
+[
+  {
+    "model": "college.department",
+    "pk": "1",
+    "fields": {
+      "name": "Центр аудиовизуальных технологий",
+      "short_name": "ЦАВТ",
+      "phone": "74950001122",
+      "coordinate": "Москва, Онежская дом 3",
+      "supervisor_id": "2"
+    }
+  },
+  {
+    "model": "college.department",
+    "pk": "2",
+    "fields": {
+      "name": "Центр алмазных технологий и геммологии",
+      "short_name": "ЦАТиГ",
+      "phone": "74950001122",
+      "coordinate": "Москва, Онежская дом 3",
+      "supervisor_id": "2"
+    }
+  },
+  {
+    "model": "college.department",
+    "pk": "3",
+    "fields": {
+      "name": "Центр информационно-коммуникационных технологий",
+      "short_name": "ЦИКТ",
+      "phone": "74950001122",
+      "coordinate": "Москва, Онежская дом 3",
+      "supervisor_id": "2"
+    }
+  },
+  {
+    "model": "college.department",
+    "pk": "4",
+    "fields": {
+      "name": "Центр медицинской техники оптики",
+      "short_name": "ЦМТиО",
+      "phone": "74950001122",
+      "coordinate": "Москва, Онежская дом 3",
+      "supervisor_id": "2"
+    }
+  },
+  {
+    "model": "college.department",
+    "pk": "5",
+    "fields": {
+    "name": "Центр предпринимательства и развития бизнеса",
+    "short_name": "ЦПиРБ",
+    "phone": "74950001122",
+      "coordinate": "Москва, Онежская дом 3",
+      "supervisor_id": "2"
+    }
+  },
+  {
+    "model": "college.department",
+    "pk": "6",
+    "fields": {
+      "name": "Центр торгово-экономических компетенций",
+      "short_name": "ЦТЭК",
+      "phone": "74950001122",
+      "coordinate": "Москва, Онежская дом 3",
+      "supervisor_id": "2"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "model": "schedule.stream",
+    "pk": 1,
+    "fields": {
+      "number": "1 Поток"
+    }
+  },
+  {
+    "model": "schedule.stream",
+    "pk": 2,
+    "fields": {
+      "number": "2 Поток"
+    }
+  }
+]
