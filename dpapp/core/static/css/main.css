@@ -1743,6 +1743,34 @@ input[type=radio] + label:before {
   border-radius: 0;
   padding: 0;
 }
+.box-element {
+  background: #fff;
+  border-radius: 0.4em;
+  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 2em;
+}
+.box-element border {
+  padding: 1.5em 2em 1.5em 2em;
+}
+.box-element border h3 {
+  margin-bottom: 0.5em;
+  padding-top: 1em;
+}
+.box-element.style2 {
+  margin-bottom: 0.25em;
+}
+.box-element.style2 h3 {
+  margin-bottom: 0.25em;
+}
+.box-element.style2 .image {
+  position: relative;
+  left: 2em;
+  top: 2em;
+  margin: -4em 0 4em -4em;
+  width: auto;
+}
 
 /* Icon */
 .icon {

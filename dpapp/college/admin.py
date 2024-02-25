@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import SiteSettings, CustomPerson, Department, Auditory
+from .models import SiteSettings, CustomPerson, Department, Auditory, UserServicesCategory, UserServices
 from .forms import SiteSettingsAdminForm
 
 
@@ -72,3 +72,17 @@ class AuditoryAdmin(admin.ModelAdmin):
 
     list_display = ('number', 'department', )
     list_filter = ['department__name']
+
+
+@admin.register(UserServicesCategory)
+class UserServicesCategoryAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'visible',)
+    list_display_links = list_display
+
+
+@admin.register(UserServices)
+class UserServicesAdmin(admin.ModelAdmin):
+
+    list_display = ('category', 'name', 'link', 'icon', 'visible',)
+    list_display_links = list_display

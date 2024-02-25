@@ -3,6 +3,29 @@
 {% block content %}
 <h2>Профиль пользователя</h2>
 
+<hr class="major" />
+{%  regroup user_services by category as category_list %}
+    {% for category in category_list %}
+        <header class="major">
+            <h3>{{ category.grouper }}</h3>
+        </header>
+
+        <div class="row">
+            {% for service in category.list %}
+            <div class="col-3 col-12-medium zoom">
+                <p>
+                    <a href="{{ service.link }}">
+                        <section class="box-element border">
+                            <span class="icon solid fa-2xl {{ service.icon }}"></span>
+                            <h3>{{ service.name }}</h3>
+                        </section>
+                    </a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
 <form action="{% url 'logout' %}" method="POST">
     {% csrf_token %}
     <button class="primary"><i class="fas fa-sign-out-alt"></i> Выход</button>

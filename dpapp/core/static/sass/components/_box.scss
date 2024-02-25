@@ -23,4 +23,37 @@
 			border-radius: 0;
 			padding: 0;
 		}
+
+		&-element {
+			background: #fff;
+			border-radius: 0.4em;
+			box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			padding: 2em;
+
+			& border {
+				padding: 1.5em 2em 1.5em 2em;
+
+				& h3 {
+					margin-bottom: 0.5em;
+      				padding-top: 1em;
+				}
+			}
+
+			&.style2 {
+				margin-bottom: 0.25em;
+
+				& h3 {
+					margin-bottom: 0.25em;
+				}
+
+				& .image {
+					position: relative;
+					left: 2em;
+					top: 2em;
+					margin: -4em 0 4em -4em;
+					width: auto;
+				}
+			}
+		}
 	}

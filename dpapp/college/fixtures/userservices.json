@@ -1,0 +1,32 @@
+[
+  {
+    "model": "college.userservices",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "СДО Академия",
+      "link": "https://academy.kp11.ru/",
+      "icon": "fas fa-university"
+    }
+  },
+  {
+    "model": "college.userservices",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "Element2",
+      "link": "#",
+      "icon": "fas fa-university"
+    }
+  },
+  {
+    "model": "college.userservices",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "name": "Element3",
+      "link": "#",
+      "icon": "fas fa-university"
+    }
+  }
+]

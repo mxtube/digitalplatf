@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
-from .models import SiteSettings, CustomPerson
+from .models import SiteSettings, CustomPerson, UserServicesCategory, UserServices
 
 
 class HomePage(View):
@@ -23,4 +23,6 @@ class ProfilePage(LoginRequiredMixin, View):
 
     def get(self, request):
         self.context['subtitle'] = request.user.get_full_name
+        user_services = UserServices.objects.filter(visible=True)
+        self.context['user_services'] = user_services
         return render(request=request, template_name=self.template_name, context=self.context)
