@@ -1,0 +1,12 @@
+[
+  {
+    "model": "educationpart.profession",
+    "pk": 1,
+    "fields": {
+      "number": "09.02.07",
+      "name": "Информационные системы и программирование",
+      "shortname": "ИСиП",
+      "department": 3
+    }
+  }
+]

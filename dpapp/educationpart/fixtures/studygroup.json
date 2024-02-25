@@ -1,0 +1,15 @@
+[
+  {
+    "model": "educationpart.studygroup",
+    "pk": "1",
+    "fields": {
+      "name": "ИСиП-15",
+      "admin_name": "ИСиП2023-1",
+      "start_edu": "2023-09-01",
+      "department": 3,
+      "profession": 1,
+      "supervisor": 2,
+      "assistant": 1
+    }
+  }
+]
