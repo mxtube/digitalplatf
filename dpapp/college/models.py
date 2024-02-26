@@ -89,6 +89,7 @@ class Department(models.Model):
         ordering = ('short_name',)
 
     name = models.CharField(max_length=200, verbose_name='Наименование', help_text='Полное наименование')
+    slug = models.SlugField(verbose_name='URL', max_length=200, db_index=True, unique=True)
     short_name = models.CharField(max_length=50, verbose_name='Сокращение', help_text='Сокращенное название')
     phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, verbose_name='Телефон', help_text='Введите номер телефона в формате: +999999999', blank=True)
     coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки', blank=True)
@@ -101,8 +102,7 @@ class Department(models.Model):
         return f'{self.name}'
 
     def get_absolute_url(self):
-        # TODO: Переделать в short_name
-        return reverse('schedule_home', args=[str(self.pk)])
+        return reverse('schedule_home', kwargs={'department_name': self.slug})
 
 
 class Auditory(models.Model):

@@ -60,9 +60,10 @@ class DepartmentAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'short_name', 'supervisor', 'coordinate', 'phone')
     list_display_links = list_display
+    prepopulated_fields = {"slug": ("short_name",)}
 
     fieldsets = (
-        ('Общая информация', {'fields': ('name', 'short_name'), }),
+        ('Общая информация', {'fields': ('name', 'short_name', 'slug',), }),
         ('Контакты', {'fields': ('phone', 'coordinate', 'supervisor'), }),
     )
 

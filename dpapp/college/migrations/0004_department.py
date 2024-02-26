@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(help_text='Полное наименование', max_length=200, verbose_name='Наименование')),
+                ('slug', models.SlugField(max_length=200, unique=True, verbose_name='URL')),
                 ('short_name', models.CharField(help_text='Сокращенное название', max_length=50, verbose_name='Сокращение')),
                 ('phone', models.CharField(blank=True, help_text='Введите номер телефона в формате: +999999999', max_length=17, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$')], verbose_name='Телефон')),
                 ('coordinate', models.CharField(blank=True, help_text='Введите адрес расположения площадки', max_length=500, verbose_name='Адрес')),
