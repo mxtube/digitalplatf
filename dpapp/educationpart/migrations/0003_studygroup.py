@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('college', '0005_auditory'),
+        ('college', '0004_auditory'),
         ('educationpart', '0002_discipline'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]

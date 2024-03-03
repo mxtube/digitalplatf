@@ -1,3 +1,3 @@
-./manage.py loaddata college/fixtures/*.json
-./manage.py loaddata educationpart/fixtures/*.json
-./manage.py loaddata schedule/fixtures/*.json
+./manage.py loaddata college/fixtures/*.*
+./manage.py loaddata educationpart/fixtures/*.*
+./manage.py loaddata schedule/fixtures/*.*

@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('college', '0006_userservicescategory'),
+        ('college', '0005_userservicescategory'),
     ]
 
     operations = [

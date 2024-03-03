@@ -1,0 +1,70 @@
+- model: schedule.dayweek
+  pk: 1
+  fields:
+    name: Понедельник
+    week_id: 1
+- model: schedule.dayweek
+  pk: 2
+  fields:
+    name: Вторник
+    week_id: 1
+- model: schedule.dayweek
+  pk: 3
+  fields:
+    name: Среда
+    week_id: 1
+- model: schedule.dayweek
+  pk: 4
+  fields:
+    name: Четверг
+    week_id: 1
+- model: schedule.dayweek
+  pk: 5
+  fields:
+    name: Пятница
+    week_id: 1
+- model: schedule.dayweek
+  pk: 6
+  fields:
+    name: Суббота
+    week_id: 1
+- model: schedule.dayweek
+  pk: 7
+  fields:
+    name: Воскресенье
+    week_id: 1
+- model: schedule.dayweek
+  pk: 8
+  fields:
+    name: Понедельник
+    week_id: 2
+- model: schedule.dayweek
+  pk: 9
+  fields:
+    name: Вторник
+    week_id: 2
+- model: schedule.dayweek
+  pk: 10
+  fields:
+    name: Среда
+    week_id: 2
+- model: schedule.dayweek
+  pk: 11
+  fields:
+    name: Четверг
+    week_id: 2
+- model: schedule.dayweek
+  pk: 12
+  fields:
+    name: Пятница
+    week_id: 2
+- model: schedule.dayweek
+  pk: 13
+  fields:
+    name: Суббота
+    week_id: 2
+- model: schedule.dayweek
+  pk: 14
+  fields:
+    name: Воскресенье
+    week_id: 2

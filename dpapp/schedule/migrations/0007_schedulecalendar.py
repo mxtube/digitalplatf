@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('educationpart', '0003_studygroup'),
-        ('schedule', '0009_create_default_schedule_calendar_mark'),
+        ('schedule', '0006_schedulecalendarmark'),
     ]
 
     operations = [

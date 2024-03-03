@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('schedule', '0005_create_default_numberweek'),
+        ('schedule', '0004_numberweek'),
     ]
 
     operations = [
