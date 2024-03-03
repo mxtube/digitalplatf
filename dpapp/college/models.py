@@ -127,8 +127,8 @@ class Auditory(models.Model):
 class UserServicesCategory(models.Model):
 
     class Meta:
-        verbose_name = 'Категории сервисов'
-        verbose_name_plural = 'Категории сервисов'
+        verbose_name = 'Категория сервиса'
+        verbose_name_plural = 'Сервисы - категории'
 
     name = models.CharField(max_length=50, verbose_name='Название', unique=True)
     visible = models.BooleanField(verbose_name='Видимость', default=True)
@@ -143,8 +143,8 @@ class UserServicesCategory(models.Model):
 class UserServices(models.Model):
 
     class Meta:
-        verbose_name = 'Пользовательский сервис'
-        verbose_name_plural = 'Пользовательские сервисы'
+        verbose_name = 'Сервис'
+        verbose_name_plural = 'Сервисы'
 
     category = models.ForeignKey(UserServicesCategory, on_delete=models.PROTECT, verbose_name='Категория',
                                  related_name='usrsrv_cat_to_usrsrvcat_id_fkey', null=True)
