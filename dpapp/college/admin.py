@@ -46,7 +46,7 @@ class CustomUserAdmin(UserAdmin):
     list_display = ('get_fullname', 'username', 'email', 'last_login', 'is_active',)
     list_display_links = ('get_fullname', 'username', 'email',)
     ordering = ('-last_login',)
-
+    autocomplete_fields = ['group']
     add_fieldsets = (
         *UserAdmin.fieldsets,
         ('Дополнительная информация', {'fields': ('middle_name', 'alternative_email',)})
@@ -55,7 +55,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('username', 'email',),}),
         ('Персональная информация', {'fields': ('first_name', 'last_name', 'middle_name', 'mobile', 'alternative_email',),}),
-        ('Дополнительная информация', {'fields': ('note',),}),
+        ('Дополнительная информация', {'fields': ('group', 'note',),}),
         ('Права доступа', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions',),}),
         ('Статус', {'fields': ('last_login', 'date_joined'),}),
     )

@@ -68,6 +68,8 @@ class CustomPerson(AbstractUser):
     birthday = models.DateField(max_length=10, blank=True, null=True, verbose_name='Дата рождения')
     note = models.TextField(max_length=200, verbose_name='Примечание', blank=True)
     alternative_email = models.EmailField(blank=True, verbose_name='Альтернативный адрес электронной почты')
+    group = models.ForeignKey('educationpart.Studygroup', on_delete=models.PROTECT, verbose_name='Учебная группа',
+                              related_name='user_group_to_studygroup_id_fkey', null=True, blank=True)
 
     def __repr__(self):
         return f'{self.__class__}: {self.pk} {self.username}'

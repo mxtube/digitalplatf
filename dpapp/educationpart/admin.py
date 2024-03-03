@@ -36,7 +36,7 @@ class StudyGroupAdmin(admin.ModelAdmin):
     list_display = ('name', 'admin_name', 'profession', 'supervisor', 'assistant',)
     list_display_links = ('name', 'admin_name',)
     list_filter = ('department', 'profession',)
-
+    search_fields = ('name',)
     fieldsets = (
         ('Информация о группе', {'fields': (('name', 'admin_name'), 'start_edu', 'profession', 'department'), }),
         ('Права доступа', {'fields': ('supervisor', 'assistant'), }),
