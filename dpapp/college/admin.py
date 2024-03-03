@@ -46,6 +46,7 @@ class CustomUserAdmin(UserAdmin):
     list_display = ('get_fullname', 'username', 'email', 'last_login', 'is_active',)
     list_display_links = ('get_fullname', 'username', 'email',)
     ordering = ('-last_login',)
+    search_fields = ['username', 'email', 'first_name', 'last_name', 'middle_name']
     autocomplete_fields = ['group']
     add_fieldsets = (
         *UserAdmin.fieldsets,
@@ -67,6 +68,7 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'short_name', 'supervisor', 'coordinate', 'phone')
     list_display_links = list_display
     prepopulated_fields = {"slug": ("short_name",)}
+    autocomplete_fields = ['supervisor']
 
     fieldsets = (
         ('Общая информация', {'fields': ('name', 'short_name', 'slug',), }),
