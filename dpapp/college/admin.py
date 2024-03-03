@@ -43,16 +43,22 @@ class CustomUserAdmin(UserAdmin):
 
     model = CustomPerson
 
-    add_fieldsets = (*UserAdmin.add_fieldsets, ('Дополнительная информация', {
-        'fields': ('middle_name', 'mobile', 'birthday', 'note', 'alternative_email',
-    )}))
-
-    fieldsets = (*UserAdmin.fieldsets, ('Дополнительная информация', {
-        'fields': ('middle_name', 'mobile', 'birthday', 'note', 'alternative_email',)}
-    ))
-
     list_display = ('get_fullname', 'username', 'email', 'last_login', 'is_active',)
     list_display_links = ('get_fullname', 'username', 'email',)
+    ordering = ('-last_login',)
+
+    add_fieldsets = (
+        *UserAdmin.fieldsets,
+        ('Дополнительная информация', {'fields': ('middle_name', 'alternative_email',)})
+    )
+
+    fieldsets = (
+        (None, {'fields': ('username', 'email',),}),
+        ('Персональная информация', {'fields': ('first_name', 'last_name', 'middle_name', 'mobile', 'alternative_email',),}),
+        ('Дополнительная информация', {'fields': ('note',),}),
+        ('Права доступа', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions',),}),
+        ('Статус', {'fields': ('last_login', 'date_joined'),}),
+    )
 
 
 @admin.register(Department)
