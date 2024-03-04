@@ -10,8 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from dotenv import load_dotenv
 import os
 from pathlib import Path
+
+# Load environment variables from the .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
+    'django_celery_results',
 
     # modules
     'college.apps.CollegeConfig',
@@ -100,11 +105,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get(''),
-            'USER': os.environ.get(''),
-            'PASSWORD': os.environ.get(''),
-            'HOST': os.environ.get(''),
-            'PORT': os.environ.get('')
+            'NAME': os.getenv('PSQL_NAME'),
+            'USER': os.getenv('PSQL_USER'),
+            'PASSWORD': os.getenv('PSQL_PASSWORD'),
+            'HOST': os.getenv('PSQL_HOST'),
+            'PORT': os.getenv('PSQL_PORT')
         }
     }
 
@@ -200,3 +205,39 @@ CKEDITOR_UPLOAD_PATH = 'ckeditor/'
 
 # TODO: Скрываем предупреждение о CKEditor 4.22.1, проверить обновление в будущем
 SILENCED_SYSTEM_CHECKS = ["ckeditor.W001"]
+
+
+# REDIS
+# https://redis.io
+# https://timeweb.cloud/tutorials/redis/ustanovka-i-nastrojka-redis-dlya-raznyh-os
+
+REDIS_HOST = os.getenv('REDIS_HOST')
+
+REDIS_USER = os.getenv('REDIS_USER')
+
+REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
+
+REDIS_PORT = os.getenv('REDIS_PORT')
+
+
+# CELERY
+# https://docs.celeryq.dev/en/latest/index.html
+# RUN command: celery -A core worker -l INFO
+
+CELERY_BROKER_URL = 'redis://' + REDIS_USER + ':' + REDIS_PASSWORD + '@' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility': 3600}
+
+CELERY_RESULT_BACKEND = 'django-db'
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+
+CELERY_TASK_SERIALIZER = 'json'
+
+CELERY_RESULT_SERIALIZER = 'json'
+
+CELERY_TIMEZONE = 'Europe/Moscow'
+
+CELERY_TASK_TRACK_STARTED = True
+
+CELERY_TASK_TIME_LIMIT = 30 * 60
