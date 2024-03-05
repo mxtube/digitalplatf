@@ -22,8 +22,8 @@ class Migration(migrations.Migration):
                 ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='usrsrv_cat_to_usrsrvcat_id_fkey', to='college.userservicescategory', verbose_name='Категория')),
             ],
             options={
-                'verbose_name': 'Пользовательский сервис',
-                'verbose_name_plural': 'Пользовательские сервисы',
+                'verbose_name': 'Сервис',
+                'verbose_name_plural': 'Сервисы',
             },
         ),
     ]

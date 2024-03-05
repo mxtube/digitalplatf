@@ -18,8 +18,8 @@ class Migration(migrations.Migration):
                 ('visible', models.BooleanField(default=True, verbose_name='Видимость')),
             ],
             options={
-                'verbose_name': 'Категории сервисов',
-                'verbose_name_plural': 'Категории сервисов',
+                'verbose_name': 'Категория сервиса',
+                'verbose_name_plural': 'Сервисы - категории',
             },
         ),
     ]
