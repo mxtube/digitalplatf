@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 admin.site.site_header = 'Панель администрирования'
 
 urlpatterns = ([
+    path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('college.urls')),
