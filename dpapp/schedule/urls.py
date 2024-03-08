@@ -16,8 +16,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import ScheduleHome
+from .views import ScheduleHome, ScheduleRing
 
 urlpatterns = [
-    path('<slug:department_name>', ScheduleHome.as_view(), name='schedule_home'),
+    path('<slug:department_name>/', ScheduleHome.as_view(), name='schedule_home'),
+    path('<slug:department_name>/rings/', ScheduleRing.as_view(), name='schedule_rings')
 ]

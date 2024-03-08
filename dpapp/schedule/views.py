@@ -2,7 +2,7 @@ import datetime, locale
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from college.models import Department
-from .models import ChangeSchedule, BaseSchedule
+from .models import ChangeSchedule, BaseSchedule, Couple
 from schedule.forms import UploadBaseScheduleForm, UploadChangeScheduleForm, ScheduleDateForm, ScheduleTeacherForm
 
 # Настройки для отображения даты и времени на Русском
@@ -21,9 +21,25 @@ class ScheduleHome(View):
         context = {
             'subtitle': f'Расписание на {to_day.strftime("%A %d %b %Y")}',
             'title': department.short_name,
+            'department': department,
             'date': to_day.strftime('%Y-%m-%d'),
             'date_form': ScheduleDateForm,
             'teacher_form': ScheduleTeacherForm
+        }
+        return render(request, template_name=self.template_name, context=context)
+
+
+class ScheduleRing(View):
+
+    template_name = 'schedule/rings.html'
+
+    def get(self, request, department_name):
+        couple = Couple.objects.filter(department__slug=department_name)
+        department = Department.objects.get(slug=department_name)
+        context={
+            'title': department.short_name,
+            'subtitle': 'Расписание звонков',
+            'couples': couple
         }
         return render(request, template_name=self.template_name, context=context)
 

@@ -1,5 +1,7 @@
 import datetime
 from django.db import models
+from django.urls import reverse
+
 from educationpart.models import Studygroup, Discipline
 from college.models import Department, Auditory, CustomPerson
 
