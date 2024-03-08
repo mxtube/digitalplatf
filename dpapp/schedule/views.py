@@ -13,20 +13,36 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 class ScheduleHome(View):
 
     template_name = 'schedule/index.html'
+    date_form = ScheduleDateForm
+    teacher_form = ScheduleTeacherForm
 
     def get(self, request, department_name):
 
         department = get_object_or_404(Department, slug=department_name)
         to_day = datetime.date.today()
         context = {
-            'subtitle': f'Расписание на {to_day.strftime("%A %d %b %Y")}',
             'title': department.short_name,
+            'subtitle': f'Расписание на {to_day.strftime("%A %d %B %Y")}',
             'department': department,
             'date': to_day.strftime('%Y-%m-%d'),
-            'date_form': ScheduleDateForm,
-            'teacher_form': ScheduleTeacherForm
+            'date_form': self.date_form,
+            'teacher_form': self.teacher_form
         }
         return render(request, template_name=self.template_name, context=context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.date_form(request.POST)
+        department = get_object_or_404(Department, slug=kwargs.get('department_name'))
+        if form.is_valid():
+            selected_date = form.cleaned_data.get('date')
+            context = {
+                'title': department.short_name,
+                'subtitle': f'Расписание на {selected_date.strftime("%A %d %B %Y")}',
+                'department': department,
+                'date_form': self.date_form(initial={'date': selected_date}),
+                'teacher_form': self.teacher_form
+            }
+            return render(request, template_name=self.template_name, context=context)
 
 
 class ScheduleRing(View):

@@ -10,7 +10,7 @@
         <header class="major">
             <h3>Дата</h3>
         </header>
-        <form action="#" method="post">
+        <form method="post">
             {% csrf_token %}
             {{ date_form.as_p }}
             <input type="submit" name="date_form" value="Показать">
