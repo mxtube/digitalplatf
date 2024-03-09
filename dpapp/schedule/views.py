@@ -2,7 +2,8 @@ import datetime, locale
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from college.models import Department
-from .models import ChangeSchedule, BaseSchedule, Couple
+from educationpart.models import Studygroup
+from .models import ChangeSchedule, BaseSchedule, Couple, DayWeek
 from schedule.forms import UploadBaseScheduleForm, UploadChangeScheduleForm, ScheduleDateForm, ScheduleTeacherForm
 
 # Настройки для отображения даты и времени на Русском
@@ -16,6 +17,19 @@ class ScheduleHome(View):
     date_form = ScheduleDateForm
     teacher_form = ScheduleTeacherForm
 
+    def __number_week(self, date: datetime.date) -> str:
+        return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
+
+    def get_base_or_change_schedule(self, date: datetime.date, department):
+        # TODO: Добавить обработку для изменений
+        if ChangeSchedule.objects.filter(date=date).exists():
+            return ChangeSchedule.objects.filter(date=date)
+        else:
+            day = date.strftime("%A").capitalize()
+            from_day = DayWeek.objects.get(name=day, week__name=self.__number_week(date))
+            schedule = BaseSchedule.objects.all().filter(dayweek=from_day, group__department=department)
+            return Studygroup.objects.all().filter(department=department.id, id__in=schedule.values('group'))
+
     def get(self, request, department_name):
 
         department = get_object_or_404(Department, slug=department_name)
@@ -24,6 +38,7 @@ class ScheduleHome(View):
             'title': department.short_name,
             'subtitle': f'Расписание на {to_day.strftime("%A %d %B %Y")}',
             'department': department,
+            'groups': self.get_base_or_change_schedule(to_day, department),
             'date': to_day.strftime('%Y-%m-%d'),
             'date_form': self.date_form,
             'teacher_form': self.teacher_form
@@ -39,6 +54,7 @@ class ScheduleHome(View):
                 'title': department.short_name,
                 'subtitle': f'Расписание на {selected_date.strftime("%A %d %B %Y")}',
                 'department': department,
+                'groups': self.get_base_or_change_schedule(selected_date, department),
                 'date_form': self.date_form(initial={'date': selected_date}),
                 'teacher_form': self.teacher_form
             }

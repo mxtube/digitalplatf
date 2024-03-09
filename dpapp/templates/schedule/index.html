@@ -39,4 +39,22 @@
         <a href="#" class="button fit" style="margin-bottom: 10px;"><strong>Расписание сессии</strong></a>
     </div>
 </div>
+
+<!-- Group block -->
+{% regroup groups by profession as groups_list %}
+    <header class="major">
+        <h3>Группы</h3>
+    </header>
+    <div class="row">
+        {% for group in groups_list %}
+        <div class="col-4 col-12-small">
+            <h5 style="height: 50px; vertical-align: middle; text-align: center;">{{ group.grouper|upper }}</h5>
+            {% for group in group.list %}
+                <a href="#" class="button fit" style="margin-bottom: 10px;"><strong>{{ group.name }}</strong></a>
+        {% endfor %}
+    </div>
+    {% empty %}
+    <p>Раписание отсутствует</p>
+{% endfor %}
+
 {% endblock %}
