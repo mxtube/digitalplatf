@@ -35,6 +35,7 @@ class Migration(migrations.Migration):
                 ('mobile', models.CharField(blank=True, help_text='Введите номер телефона в формате: +999999999', max_length=17, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$')], verbose_name='Телефон')),
                 ('birthday', models.DateField(blank=True, max_length=10, null=True, verbose_name='Дата рождения')),
                 ('note', models.TextField(blank=True, max_length=200, verbose_name='Примечание')),
+                ('is_teacher', models.BooleanField(verbose_name='Преподаватель', default=False)),
                 ('alternative_email', models.EmailField(blank=True, max_length=254, verbose_name='Альтернативный адрес электронной почты')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
