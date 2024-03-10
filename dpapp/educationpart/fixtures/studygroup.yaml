@@ -82,7 +82,147 @@
   pk: 9
   fields:
     name: ИСиП-41 (9 кл)
-    admin_name: ИСиП2019-1
+    admin_name: ИСиП2020-1
+    start_edu: 2020-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 10
+  fields:
+    name: С-14 (9 кл)
+    admin_name: C2023-4
+    start_edu: 2023-09-01
+    department: 3
+    profession: 12
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 11
+  fields:
+    name: С-15 (11 кл)
+    admin_name: C2023-5
+    start_edu: 2023-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 12
+  fields:
+    name: С-22 (9 кл)
+    admin_name: С2022-2
+    start_edu: 2022-09-01
+    department: 3
+    profession: 12
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 13
+  fields:
+    name: С-23 (11 кл)
+    admin_name: С2022-3
+    start_edu: 2022-09-01
+    department: 3
+    profession: 12
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 14
+  fields:
+    name: С-31 (9 кл)
+    admin_name: С2021-1
+    start_edu: 2021-09-01
+    department: 3
+    profession: 12
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 15
+  fields:
+    name: С-34 (11 кл)
+    admin_name: С2021-4
+    start_edu: 2021-09-01
+    department: 3
+    profession: 12
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 16
+  fields:
+    name: С-42 (9 кл)
+    admin_name: C2020-2
+    start_edu: 2020-09-01
+    department: 3
+    profession: 12
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 17
+  fields:
+    name: КСиК-12 (9 кл)
+    admin_name: КСиК2023-2
+    start_edu: 2023-09-01
+    department: 3
+    profession: 11
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 18
+  fields:
+    name: КСиК-21 (9 кл)
+    admin_name: КСиК2022-1
+    start_edu: 2022-09-01
+    department: 3
+    profession: 11
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 19
+  fields:
+    name: КСиК-32 (9 кл)
+    admin_name: КСиК2021-2
+    start_edu: 2021-09-01
+    department: 3
+    profession: 11
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 20
+  fields:
+    name: КСиК-41 (9 кл)
+    admin_name: КСиК2021-1
+    start_edu: 2021-09-01
+    department: 3
+    profession: 11
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 21
+  fields:
+    name: КСиК-43 (9 кл)
+    admin_name: КСиК2020-3
+    start_edu: 2020-09-01
+    department: 3
+    profession: 11
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 22
+  fields:
+    name: ИСиП-42 (9 кл)
+    admin_name: ИСиП2020-2
+    start_edu: 2020-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 23
+  fields:
+    name: ИСиП-43 (9 кл)
+    admin_name: ИСиП2020-3
     start_edu: 2020-09-01
     department: 3
     profession: 10
