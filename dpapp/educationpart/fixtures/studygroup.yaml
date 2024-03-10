@@ -1,0 +1,90 @@
+- model: educationpart.studygroup
+  pk: 1
+  fields:
+    name: ИСиП-16 (9 кл)
+    admin_name: ИСиП2023-6
+    start_edu: 2023-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 2
+  fields:
+    name: ИСиП-17 (9 кл)
+    admin_name: ИСиП2023-7
+    start_edu: 2023-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 3
+  fields:
+    name: ИСиП-18 (11 кл)
+    admin_name: ИСиП2023-8
+    start_edu: 2023-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 4
+  fields:
+    name: ИСиП-22 (9 кл)
+    admin_name: ИСиП2022-2
+    start_edu: 2022-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 5
+  fields:
+    name: ИСиП-23 (9 кл)
+    admin_name: ИСиП2022-3
+    start_edu: 2022-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 6
+  fields:
+    name: ИСиП-25 (11 кл)
+    admin_name: ИСиП2022-5
+    start_edu: 2022-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 7
+  fields:
+    name: ИСиП-31 (9 кл)
+    admin_name: ИСиП2021-1
+    start_edu: 2021-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 8
+  fields:
+    name: ИСиП-34 (11 кл)
+    admin_name: ИСиП2021-4
+    start_edu: 2021-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
+- model: educationpart.studygroup
+  pk: 9
+  fields:
+    name: ИСиП-41 (9 кл)
+    admin_name: ИСиП2019-1
+    start_edu: 2020-09-01
+    department: 3
+    profession: 10
+    supervisor: 2
+    assistant: 2
