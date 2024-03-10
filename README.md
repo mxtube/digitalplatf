@@ -43,3 +43,10 @@ from schedule_parsing.parsing import Parsing
 parse = Parsing(filename='FridayEven.xlsx', department='ЦИКТ', date=datetime.date.today())
 print(parse.parse())
 ```
+
+### Dumpdata
+Для экспорта данных используйте команду:
+```text
+./manage.py dumpdata educationpart.studygroup --format=yaml > <name>.yaml
+./manage.py dumpdata educationpart.studygroup > <name>.json
+```
