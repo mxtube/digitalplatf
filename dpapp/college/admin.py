@@ -55,7 +55,7 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {'fields': ('username', 'email',),}),
-        ('Персональная информация', {'fields': ('first_name', 'last_name', 'middle_name', 'mobile', 'alternative_email',),}),
+        ('Персональная информация', {'fields': ('userpic', 'first_name', 'last_name', 'middle_name', 'mobile', 'alternative_email',),}),
         ('Дополнительная информация', {'fields': ('group', 'note',),}),
         ('Права доступа', {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_teacher', 'groups', 'user_permissions',),}),
         ('Статус', {'fields': ('last_login', 'date_joined'),}),
