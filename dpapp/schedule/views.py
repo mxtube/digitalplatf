@@ -5,6 +5,7 @@ from college.models import Department
 from educationpart.models import Studygroup
 from .models import ChangeSchedule, BaseSchedule, Couple, DayWeek
 from schedule.forms import UploadBaseScheduleForm, UploadChangeScheduleForm, ScheduleDateForm, ScheduleTeacherForm
+from schedule_parsing.parsing import Parsing
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -79,9 +80,22 @@ class ScheduleRing(View):
 class UploadBaseSchedule(View):
 
     template_name = 'admin/schedule/upload_schedule.html'
+    upload_form = UploadBaseScheduleForm
+
+    def handle_uploaded_file(self, f):
+        with open(f"../dpdata/xls/schedparsing/{f.name}", "wb+") as destination:
+            for chunk in f.chunks():
+                destination.write(chunk)
 
     def get(self, request):
-        context = {'title': 'Загрузить расписание на семестр', 'form': UploadBaseScheduleForm()}
+        context = {'title': 'Загрузить расписание на семестр', 'upload_form': self.upload_form}
+        return render(request, template_name=self.template_name, context=context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.upload_form(request.POST, request.FILES)
+        if form.is_valid():
+            self.handle_uploaded_file(form.cleaned_data['file'])
+            context = {'title': 'Загрузить расписание на семестр', 'upload_form': self.upload_form}
         return render(request, template_name=self.template_name, context=context)
 
 
