@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('site_name', models.CharField(default='Цифровая платформа', max_length=256, verbose_name='Полное название сайта')),
                 ('short_site_name', models.CharField(verbose_name='Краткое название сайта', max_length=19, help_text='Например, одним словом')),
                 ('description', models.TextField(verbose_name='Описание главной страницы')),
-                ('logotype', models.ImageField(upload_to='site/img', verbose_name='Логотип', blank=True, null=True)),
+                ('logotype', models.ImageField(upload_to='img', verbose_name='Логотип', blank=True, null=True)),
                 ('contact_description', models.CharField(blank=True, help_text='Дополнительная контактная информация. Отображается под заголовком.', max_length=100, null=True, verbose_name='Контактная информация')),
                 ('phone', models.CharField(blank=True, help_text='Номер телефона в формате: +999999999', max_length=17, null=True, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$')], verbose_name='Телефон')),
                 ('email', models.EmailField(blank=True, help_text='Пример: example@mail.ru', max_length=254, null=True, verbose_name='Электронная почта')),
