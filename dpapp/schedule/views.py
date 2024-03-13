@@ -4,7 +4,8 @@ from django.views import View
 from college.models import Department
 from educationpart.models import Studygroup
 from .models import ChangeSchedule, BaseSchedule, Couple, DayWeek
-from schedule.forms import UploadBaseScheduleForm, UploadChangeScheduleForm, ScheduleDateForm, ScheduleTeacherForm
+from schedule.forms import (UploadBaseScheduleFormAdmin, UploadChangeScheduleFormAdmin, ScheduleDateForm,
+                            ScheduleTeacherForm, DepartmentForm)
 from schedule_parsing.parsing import Parsing
 
 # Настройки для отображения даты и времени на Русском
@@ -80,7 +81,7 @@ class ScheduleRing(View):
 class UploadBaseSchedule(View):
 
     template_name = 'admin/schedule/upload_schedule.html'
-    upload_form = UploadBaseScheduleForm
+    upload_form = UploadBaseScheduleFormAdmin
 
     def handle_uploaded_file(self, f):
         with open(f"../dpdata/xls/schedparsing/{f.name}", "wb+") as destination:
@@ -102,18 +103,21 @@ class UploadBaseSchedule(View):
 class UploadChangeSchedule(View):
 
     template_name = 'admin/schedule/upload_schedule.html'
+    upload_form = UploadChangeScheduleFormAdmin
 
     def get(self, request):
-        context = {'title': 'Загрузить изменение в расписание', 'form': UploadChangeScheduleForm()}
+        context = {'title': 'Загрузить изменение в расписание', 'form': self.upload_form}
         return render(request, template_name=self.template_name, context=context)
 
 
 class ScheduleDashboard(View):
 
     template_name = 'admin/schedule/dashboard.html'
+    department_form = DepartmentForm
     context = {}
 
     def get(self, request):
         self.context['base_schedule'] = BaseSchedule.objects.all()
         self.context['change_schedule'] = ChangeSchedule.objects.all()
-        return render(request, template_name=self.template_name)
+        self.context['department_form'] = self.department_form
+        return render(request, template_name=self.template_name, context=self.context)

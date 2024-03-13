@@ -4,14 +4,19 @@ from college.models import Department, CustomPerson
 from .models import DayWeek
 
 
-class UploadBaseScheduleForm(forms.Form):
+class DepartmentForm(forms.Form):
+
+    department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
+
+
+class UploadBaseScheduleFormAdmin(forms.Form):
 
     file = forms.FileField(label='Файл')
     date = forms.ModelChoiceField(label='День недели', queryset=DayWeek.objects.all())
     department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
 
 
-class UploadChangeScheduleForm(forms.Form):
+class UploadChangeScheduleFormAdmin(forms.Form):
 
     file = forms.FileField(label='Файл')
     date = forms.DateField(label='Дата', initial=datetime.date.today())
