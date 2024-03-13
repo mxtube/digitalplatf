@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from schedule_parsing.schedule import Schedule
+from schedule_parsing.scheduling import Schedule
 from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule,
                      UploadScheduleBase, UploadScheduleChange, DashboardSchedule)
 from .views import UploadBaseSchedule, UploadChangeSchedule, ScheduleDashboard
