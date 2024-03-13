@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule, UploadScheduleBase, UploadScheduleChange, DashboardSchedule
+
+from schedule_parsing.schedule import Schedule
+from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule,
+                     UploadScheduleBase, UploadScheduleChange, DashboardSchedule)
 from .views import UploadBaseSchedule, UploadChangeSchedule, ScheduleDashboard
 from django.urls import path
 
@@ -74,3 +77,9 @@ class BaseScheduleAdmin(admin.ModelAdmin):
 
     list_display = ('dayweek', 'couple', 'auditory', 'group', 'discipline', 'teacher',)
     list_filter = ('group__department', 'group__name', 'auditory__number', 'teacher__username',)
+
+
+@admin.register(ChangeSchedule)
+class ChangeScheduleAdmin(admin.ModelAdmin):
+
+    list_display = ('date', 'couple', 'group', 'auditory', 'discipline', 'teacher',)
