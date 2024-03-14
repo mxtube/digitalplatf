@@ -1,12 +1,15 @@
-import datetime, locale
+import datetime
+import locale
+import os
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from college.models import Department
+from core import settings
 from educationpart.models import Studygroup
-from .models import ChangeSchedule, BaseSchedule, Couple, DayWeek
 from schedule.forms import (UploadBaseScheduleFormAdmin, UploadChangeScheduleFormAdmin, ScheduleDateForm,
                             ScheduleTeacherForm, DepartmentForm)
 from schedule_parsing.parsing import Parsing
+from .models import ChangeSchedule, BaseSchedule, Couple, DayWeek
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -104,10 +107,28 @@ class UploadChangeSchedule(View):
 
     template_name = 'admin/schedule/upload_schedule.html'
     upload_form = UploadChangeScheduleFormAdmin
+    context = {'title': 'Загрузить изменение в расписание', 'upload_form': upload_form}
+    PATH = settings.MEDIA_ROOT + 'xls/schedparsing/'
+
+    def handle_uploaded_file(self, f):
+        with open(self.PATH + f.name, "wb+") as destination:
+            for chunk in f.chunks():
+                destination.write(chunk)
+        return True if os.path.exists(self.PATH + f.name) else False
 
     def get(self, request):
-        context = {'title': 'Загрузить изменение в расписание', 'form': self.upload_form}
-        return render(request, template_name=self.template_name, context=context)
+        return render(request, template_name=self.template_name, context=self.context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.upload_form(request.POST, request.FILES)
+        if form.is_valid():
+            file = form.cleaned_data['file']
+            if self.handle_uploaded_file(file):
+                department = form.cleaned_data['department']
+                date = form.cleaned_data['date']
+                parse = Parsing(filename=file)
+                parse.start(department, date)
+                return render(request, template_name=self.template_name, context=self.context)
 
 
 class ScheduleDashboard(View):
