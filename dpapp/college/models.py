@@ -114,8 +114,9 @@ class Auditory(models.Model):
         verbose_name = 'Аудитория'
         verbose_name_plural = 'Аудитории'
         ordering = ('number',)
+        unique_together = ('number', 'department')
 
-    number = models.CharField(max_length=10, help_text='Номер аудитории', verbose_name='Номер')
+    number = models.CharField(max_length=20, help_text='Номер аудитории', verbose_name='Номер')
     department = models.ForeignKey(Department, on_delete=models.PROTECT, default=None, verbose_name='Площадка', related_name='auditory_department_to_department_id_fkey')
 
     def __repr__(self):

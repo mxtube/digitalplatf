@@ -15,13 +15,14 @@ class Migration(migrations.Migration):
             name='Auditory',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('number', models.CharField(help_text='Номер аудитории', max_length=10, verbose_name='Номер')),
+                ('number', models.CharField(help_text='Номер аудитории', max_length=20, verbose_name='Номер')),
                 ('department', models.ForeignKey(default=None, on_delete=django.db.models.deletion.PROTECT, related_name='auditory_department_to_department_id_fkey', to='college.department', verbose_name='Площадка')),
             ],
             options={
                 'verbose_name': 'Аудитория',
                 'verbose_name_plural': 'Аудитории',
                 'ordering': ('number',),
+                'unique_together': {('number', 'department')},
             },
         ),
     ]
