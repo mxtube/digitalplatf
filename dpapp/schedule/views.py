@@ -17,15 +17,22 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
 
 class ScheduleHome(View):
+    """
+    Класс отображения расписания на главной странице
+    """
 
     template_name = 'schedule/index.html'
     date_form = ScheduleDateForm
     teacher_form = ScheduleTeacherForm
 
     def __number_week(self, date: datetime.date) -> str:
+        """ Методы получения четности недели """
         return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
 
     def get_base_or_change_schedule(self, date: datetime.date, department):
+        """
+        Метод получения расписания/расписания с изменениями в зависимости от даты
+        """
         if ChangeSchedule.objects.filter(date=date).exists():
             schedule = ChangeSchedule.objects.all().filter(date=date, group__department=department)
             groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
@@ -40,7 +47,9 @@ class ScheduleHome(View):
             return groups
 
     def get(self, request, department_name):
-
+        """
+        Метод отображения страницы при GET запросе
+        """
         department = get_object_or_404(Department, slug=department_name)
         to_day = datetime.date.today()
         context = {
@@ -55,6 +64,9 @@ class ScheduleHome(View):
         return render(request, template_name=self.template_name, context=context)
 
     def post(self, request, *args, **kwargs):
+        """
+        Метод отображения страницы при POST запросе
+        """
         form = self.date_form(request.POST)
         department = get_object_or_404(Department, slug=kwargs.get('department_name'))
         if form.is_valid():
@@ -71,6 +83,9 @@ class ScheduleHome(View):
 
 
 class ScheduleRing(View):
+    """
+    Класс отображения расписания звонков
+    """
 
     template_name = 'schedule/rings.html'
 
@@ -86,7 +101,9 @@ class ScheduleRing(View):
 
 
 class UploadBaseSchedule(View):
-
+    """
+    Класс загрузки основного расписания в административной панели
+    """
     template_name = 'admin/schedule/upload_schedule.html'
     upload_form = UploadBaseScheduleFormAdmin
 
@@ -108,7 +125,9 @@ class UploadBaseSchedule(View):
 
 
 class UploadChangeSchedule(View):
-
+    """
+    Класс загрузки изменений в расписание в административной панели
+    """
     template_name = 'admin/schedule/upload_schedule.html'
     upload_form = UploadChangeScheduleFormAdmin
     context = {'title': 'Загрузить изменение в расписание', 'upload_form': upload_form}
@@ -136,7 +155,9 @@ class UploadChangeSchedule(View):
 
 
 class ScheduleDashboard(View):
-
+    """
+    Класс отображения аналитики расписания в административной панели
+    """
     template_name = 'admin/schedule/dashboard.html'
     department_form = DepartmentForm
     context = {}
