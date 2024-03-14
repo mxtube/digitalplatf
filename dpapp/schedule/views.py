@@ -26,14 +26,18 @@ class ScheduleHome(View):
         return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
 
     def get_base_or_change_schedule(self, date: datetime.date, department):
-        # TODO: Добавить обработку для изменений
         if ChangeSchedule.objects.filter(date=date).exists():
-            return ChangeSchedule.objects.filter(date=date)
+            schedule = ChangeSchedule.objects.all().filter(date=date, group__department=department)
+            groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
+                'group')).order_by('profession')
+            return groups
         else:
             day = date.strftime("%A").capitalize()
             from_day = DayWeek.objects.get(name=day, week__name=self.__number_week(date))
             schedule = BaseSchedule.objects.all().filter(dayweek=from_day, group__department=department)
-            return Studygroup.objects.all().filter(department=department.id, id__in=schedule.values('group'))
+            groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
+                'group')).order_by('profession')
+            return groups
 
     def get(self, request, department_name):
 
