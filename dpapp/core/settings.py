@@ -50,11 +50,11 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # modules
+    'schedule_parsing.apps.ScheduleParsingConfig',
     'college.apps.CollegeConfig',
     'educationpart.apps.EducationpartConfig',
     'schedule.apps.ScheduleConfig',
     'reference.apps.ReferenceConfig',
-    'schedule_parsing.parsing',
 ]
 
 MIDDLEWARE = [
