@@ -123,7 +123,7 @@ class Auditory(models.Model):
         return f'{self.__class__}: {self.pk} {self.department} {self.number}'
 
     def __str__(self):
-        return f'{self.department} {self.number}'
+        return f'{self.department.short_name} {self.number}'
 
 
 class UserServicesCategory(models.Model):
