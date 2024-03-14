@@ -1,32 +1,40 @@
 - model: schedule.schedulecalendarmark
+  pk: 1
   fields:
     name: 'Теоретическое обучение'
     symbol: ''
 - model: schedule.schedulecalendarmark
+  pk: 2
   fields:
     name: 'Учебная практика'
     symbol: '0'
 - model: schedule.schedulecalendarmark
+  pk: 3
   fields:
     name: 'Производственная практика (по профилю специальности)'
     symbol: '8'
 - model: schedule.schedulecalendarmark
+  pk: 4
   fields:
     name: 'Производственная практика (преддипломная)'
     symbol: 'Х'
 - model: schedule.schedulecalendarmark
+  pk: 5
   fields:
     name: 'Промежуточная аттестация'
     symbol: '::'
 - model: schedule.schedulecalendarmark
+  pk: 6
   fields:
     name: 'Государственная (итоговая) аттестация'
     symbol: 'III'
 - model: schedule.schedulecalendarmark
+  pk: 7
   fields:
     name: 'Подготовка к государственной итоговой аттестации'
     symbol: 'А'
 - model: schedule.schedulecalendarmark
+  pk: 8
   fields:
     name: 'Каникулы'
     symbol: '=='
