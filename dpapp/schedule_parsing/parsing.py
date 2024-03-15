@@ -87,7 +87,6 @@ class Parsing(Schedule, Event):
                         couple = Couple.objects.get(number=couple, stream=gs.stream)
                         discipline = Discipline.objects.get(name=event.get('discipline'))
                         auditory = Auditory.objects.get(number=event.get('auditory'), department=department)
-                        # TODO: поменять на регулярку split на пробел и точку
                         teacher = CustomPerson.objects.get(
                             last_name=re.split(r'[.\s]', event.get('teacher'))[0],
                             first_name__contains=re.split(r'[.\s]', event.get('teacher'))[1],
