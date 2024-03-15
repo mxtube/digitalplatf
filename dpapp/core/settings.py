@@ -227,7 +227,7 @@ REDIS_PORT = os.getenv('REDIS_PORT')
 # https://docs.celeryq.dev/en/latest/index.html
 # RUN command: celery -A core worker -l INFO
 
-CELERY_BROKER_URL = 'redis://' + REDIS_USER + ':' + REDIS_PASSWORD + '@' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility': 3600}
 
