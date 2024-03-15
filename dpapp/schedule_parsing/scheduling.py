@@ -43,9 +43,9 @@ class Schedule:
 
     def __add_group(self, group):
         """ Метод добавления новой группы в расписание. """
-        before = len(self.schedule.keys()) + 1
+        before = self.count_group() + 1
         self.schedule[group] = {}
-        return True if len(self.schedule.keys()) - before == 1 else False
+        return len(self.schedule.keys()) - before == 1
 
     def count_group(self):
         """ Метод получения кол-ва групп в расписании """
