@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from educationpart.models import Studygroup, Discipline
 from college.models import Department, Auditory, CustomPerson
@@ -168,6 +169,10 @@ class ChangeSchedule(models.Model):
 
     def has_date(self) -> bool:
         return True if self.date else False
+
+    @classmethod
+    def has_data_by_date(cls, date) -> bool:
+        return cls.objects.filter(date=date).exists()
 
 
 class UploadScheduleBase(models.Model):
