@@ -57,6 +57,7 @@ class Schedule:
 
     def save_to_json(self):
         """ Метод сохранения расписания в JSON """
-        with open(self.JSON_PATH + datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + '.json', 'w', encoding='utf-8') as f:
+        now = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        with open(self.JSON_PATH + now + '.json', 'w', encoding='utf-8') as f:
             json.dump(self.schedule, f, ensure_ascii=False, indent=4)
 
