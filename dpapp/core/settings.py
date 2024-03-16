@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'educationpart.apps.EducationpartConfig',
     'schedule.apps.ScheduleConfig',
     'reference.apps.ReferenceConfig',
+
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
