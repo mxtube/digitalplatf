@@ -144,6 +144,23 @@ class BaseSchedule(models.Model):
     def __str__(self):
         return f'{self.dayweek} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
+    def _number_week(self, date: datetime.date) -> str:
+        """ Метод получения четности недели """
+        return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
+
+    def has_data_by_date(self, date) -> bool:
+        """ Метод проверки наличия расписания по дате """
+        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+        day = date.strftime("%A").capitalize()
+        from_day = DayWeek.objects.get(name=day, week__name=self._number_week(date))
+        return BaseSchedule.objects.filter(dayweek_id=from_day.id).exists()
+
+    def get_by_date(self, date):
+        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+        day = date.strftime("%A").capitalize()
+        from_day = DayWeek.objects.get(name=day, week__name=self._number_week(date))
+        return BaseSchedule.objects.filter(dayweek_id=from_day.id)
+
 
 class ChangeSchedule(models.Model):
 
@@ -166,9 +183,6 @@ class ChangeSchedule(models.Model):
 
     def __str__(self):
         return f'{self.date} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
-
-    def has_date(self) -> bool:
-        return True if self.date else False
 
     @classmethod
     def has_data_by_date(cls, date) -> bool:
