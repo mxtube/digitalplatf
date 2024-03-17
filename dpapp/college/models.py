@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.contrib import admin
 from django.urls import reverse
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class SingletonModel(models.Model):
@@ -31,16 +32,18 @@ class SiteSettings(SingletonModel):
         verbose_name = 'Настройки'
         verbose_name_plural = 'Настройки'
 
-    site_name = models.CharField(verbose_name='Полное название сайта', max_length=256, default='Цифровая платформа')
-    short_site_name = models.CharField(verbose_name='Краткое название сайта', max_length=19, help_text='Например, одним словом')
+    site_name = models.TextField(verbose_name='Полное название сайта', max_length=200, default='Цифровая платформа')
+    short_site_name = models.CharField(verbose_name='Краткое название сайта', max_length=31)
     logotype = models.ImageField(verbose_name='Логотип', upload_to='img', name='logotype', blank=True, null=True)
     description = models.TextField(verbose_name='Описание главной страницы')
 
     # Contacts
-    contact_description = models.CharField(verbose_name='Контактная информация', help_text='Дополнительная контактная информация. Отображается под заголовком.', max_length=100, blank=True, null=True)
-    phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], verbose_name='Телефон', help_text='Номер телефона в формате: +999999999', max_length=17, blank=True, null=True)
-    email = models.EmailField(verbose_name='Электронная почта', help_text='Пример: example@mail.ru', blank=True, null=True)
-    address = models.CharField(verbose_name='Адрес', help_text='Пример: 129344, г. Москва, Проспект мира д.1', max_length=100, blank=True, null=True)
+    contact_description = models.TextField(verbose_name='Об организации', max_length=200, blank=True, null=True)
+    phone = PhoneNumberField(verbose_name='Телефон', help_text='Например: +999999999', region='', blank=True, null=True)
+    email = models.EmailField(verbose_name='Электронная почта', help_text='Пример: example@mail.ru', blank=True,
+                              null=True)
+    address = models.CharField(verbose_name='Адрес', help_text='Пример: 129344, г. Москва, Проспект мира д.1',
+                               max_length=100, blank=True, null=True)
 
     # Social Network
     vk_link = models.URLField(verbose_name='Вконтакте', blank=True, null=True)
@@ -62,9 +65,9 @@ class SiteSettings(SingletonModel):
 
 class CustomPerson(AbstractUser):
     """ Extension for basic user model """
-    userpic = models.ImageField(upload_to='img/userpic/', verbose_name='Изображение', help_text='Изображение пользователя', blank=True, null=True)
+    userpic = models.ImageField(upload_to='img/users/', verbose_name='Изображение', blank=True, null=True)
     middle_name = models.CharField(max_length=50, verbose_name='Отчество', blank=True)
-    mobile = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, help_text='Введите номер телефона в формате: +999999999', verbose_name='Телефон', blank=True)
+    mobile = PhoneNumberField(verbose_name='Мобильный телефон', region='', blank=True, null=True)
     birthday = models.DateField(max_length=10, blank=True, null=True, verbose_name='Дата рождения')
     note = models.TextField(max_length=200, verbose_name='Примечание', blank=True)
     alternative_email = models.EmailField(blank=True, verbose_name='Альтернативный адрес электронной почты')

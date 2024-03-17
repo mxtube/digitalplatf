@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'schedule.apps.ScheduleConfig',
     'reference.apps.ReferenceConfig',
 
+    'phonenumber_field',
     'django_cleanup.apps.CleanupConfig',
 ]
 
@@ -98,12 +99,17 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# Important: use Postgresql in debug mode
 
 if DEBUG:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('PSQL_NAME'),
+            'USER': os.getenv('PSQL_USER'),
+            'PASSWORD': os.getenv('PSQL_PASSWORD'),
+            'HOST': os.getenv('PSQL_HOST'),
+            'PORT': os.getenv('PSQL_PORT')
         }
     }
 else:
@@ -127,7 +133,7 @@ FIXTURE_DIRS = []
 # Auth
 # https://docs.djangoproject.com/en/5.0/topics/auth/customizing/
 
-AUTH_USER_MODEL = "college.CustomPerson"
+AUTH_USER_MODEL = 'college.CustomPerson'
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -209,7 +215,7 @@ EMAIL_USE_SSL = False
 CKEDITOR_UPLOAD_PATH = 'ckeditor/'
 
 # TODO: Скрываем предупреждение о CKEditor 4.22.1, проверить обновление в будущем
-SILENCED_SYSTEM_CHECKS = ["ckeditor.W001"]
+SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
 
 
 # REDIS

@@ -2,7 +2,7 @@
 
 import django.contrib.auth.models
 import django.contrib.auth.validators
-import django.core.validators
+from phonenumber_field.modelfields import PhoneNumberField
 import django.utils.timezone
 from django.db import migrations, models
 
@@ -22,23 +22,33 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('password', models.CharField(max_length=128, verbose_name='password')),
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
-                ('username', models.CharField(error_messages={'unique': 'A user with that username already exists.'}, help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.', max_length=150, unique=True, validators=[django.contrib.auth.validators.UnicodeUsernameValidator()], verbose_name='username')),
+                ('is_superuser', models.BooleanField(default=False, verbose_name='superuser status',
+                     help_text='Designates that this user has all permissions without explicitly assigning them.')),
+                ('username', models.CharField(error_messages={'unique': 'A user with that username already exists.'},
+                                              help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.',
+                                              max_length=150, unique=True,
+                                              validators=[django.contrib.auth.validators.UnicodeUsernameValidator()],
+                                              verbose_name='username')),
                 ('first_name', models.CharField(blank=True, max_length=150, verbose_name='first name')),
                 ('last_name', models.CharField(blank=True, max_length=150, verbose_name='last name')),
                 ('email', models.EmailField(blank=True, max_length=254, verbose_name='email address')),
-                ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
-                ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
+                ('is_staff', models.BooleanField(default=False, verbose_name='staff status', help_text='Designates whether the user can log into this admin site.')),
+                ('is_active', models.BooleanField(default=True, verbose_name='active', help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('userpic', models.ImageField(blank=True, help_text='Изображение пользователя', null=True, upload_to='img/userpic/', verbose_name='Изображение')),
+                ('userpic', models.ImageField(blank=True, null=True, upload_to='img/users/',
+                                              verbose_name='Изображение')),
                 ('middle_name', models.CharField(blank=True, max_length=50, verbose_name='Отчество')),
-                ('mobile', models.CharField(blank=True, help_text='Введите номер телефона в формате: +999999999', max_length=17, validators=[django.core.validators.RegexValidator(regex='^\\+?1?\\d{9,15}$')], verbose_name='Телефон')),
+                ('mobile', PhoneNumberField(blank=True, max_length=128, null=True, region='',
+                                            verbose_name='Мобильный телефон')),
                 ('birthday', models.DateField(blank=True, max_length=10, null=True, verbose_name='Дата рождения')),
                 ('note', models.TextField(blank=True, max_length=200, verbose_name='Примечание')),
                 ('is_teacher', models.BooleanField(verbose_name='Преподаватель', default=False)),
-                ('alternative_email', models.EmailField(blank=True, max_length=254, verbose_name='Альтернативный адрес электронной почты')),
+                ('alternative_email', models.EmailField(blank=True, max_length=254,
+                                                        verbose_name='Альтернативный адрес электронной почты')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
+                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.',
+                                                            related_name='user_set', related_query_name='user',
+                                                            to='auth.permission', verbose_name='user permissions')),
             ],
             options={
                 'verbose_name': 'user',
