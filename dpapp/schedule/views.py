@@ -6,10 +6,9 @@ from django.views import View
 from college.models import Department
 from core import settings
 from educationpart.models import Studygroup
-from schedule.forms import (UploadBaseScheduleFormAdmin, UploadChangeScheduleFormAdmin, ScheduleDateForm,
-                            ScheduleTeacherForm, DepartmentForm)
+from schedule.forms import UploadChangeScheduleFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
 from schedule_parsing.parsing import Parsing
-from .models import ChangeSchedule, BaseSchedule, Couple, DayWeek
+from .models import ChangeSchedule, Couple, DayWeek
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -25,23 +24,12 @@ class ScheduleHome(View):
     date_form = ScheduleDateForm
     teacher_form = ScheduleTeacherForm
 
-    def __number_week(self, date: datetime.date) -> str:
-        """ Методы получения четности недели """
-        return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
-
     def get_base_or_change_schedule(self, date: datetime.date, department):
         """
         Метод получения расписания/расписания с изменениями в зависимости от даты
         """
         if ChangeSchedule.objects.filter(date=date).exists():
             schedule = ChangeSchedule.objects.all().filter(date=date, group__department=department)
-            groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
-                'group')).order_by('profession')
-            return groups
-        else:
-            day = date.strftime("%A").capitalize()
-            from_day = DayWeek.objects.get(name=day, week__name=self.__number_week(date))
-            schedule = BaseSchedule.objects.all().filter(dayweek=from_day, group__department=department)
             groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
                 'group')).order_by('profession')
             return groups
@@ -100,30 +88,6 @@ class ScheduleRing(View):
         return render(request, template_name=self.template_name, context=context)
 
 
-class UploadBaseSchedule(View):
-    """
-    Класс загрузки основного расписания в административной панели
-    """
-    template_name = 'admin/schedule/upload_schedule.html'
-    upload_form = UploadBaseScheduleFormAdmin
-
-    def handle_uploaded_file(self, f):
-        with open(f"../dpdata/xls/schedparsing/{f.name}", "wb+") as destination:
-            for chunk in f.chunks():
-                destination.write(chunk)
-
-    def get(self, request):
-        context = {'title': 'Загрузить расписание на семестр', 'upload_form': self.upload_form}
-        return render(request, template_name=self.template_name, context=context)
-
-    def post(self, request, *args, **kwargs):
-        form = self.upload_form(request.POST, request.FILES)
-        if form.is_valid():
-            self.handle_uploaded_file(form.cleaned_data['file'])
-            context = {'title': 'Загрузить расписание на семестр', 'upload_form': self.upload_form}
-        return render(request, template_name=self.template_name, context=context)
-
-
 class UploadChangeSchedule(View):
     """
     Класс загрузки изменений в расписание в административной панели
@@ -164,7 +128,6 @@ class ScheduleDashboard(View):
     context = {}
 
     def get(self, request):
-        self.context['base_schedule'] = BaseSchedule.objects.all()
         self.context['change_schedule'] = ChangeSchedule.objects.all()
         self.context['department_form'] = self.department_form
         return render(request, template_name=self.template_name, context=self.context)

@@ -1,18 +1,11 @@
 import datetime
 from django import forms
 from college.models import Department, CustomPerson
-from .models import DayWeek, ChangeSchedule
+from .models import ChangeSchedule
 
 
 class DepartmentForm(forms.Form):
 
-    department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
-
-
-class UploadBaseScheduleFormAdmin(forms.Form):
-
-    file = forms.FileField(label='Файл')
-    date = forms.ModelChoiceField(label='День недели', queryset=DayWeek.objects.all())
     department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
 
 

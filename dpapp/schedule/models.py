@@ -121,48 +121,6 @@ class ScheduleCalendar(models.Model):
         return f'{self.group} {self.start_week} {self.end_week} {self.mark}'
 
 
-class BaseSchedule(models.Model):
-
-    class Meta:
-        verbose_name = 'Расписание'
-        verbose_name_plural = 'Расписание'
-        ordering = ('couple',)
-
-    dayweek = models.ForeignKey(DayWeek, verbose_name='День недели', on_delete=models.PROTECT,
-                                related_name='sched_weekday_to_weekday_id_fkey')
-    couple = models.ForeignKey(Couple, verbose_name='Номер пары', on_delete=models.PROTECT,
-                               related_name='sched_couple_to_couple_id_fkey')
-    group = models.ForeignKey(Studygroup, verbose_name='Группа', on_delete=models.PROTECT,
-                              related_name='sched_studygroup_to_studygroup_id_fkey')
-    auditory = models.ForeignKey(Auditory, verbose_name='Аудитория', on_delete=models.PROTECT,
-                                 related_name='sched_auditory_to_auditory_id_fkey')
-    discipline = models.ForeignKey(Discipline, verbose_name='Дисциплина', on_delete=models.PROTECT,
-                                   related_name='sched_discipline_to_discipline_id_fkey')
-    teacher = models.ForeignKey(CustomPerson, verbose_name='Преподаватель', on_delete=models.PROTECT,
-                                related_name='sched_teacher_to_customperson_id_fkey')
-
-    def __str__(self):
-        return f'{self.dayweek} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
-
-    @staticmethod
-    def _number_week(date: datetime.date) -> str:
-        """ Метод получения четности недели """
-        return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
-
-    def has_data_by_date(self, date) -> bool:
-        """ Метод проверки наличия расписания по дате """
-        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
-        day = date.strftime("%A").capitalize()
-        from_day = DayWeek.objects.get(name=day, week__name=self._number_week(date))
-        return BaseSchedule.objects.filter(dayweek_id=from_day.id).exists()
-
-    def get_by_date(self, date):
-        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
-        day = date.strftime("%A").capitalize()
-        from_day = DayWeek.objects.get(name=day, week__name=self._number_week(date))
-        return BaseSchedule.objects.filter(dayweek_id=from_day.id)
-
-
 class ChangeSchedule(models.Model):
 
     class Meta:
@@ -188,13 +146,6 @@ class ChangeSchedule(models.Model):
     @classmethod
     def has_data_by_date(cls, date) -> bool:
         return cls.objects.filter(date=date).exists()
-
-
-class UploadScheduleBase(models.Model):
-
-    class Meta:
-        verbose_name = 'Загрузить расписание на семестр'
-        verbose_name_plural = 'Загрузить расписание на семестр'
 
 
 class UploadScheduleChange(models.Model):

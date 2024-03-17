@@ -7,7 +7,7 @@ from .scheduling import Schedule
 from .event import Event
 from core.settings import MEDIA_ROOT
 from django.core.exceptions import ObjectDoesNotExist
-from schedule.models import BaseSchedule, ChangeSchedule, GroupStream, Couple, Discipline, Auditory
+from schedule.models import ChangeSchedule, GroupStream, Couple, Discipline, Auditory
 from college.models import Department, CustomPerson
 from educationpart.models import Studygroup
 
