@@ -1,5 +1,7 @@
 import datetime
 from django.db import models
+from django.urls import reverse
+
 from educationpart.models import Studygroup, Discipline
 from college.models import Department, Auditory, CustomPerson
 
@@ -144,23 +146,31 @@ class BaseSchedule(models.Model):
     def __str__(self):
         return f'{self.dayweek} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
+    def get_absolute_url(self):
+        return reverse('schedule_detail_group', kwargs={
+            'department_name': self.group.department.slug,
+            'group': self.group.slug,
+            'date': self.dayweek
+        })
+
     @staticmethod
     def _number_week(date: datetime.date) -> str:
         """ Метод получения четности недели """
         return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
 
-    def has_data_by_date(self, date) -> bool:
-        """ Метод проверки наличия расписания по дате """
-        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
-        day = date.strftime("%A").capitalize()
+    def get_weekday_by_date(self, date) -> dayweek:
+        day = date.strftime('%A').capitalize()
         from_day = DayWeek.objects.get(name=day, week__name=self._number_week(date))
-        return BaseSchedule.objects.filter(dayweek_id=from_day.id).exists()
+        return from_day
 
-    def get_by_date(self, date):
-        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
-        day = date.strftime("%A").capitalize()
-        from_day = DayWeek.objects.get(name=day, week__name=self._number_week(date))
-        return BaseSchedule.objects.filter(dayweek_id=from_day.id)
+    def get_schedule_by_date(self, date: datetime.date):
+        """ Метод проверки наличия расписания по дате """
+        return BaseSchedule.objects.filter(dayweek_id=self.get_weekday_by_date(date))
+
+    @classmethod
+    def has_schedule_by_date(cls, date: datetime.date) -> bool:
+        """ Метод проверки наличия расписания по дате """
+        return cls.objects.filter(dayweek=BaseSchedule().get_weekday_by_date(date)).exists()
 
 
 class ChangeSchedule(models.Model):
@@ -185,8 +195,15 @@ class ChangeSchedule(models.Model):
     def __str__(self):
         return f'{self.date} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
+    def get_absolute_url(self):
+        return reverse('schedule_detail_group', kwargs={
+            'department_name': self.group.department.slug,
+            'group': self.group.slug,
+            'date': self.date
+        })
+
     @classmethod
-    def has_data_by_date(cls, date) -> bool:
+    def has_schedule_by_date(cls, date) -> bool:
         return cls.objects.filter(date=date).exists()
 
 

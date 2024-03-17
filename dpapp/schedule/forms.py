@@ -24,7 +24,7 @@ class UploadChangeScheduleFormAdmin(forms.Form):
 
     def clean_date(self):
         date = self.cleaned_data['date']
-        if ChangeSchedule.has_data_by_date(date):
+        if ChangeSchedule.has_schedule_by_date(date):
             self.add_error('date', 'Указанная дата в расписании уже существует')
         return date
 

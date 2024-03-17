@@ -24,27 +24,7 @@ class ScheduleHome(View):
     template_name = 'schedule/index.html'
     date_form = ScheduleDateForm
     teacher_form = ScheduleTeacherForm
-
-    def __number_week(self, date: datetime.date) -> str:
-        """ Методы получения четности недели """
-        return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
-
-    def get_base_or_change_schedule(self, date: datetime.date, department):
-        """
-        Метод получения расписания/расписания с изменениями в зависимости от даты
-        """
-        if ChangeSchedule.objects.filter(date=date).exists():
-            schedule = ChangeSchedule.objects.all().filter(date=date, group__department=department)
-            groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
-                'group')).order_by('profession')
-            return groups
-        else:
-            day = date.strftime("%A").capitalize()
-            from_day = DayWeek.objects.get(name=day, week__name=self.__number_week(date))
-            schedule = BaseSchedule.objects.all().filter(dayweek=from_day, group__department=department)
-            groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
-                'group')).order_by('profession')
-            return groups
+    context = {}
 
     def get(self, request, department_name):
         """
@@ -52,16 +32,18 @@ class ScheduleHome(View):
         """
         department = get_object_or_404(Department, slug=department_name)
         to_day = datetime.date.today()
-        context = {
-            'title': department.short_name,
-            'subtitle': f'Расписание на {to_day.strftime("%A %d %B %Y")}',
-            'department': department,
-            'groups': self.get_base_or_change_schedule(to_day, department),
-            'date': to_day.strftime('%Y-%m-%d'),
-            'date_form': self.date_form,
-            'teacher_form': self.teacher_form
-        }
-        return render(request, template_name=self.template_name, context=context)
+
+        self.context['title'] = department.short_name
+        self.context['subtitle'] = f'Расписание на {to_day.strftime("%A %d %B %Y")}'
+        self.context['department'] = department
+        self.context['date'] = to_day.strftime('%Y-%m-%d')
+        self.context['date_form'] = self.date_form
+        self.context['teacher_form'] = self.teacher_form
+        if ChangeSchedule.has_schedule_by_date(to_day):
+            self.context['groups'] = ChangeSchedule.objects.filter(date=to_day, group__department=department).order_by('group__name').distinct('group__name')
+        else:
+            self.context['groups'] = BaseSchedule().get_schedule_by_date(to_day)
+        return render(request, template_name=self.template_name, context=self.context)
 
     def post(self, request, *args, **kwargs):
         """
@@ -71,15 +53,37 @@ class ScheduleHome(View):
         department = get_object_or_404(Department, slug=kwargs.get('department_name'))
         if form.is_valid():
             selected_date = form.cleaned_data.get('date')
-            context = {
-                'title': department.short_name,
-                'subtitle': f'Расписание на {selected_date.strftime("%A %d %B %Y")}',
-                'department': department,
-                'groups': self.get_base_or_change_schedule(selected_date, department),
-                'date_form': self.date_form(initial={'date': selected_date}),
-                'teacher_form': self.teacher_form
-            }
-            return render(request, template_name=self.template_name, context=context)
+            self.context['title'] = department.short_name
+            self.context['subtitle'] = f'Расписание на {selected_date.strftime("%A %d %B %Y")}'
+            self.context['department'] = department
+            self.context['date_form'] = self.date_form(initial={'date': selected_date})
+            self.context['teacher_form'] = self.teacher_form
+            if ChangeSchedule.has_schedule_by_date(selected_date):
+                self.context['groups'] = ChangeSchedule.objects.filter(
+                    date=selected_date, group__department=department
+                ).order_by('group__name').distinct('group__name')
+            else:
+                print(BaseSchedule().get_schedule_by_date(selected_date))
+                self.context['groups'] = BaseSchedule().get_schedule_by_date(selected_date)
+            return render(request, template_name=self.template_name, context=self.context)
+
+
+class ScheduleDetailGroup(View):
+
+    template_name = 'schedule/detail.html'
+    context = {}
+    model = None
+
+    def get(self, request, department_name, group, date):
+        group = get_object_or_404(Studygroup, department__slug=department_name, slug=group)
+        department = get_object_or_404(Department, slug=department_name)
+        self.context['title'] = '%s %s' % (department.short_name, group.name)
+        if ChangeSchedule.has_schedule_by_date(date):
+            self.context['schedule'] = ChangeSchedule.objects.filter(date=date)
+        elif BaseSchedule().has_schedule_by_date(date):
+            print(BaseSchedule().get_schedule_by_date(date))
+            self.context['schedule'] = BaseSchedule().get_schedule_by_date(date)
+        return render(request, template_name=self.template_name, context=self.context)
 
 
 class ScheduleRing(View):

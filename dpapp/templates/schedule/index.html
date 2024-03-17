@@ -41,7 +41,7 @@
 </div>
 
 <!-- Group block -->
-{% regroup groups by profession as groups_list %}
+{% regroup groups by group.profession as groups_list %}
     <header class="major">
         <h3>Группы</h3>
     </header>
@@ -50,7 +50,8 @@
         <div class="col-4 col-12-small">
             <h5 style="height: 50px; vertical-align: middle; text-align: center;">{{ group.grouper|upper }}</h5>
             {% for group in group.list %}
-                <a href="#" class="button fit" style="margin-bottom: 10px;"><strong>{{ group.name }}</strong></a>
+                {{ group.get_absolute_url }}
+                <a href="{{ group.get_absolute_url }}" class="button fit" style="margin-bottom: 10px;"><strong>{{ group.group.name }}</strong></a>
         {% endfor %}
     </div>
     {% empty %}
