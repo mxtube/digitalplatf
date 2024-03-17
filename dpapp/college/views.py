@@ -11,7 +11,6 @@ class HomePage(View):
     def get(self, request):
         site_settings = SiteSettings().load()
         context = {'title': site_settings.site_name, 'subtitle': site_settings.short_site_name}
-        print(site_settings.short_site_name, site_settings.site_name)
         return render(request, self.template_name, context=context)
 
 
