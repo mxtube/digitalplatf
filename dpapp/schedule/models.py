@@ -1,4 +1,4 @@
-import datetime
+from django.urls import reverse
 from django.db import models
 from educationpart.models import Studygroup, Discipline
 from college.models import Department, Auditory, CustomPerson
@@ -142,6 +142,13 @@ class Schedule(models.Model):
 
     def __str__(self):
         return f'{self.date} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
+
+    def get_absolute_url(self):
+        return reverse('schedule_detail_group', kwargs={
+            'department_name': self.group.department.slug,
+            'group': self.group.slug,
+            'date': self.date
+        })
 
     @classmethod
     def has_data_by_date(cls, date) -> bool:

@@ -1,14 +1,14 @@
 import datetime
 import locale
 import os
+from core import settings
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from college.models import Department
-from core import settings
-from educationpart.models import Studygroup
 from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
-from schedule_parsing.parsing import Parsing
 from .models import Schedule, Couple
+from college.models import Department
+from educationpart.models import Studygroup
+from schedule_parsing.parsing import Parsing
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -16,35 +16,24 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
 
 class ScheduleHome(View):
-    """
-    Класс отображения расписания на главной странице
-    """
+    """ Контроллер отображения расписания на главной странице """
 
     template_name = 'schedule/index.html'
     date_form = ScheduleDateForm
     teacher_form = ScheduleTeacherForm
 
-    def get_base_or_change_schedule(self, date: datetime.date, department):
-        """
-        Метод получения расписания/расписания с изменениями в зависимости от даты
-        """
-        if Schedule.objects.filter(date=date).exists():
-            schedule = Schedule.objects.all().filter(date=date, group__department=department)
-            groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
-                'group')).order_by('profession')
-            return groups
-
     def get(self, request, department_name):
-        """
-        Метод отображения страницы при GET запросе
-        """
+        """ Метод обработки GET запроса получения страницы с расписанием """
         department = get_object_or_404(Department, slug=department_name)
         to_day = datetime.date.today()
+        groups = Schedule.objects.filter(
+            date=to_day, group__department=department
+        ).order_by('group__name').distinct('group__name')
         context = {
             'title': department.short_name,
             'subtitle': f'Расписание на {to_day.strftime("%A %d %B %Y")}',
             'department': department,
-            'groups': self.get_base_or_change_schedule(to_day, department),
+            'groups': groups,
             'date': to_day.strftime('%Y-%m-%d'),
             'date_form': self.date_form,
             'teacher_form': self.teacher_form
@@ -52,22 +41,39 @@ class ScheduleHome(View):
         return render(request, template_name=self.template_name, context=context)
 
     def post(self, request, *args, **kwargs):
-        """
-        Метод отображения страницы при POST запросе
-        """
-        form = self.date_form(request.POST)
+        """ Метод обработки POST запроса получения страницы с расписанием """
         department = get_object_or_404(Department, slug=kwargs.get('department_name'))
+        form = self.date_form(request.POST)
         if form.is_valid():
             selected_date = form.cleaned_data.get('date')
+            groups = Schedule.objects.filter(
+                date=selected_date, group__department=department
+            ).order_by('group__name').distinct('group__name')
             context = {
                 'title': department.short_name,
                 'subtitle': f'Расписание на {selected_date.strftime("%A %d %B %Y")}',
                 'department': department,
-                'groups': self.get_base_or_change_schedule(selected_date, department),
+                'groups': groups,
                 'date_form': self.date_form(initial={'date': selected_date}),
                 'teacher_form': self.teacher_form
             }
             return render(request, template_name=self.template_name, context=context)
+
+
+class ScheduleDetailGroup(View):
+
+    template_name = 'schedule/detail.html'
+
+    def get(self, request, department_name, group, date):
+        group = get_object_or_404(Studygroup, department__slug=department_name, slug=group)
+        department = get_object_or_404(Department, slug=department_name)
+        date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+        context = {
+            'title': '%s %s' % (department.short_name, group.name),
+            'subtitle': 'Расписание на %s' % (date.strftime("%A %d %B")),
+            'schedule': Schedule.objects.filter(date=date, group=group).order_by('couple')
+        }
+        return render(request, template_name=self.template_name, context=context)
 
 
 class ScheduleRing(View):
