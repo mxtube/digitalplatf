@@ -144,7 +144,8 @@ class BaseSchedule(models.Model):
     def __str__(self):
         return f'{self.dayweek} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
-    def _number_week(self, date: datetime.date) -> str:
+    @staticmethod
+    def _number_week(date: datetime.date) -> str:
         """ Метод получения четности недели """
         return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
 
@@ -208,9 +209,3 @@ class DashboardSchedule(models.Model):
     class Meta:
         verbose_name = 'Dashboard'
         verbose_name_plural = 'Dashboard'
-
-
-
-
-
-
