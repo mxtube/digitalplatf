@@ -56,6 +56,3 @@ class Studygroup(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-
-    def get_absolute_url(self):
-        return reverse('schedule_detail_group', kwargs={'group': self.slug})
