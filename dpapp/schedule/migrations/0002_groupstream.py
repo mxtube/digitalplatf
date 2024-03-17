@@ -16,8 +16,12 @@ class Migration(migrations.Migration):
             name='GroupStream',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('group', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='groupstream_group_to_studygroup_id_fkey', to='educationpart.studygroup', verbose_name='Группа')),
-                ('stream', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='groupstream_stream_to_stream_id_fkey', to='schedule.stream', verbose_name='Поток')),
+                ('group', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT,
+                                            related_name='groupstream_group_to_studygroup_id_fkey',
+                                            to='educationpart.studygroup', verbose_name='Группа')),
+                ('stream', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT,
+                                             related_name='groupstream_stream_to_stream_id_fkey', to='schedule.stream',
+                                             verbose_name='Поток')),
             ],
             options={
                 'verbose_name': 'Распределение групп потока',

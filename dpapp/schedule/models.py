@@ -71,7 +71,7 @@ class Couple(models.Model):
 
     stream = models.ForeignKey(Stream, on_delete=models.PROTECT, verbose_name='Поток',
                                related_name='couple_stream_to_stream_id_fkey')
-    number = models.CharField(max_length=200, verbose_name='Номер пары', help_text='Пример: "1 пара", "2 пара"')
+    number = models.CharField(max_length=200, verbose_name='Номер пары', help_text='Например: 1 пара')
     time_start = models.TimeField(verbose_name='Начало', help_text='Время начала урока')
     time_end = models.TimeField(verbose_name='Конец', help_text='Время окончания урока')
     department = models.ForeignKey(Department, on_delete=models.PROTECT, verbose_name='Площадка', blank=True, null=True,

@@ -16,11 +16,15 @@ class Migration(migrations.Migration):
             name='Couple',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('number', models.CharField(help_text='Пример: "1 пара", "2 пара"', max_length=200, verbose_name='Номер пары')),
+                ('number', models.CharField(help_text='Например: 1 пара', max_length=200, verbose_name='Номер пары')),
                 ('time_start', models.TimeField(help_text='Время начала урока', verbose_name='Начало')),
                 ('time_end', models.TimeField(help_text='Время окончания урока', verbose_name='Конец')),
-                ('department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='couple_department_to_department_id_fkey', to='college.department', verbose_name='Площадка')),
-                ('stream', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='couple_stream_to_stream_id_fkey', to='schedule.stream', verbose_name='Поток')),
+                ('department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT,
+                                                 related_name='couple_department_to_department_id_fkey',
+                                                 to='college.department', verbose_name='Площадка')),
+                ('stream', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                             related_name='couple_stream_to_stream_id_fkey', to='schedule.stream',
+                                             verbose_name='Поток')),
             ],
             options={
                 'verbose_name': 'Звонок',

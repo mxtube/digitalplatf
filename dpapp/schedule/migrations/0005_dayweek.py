@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('schedule', '0004_numberweek'),
     ]
@@ -16,7 +15,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=15)),
-                ('week', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='dayweek_week_to_numberweek_id_fkey', to='schedule.numberweek')),
+                ('week', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                           related_name='dayweek_week_to_numberweek_id_fkey',
+                                           to='schedule.numberweek')),
             ],
         ),
     ]
