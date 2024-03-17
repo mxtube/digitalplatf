@@ -2,8 +2,8 @@
   pk: 1
   fields:
     name: ИСиП-16 (9 кл)
-    admin_name: ИСиП2023-6
     slug: isip16
+    admin_name: ИСиП2023-6
     start_edu: 2023-09-01
     department: 3
     profession: 10
@@ -13,8 +13,8 @@
   pk: 2
   fields:
     name: ИСиП-17 (9 кл)
-    admin_name: ИСиП2023-7
     slug: isip17
+    admin_name: ИСиП2023-7
     start_edu: 2023-09-01
     department: 3
     profession: 10
@@ -24,8 +24,8 @@
   pk: 3
   fields:
     name: ИСиП-18 (11 кл)
-    admin_name: ИСиП2023-8
     slug: isip18
+    admin_name: ИСиП2023-8
     start_edu: 2023-09-01
     department: 3
     profession: 10
@@ -35,8 +35,8 @@
   pk: 4
   fields:
     name: ИСиП-22 (9 кл)
-    admin_name: ИСиП2022-2
     slug: isip22
+    admin_name: ИСиП2022-2
     start_edu: 2022-09-01
     department: 3
     profession: 10
@@ -46,8 +46,8 @@
   pk: 5
   fields:
     name: ИСиП-23 (9 кл)
-    admin_name: ИСиП2022-3
     slug: isip23
+    admin_name: ИСиП2022-3
     start_edu: 2022-09-01
     department: 3
     profession: 10
@@ -57,8 +57,8 @@
   pk: 6
   fields:
     name: ИСиП-25 (11 кл)
-    admin_name: ИСиП2022-5
     slug: isip25
+    admin_name: ИСиП2022-5
     start_edu: 2022-09-01
     department: 3
     profession: 10
@@ -68,8 +68,8 @@
   pk: 7
   fields:
     name: ИСиП-31 (9 кл)
-    admin_name: ИСиП2021-1
     slug: isip31
+    admin_name: ИСиП2021-1
     start_edu: 2021-09-01
     department: 3
     profession: 10
@@ -79,8 +79,8 @@
   pk: 8
   fields:
     name: ИСиП-34 (11 кл)
-    admin_name: ИСиП2021-4
     slug: isip34
+    admin_name: ИСиП2021-4
     start_edu: 2021-09-01
     department: 3
     profession: 10
@@ -90,8 +90,8 @@
   pk: 9
   fields:
     name: ИСиП-41 (9 кл)
-    admin_name: ИСиП2020-1
     slug: isip41
+    admin_name: ИСиП2020-1
     start_edu: 2020-09-01
     department: 3
     profession: 10
@@ -101,8 +101,8 @@
   pk: 10
   fields:
     name: С-14 (9 кл)
-    admin_name: C2023-4
     slug: s14
+    admin_name: C2023-4
     start_edu: 2023-09-01
     department: 3
     profession: 12
@@ -112,19 +112,19 @@
   pk: 11
   fields:
     name: С-15 (11 кл)
-    admin_name: C2023-5
     slug: s15
+    admin_name: C2023-5
     start_edu: 2023-09-01
     department: 3
-    profession: 10
+    profession: 12
     supervisor: 2
     assistant: 2
 - model: educationpart.studygroup
   pk: 12
   fields:
     name: С-22 (9 кл)
-    admin_name: С2022-2
     slug: s22
+    admin_name: С2022-2
     start_edu: 2022-09-01
     department: 3
     profession: 12
@@ -134,8 +134,8 @@
   pk: 13
   fields:
     name: С-23 (11 кл)
-    admin_name: С2022-3
     slug: s23
+    admin_name: С2022-3
     start_edu: 2022-09-01
     department: 3
     profession: 12
@@ -145,8 +145,8 @@
   pk: 14
   fields:
     name: С-31 (9 кл)
-    admin_name: С2021-1
     slug: s31
+    admin_name: С2021-1
     start_edu: 2021-09-01
     department: 3
     profession: 12
@@ -156,8 +156,8 @@
   pk: 15
   fields:
     name: С-34 (11 кл)
-    admin_name: С2021-4
     slug: s34
+    admin_name: С2021-4
     start_edu: 2021-09-01
     department: 3
     profession: 12
@@ -167,8 +167,8 @@
   pk: 16
   fields:
     name: С-42 (9 кл)
-    admin_name: C2020-2
     slug: s42
+    admin_name: C2020-2
     start_edu: 2020-09-01
     department: 3
     profession: 12
@@ -178,8 +178,8 @@
   pk: 17
   fields:
     name: КСиК-12 (9 кл)
-    admin_name: КСиК2023-2
     slug: ksik12
+    admin_name: КСиК2023-2
     start_edu: 2023-09-01
     department: 3
     profession: 11
@@ -189,8 +189,8 @@
   pk: 18
   fields:
     name: КСиК-21 (9 кл)
-    admin_name: КСиК2022-1
     slug: ksik21
+    admin_name: КСиК2022-1
     start_edu: 2022-09-01
     department: 3
     profession: 11
@@ -200,8 +200,8 @@
   pk: 19
   fields:
     name: КСиК-32 (9 кл)
-    admin_name: КСиК2021-2
     slug: ksik32
+    admin_name: КСиК2021-2
     start_edu: 2021-09-01
     department: 3
     profession: 11
@@ -211,8 +211,8 @@
   pk: 20
   fields:
     name: КСиК-41 (9 кл)
-    admin_name: КСиК2021-1
     slug: ksik41
+    admin_name: КСиК2021-1
     start_edu: 2021-09-01
     department: 3
     profession: 11
@@ -222,8 +222,8 @@
   pk: 21
   fields:
     name: КСиК-43 (9 кл)
-    admin_name: КСиК2020-3
     slug: ksik43
+    admin_name: КСиК2020-3
     start_edu: 2020-09-01
     department: 3
     profession: 11
@@ -233,8 +233,8 @@
   pk: 22
   fields:
     name: ИСиП-42 (9 кл)
-    admin_name: ИСиП2020-2
     slug: ksik42
+    admin_name: ИСиП2020-2
     start_edu: 2020-09-01
     department: 3
     profession: 10
@@ -244,8 +244,8 @@
   pk: 23
   fields:
     name: ИСиП-43 (9 кл)
-    admin_name: ИСиП2020-3
     slug: isip43
+    admin_name: ИСиП2020-3
     start_edu: 2020-09-01
     department: 3
     profession: 10
