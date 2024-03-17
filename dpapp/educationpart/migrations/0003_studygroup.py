@@ -18,8 +18,9 @@ class Migration(migrations.Migration):
             name='Studygroup',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Наименование группы. Пример: "ИСиП-15", "СИТ-115".', max_length=75, unique=True, verbose_name='Наименование')),
-                ('admin_name', models.CharField(blank=True, help_text='Имя группы указанное в ActiveDirectory.', max_length=75, null=True, unique=True, verbose_name='Служебное имя')),
+                ('name', models.CharField(help_text='Например: ИСиП-15', max_length=75, unique=True, verbose_name='Название')),
+                ('slug', models.SlugField(max_length=95, unique=True, verbose_name='URL')),
+                ('admin_name', models.CharField(blank=True, help_text='Имя в ActiveDirectory', max_length=75, null=True, unique=True, verbose_name='Служебное имя')),
                 ('start_edu', models.DateField(blank=True, null=True, verbose_name='Начало обучения')),
                 ('assistant', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='studygroup_assistant_to_customuser_id_fkey', to=settings.AUTH_USER_MODEL, verbose_name='Староста')),
                 ('department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='studygroup_department_to_department_id_fkey', to='college.department', verbose_name='Площадка')),
