@@ -1,10 +1,8 @@
 from django.contrib import admin
-
-from schedule_parsing.scheduling import Schedule
-from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule,
-                     UploadScheduleBase, UploadScheduleChange, DashboardSchedule)
 from .views import UploadBaseSchedule, UploadChangeSchedule, ScheduleDashboard
 from django.urls import path
+from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, BaseSchedule, ChangeSchedule,
+                     UploadScheduleBase, UploadScheduleChange, DashboardSchedule)
 
 
 @admin.register(UploadScheduleBase)
@@ -50,6 +48,7 @@ class GroupStreamAdmin(admin.ModelAdmin):
 
     list_display = ('stream', 'group',)
     list_filter = ('group__department', )
+    unique_together = ('stream', 'group')
 
 
 @admin.register(Couple)
