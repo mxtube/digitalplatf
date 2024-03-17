@@ -3,16 +3,16 @@ Created on Thu 7.03.24
 @author: Kirill Kuznetsov
 """
 import openpyxl, re
-from .scheduling import Schedule
+from .scheduling import Scheduling
 from .event import Event
 from core.settings import MEDIA_ROOT
 from django.core.exceptions import ObjectDoesNotExist
-from schedule.models import ChangeSchedule, GroupStream, Couple, Discipline, Auditory
+from schedule.models import Schedule, GroupStream, Couple, Discipline, Auditory
 from college.models import Department, CustomPerson
 from educationpart.models import Studygroup
 
 
-class Parsing(Schedule, Event):
+class Parsing(Scheduling, Event):
 
     EXCEL_FILE_PATH = MEDIA_ROOT + 'xls/schedparsing/'
 
@@ -21,7 +21,7 @@ class Parsing(Schedule, Event):
         self.current_col = 1
         self.start_row = 2
         self.error_box = []
-        self.schedule = Schedule()
+        self.schedule = Scheduling()
 
     def start(self, department, date):
         """
@@ -100,7 +100,7 @@ class Parsing(Schedule, Event):
         return len(self.error_box) == 0
 
     def __save_change_gb(self, department, date):
-        model = ChangeSchedule
+        model = Schedule
         for group, couples in self.schedule.schedule.items():
             for couple, events in couples.items():
                 for event in events:

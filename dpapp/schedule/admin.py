@@ -1,25 +1,25 @@
 from django.contrib import admin
-from .views import UploadChangeSchedule, ScheduleDashboard
+from .views import UploadSchedule, ScheduleDashboard
 from django.urls import path
-from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, ChangeSchedule,
-                     UploadScheduleChange, DashboardSchedule)
+from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, Schedule, UploadSchedules,
+                     DashboardSchedule)
 
 
-@admin.register(UploadScheduleChange)
-class UploadScheduleChangeAdmin(admin.ModelAdmin):
+@admin.register(UploadSchedules)
+class UploadSchedulesAdmin(admin.ModelAdmin):
     # TODO: Разобраться с ссылкой
 
-    model = UploadScheduleChange
+    model = UploadSchedule
 
     def get_urls(self):
         view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
-        return [path('', UploadChangeSchedule.as_view(), name=view_name),]
+        return [path('', UploadSchedule.as_view(), name=view_name),]
 
 
 @admin.register(DashboardSchedule)
 class DashboardScheduleAdmin(admin.ModelAdmin):
 
-    model = ChangeSchedule
+    model = Schedule
 
     def get_urls(self):
         view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
@@ -60,7 +60,7 @@ class ScheduleCalendarAdmin(admin.ModelAdmin):
     list_filter = ('group__department', 'group__name', 'start_week',)
 
 
-@admin.register(ChangeSchedule)
-class ChangeScheduleAdmin(admin.ModelAdmin):
+@admin.register(Schedule)
+class ScheduleAdmin(admin.ModelAdmin):
 
     list_display = ('date', 'couple', 'group', 'auditory', 'discipline', 'teacher',)

@@ -6,9 +6,9 @@ from django.views import View
 from college.models import Department
 from core import settings
 from educationpart.models import Studygroup
-from schedule.forms import UploadChangeScheduleFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
+from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
 from schedule_parsing.parsing import Parsing
-from .models import ChangeSchedule, Couple, DayWeek
+from .models import Schedule, Couple
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -28,8 +28,8 @@ class ScheduleHome(View):
         """
         Метод получения расписания/расписания с изменениями в зависимости от даты
         """
-        if ChangeSchedule.objects.filter(date=date).exists():
-            schedule = ChangeSchedule.objects.all().filter(date=date, group__department=department)
+        if Schedule.objects.filter(date=date).exists():
+            schedule = Schedule.objects.all().filter(date=date, group__department=department)
             groups = Studygroup.objects.all().filter(department=department.id, id__in=schedule.values(
                 'group')).order_by('profession')
             return groups
@@ -88,12 +88,12 @@ class ScheduleRing(View):
         return render(request, template_name=self.template_name, context=context)
 
 
-class UploadChangeSchedule(View):
+class UploadSchedule(View):
     """
     Класс загрузки изменений в расписание в административной панели
     """
     template_name = 'admin/schedule/upload_schedule.html'
-    upload_form = UploadChangeScheduleFormAdmin
+    upload_form = UploadSchedulesFormAdmin
     context = {'title': 'Загрузить изменение в расписание', 'form': upload_form}
     PATH = settings.MEDIA_ROOT + 'xls/schedparsing/'
 
@@ -128,6 +128,6 @@ class ScheduleDashboard(View):
     context = {}
 
     def get(self, request):
-        self.context['change_schedule'] = ChangeSchedule.objects.all()
+        self.context['change_schedule'] = Schedule.objects.all()
         self.context['department_form'] = self.department_form
         return render(request, template_name=self.template_name, context=self.context)

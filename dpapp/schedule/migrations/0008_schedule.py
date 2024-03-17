@@ -16,10 +16,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ChangeSchedule',
+            name='Schedule',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField(verbose_name='Дата')),
+                ('date', models.DateField(verbose_name='Дата', db_index=True)),
                 ('auditory', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
                                                related_name='chgsched_auditory_to_auditory_id_fkey',
                                                to='college.auditory', verbose_name='Аудитория')),
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('discipline', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
                                                  related_name='chgsched_discipline_to_discipline_id_fkey',
                                                  to='educationpart.discipline', verbose_name='Дисциплина')),
-                ('group', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                ('group', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, db_index=True,
                                             related_name='chgsched_studygroup_to_studygroup_id_fkey',
                                             to='educationpart.studygroup', verbose_name='Группа')),
                 ('teacher', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
                                               to=settings.AUTH_USER_MODEL, verbose_name='Преподаватель')),
             ],
             options={
-                'verbose_name': 'Замена',
-                'verbose_name_plural': 'Замены',
+                'verbose_name': 'Расписание',
+                'verbose_name_plural': 'Расписание',
                 'ordering': ('date',),
             },
         ),

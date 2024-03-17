@@ -1,7 +1,7 @@
 import datetime
 from django import forms
 from college.models import Department, CustomPerson
-from .models import ChangeSchedule
+from .models import Schedule
 
 
 class DepartmentForm(forms.Form):
@@ -9,7 +9,7 @@ class DepartmentForm(forms.Form):
     department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
 
 
-class UploadChangeScheduleFormAdmin(forms.Form):
+class UploadSchedulesFormAdmin(forms.Form):
 
     file = forms.FileField(label='Файл')
     date = forms.DateField(label='Дата', initial=datetime.date.today())
@@ -17,7 +17,7 @@ class UploadChangeScheduleFormAdmin(forms.Form):
 
     def clean_date(self):
         date = self.cleaned_data['date']
-        if ChangeSchedule.has_data_by_date(date):
+        if Schedule.has_data_by_date(date):
             self.add_error('date', 'Указанная дата в расписании уже существует')
         return date
 

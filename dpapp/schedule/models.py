@@ -121,17 +121,17 @@ class ScheduleCalendar(models.Model):
         return f'{self.group} {self.start_week} {self.end_week} {self.mark}'
 
 
-class ChangeSchedule(models.Model):
+class Schedule(models.Model):
 
     class Meta:
-        verbose_name = 'Замена'
-        verbose_name_plural = 'Замены'
+        verbose_name = 'Расписание'
+        verbose_name_plural = 'Расписание'
         ordering = ('date',)
 
-    date = models.DateField(verbose_name='Дата')
+    date = models.DateField(verbose_name='Дата', db_index=True)
     couple = models.ForeignKey(Couple, verbose_name='Номер пары', on_delete=models.PROTECT,
                                related_name='chgsched_couple_to_couple_id_fkey')
-    group = models.ForeignKey(Studygroup, verbose_name='Группа', on_delete=models.PROTECT,
+    group = models.ForeignKey(Studygroup, verbose_name='Группа', on_delete=models.PROTECT, db_index=True,
                               related_name='chgsched_studygroup_to_studygroup_id_fkey')
     auditory = models.ForeignKey(Auditory, verbose_name='Аудитория', on_delete=models.PROTECT,
                                  related_name='chgsched_auditory_to_auditory_id_fkey')
@@ -148,11 +148,11 @@ class ChangeSchedule(models.Model):
         return cls.objects.filter(date=date).exists()
 
 
-class UploadScheduleChange(models.Model):
+class UploadSchedules(models.Model):
 
     class Meta:
-        verbose_name = 'Загрузить изменение в расписание'
-        verbose_name_plural = 'Загрузить изменение в расписание'
+        verbose_name = 'Загрузить расписание'
+        verbose_name_plural = 'Загрузить расписание'
 
 
 class DashboardSchedule(models.Model):

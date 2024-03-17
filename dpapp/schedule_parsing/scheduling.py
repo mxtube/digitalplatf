@@ -8,7 +8,7 @@ import json
 from core.settings import MEDIA_ROOT
 
 
-class Schedule:
+class Scheduling:
     """ Класс хранящий расписание для парсинга """
 
     JSON_PATH = MEDIA_ROOT + 'json/schedparsing/'
