@@ -38,7 +38,7 @@ class StreamAdmin(admin.ModelAdmin):
 class GroupStreamAdmin(admin.ModelAdmin):
 
     list_display = ('stream', 'group',)
-    list_filter = ('group__department', )
+    list_filter = (('group__department', RelatedDropdownFilter),)
     unique_together = ('stream', 'group')
 
 
@@ -46,7 +46,7 @@ class GroupStreamAdmin(admin.ModelAdmin):
 class CoupleAdmin(admin.ModelAdmin):
 
     list_display = ('stream', 'number', 'time_start', 'time_end', 'department',)
-    list_filter = ('stream', 'department')
+    list_filter = ('stream', ('department', RelatedDropdownFilter),)
 
 
 @admin.register(ScheduleCalendarMark)
@@ -59,7 +59,7 @@ class ScheduleCalendarMarkAdmin(admin.ModelAdmin):
 class ScheduleCalendarAdmin(admin.ModelAdmin):
 
     list_display = ('start_week', 'end_week', 'group', 'mark')
-    list_filter = ('group__department', 'group__name', 'start_week',)
+    list_filter = (('group__department', RelatedDropdownFilter), ('group', RelatedDropdownFilter), 'start_week',)
 
 
 @admin.register(Schedule)

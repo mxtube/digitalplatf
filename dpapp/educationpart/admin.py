@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Profession, Discipline, Studygroup
-
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
 @admin.register(Profession)
 class ProfessionAdmin(admin.ModelAdmin):
@@ -8,7 +8,7 @@ class ProfessionAdmin(admin.ModelAdmin):
     list_display = ('number', 'name', 'shortname',)
     list_display_links = ('number', 'name')
     search_fields = ('number', 'name')
-    list_filter = ('department',)
+    list_filter = (('department', RelatedDropdownFilter),)
 
     fieldsets = (
         ('Информация о специальности', {
@@ -35,7 +35,7 @@ class StudyGroupAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'admin_name', 'profession', 'supervisor', 'assistant',)
     list_display_links = ('name', 'admin_name',)
-    list_filter = ('department', 'profession',)
+    list_filter = (('department', RelatedDropdownFilter), ('profession', RelatedDropdownFilter),)
     search_fields = ('name',)
     prepopulated_fields = {'slug': ('name',)}
     fieldsets = (

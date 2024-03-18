@@ -1,7 +1,8 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import SiteSettings, CustomPerson, Department, Auditory, UserServicesCategory, UserServices
 from .forms import SiteSettingsAdminForm
+from django.contrib.auth.admin import UserAdmin
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
+from .models import SiteSettings, CustomPerson, Department, Auditory, UserServicesCategory, UserServices
 
 
 @admin.register(SiteSettings)
@@ -45,6 +46,7 @@ class CustomUserAdmin(UserAdmin):
 
     list_display = ('get_fullname', 'username', 'email', 'last_login', 'is_active',)
     list_display_links = ('get_fullname', 'username', 'email',)
+    list_filter = (('group', RelatedDropdownFilter), 'is_teacher',)
     ordering = ('-last_login',)
     search_fields = ['username', 'email', 'first_name', 'last_name', 'middle_name']
     autocomplete_fields = ['group']
@@ -80,7 +82,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 class AuditoryAdmin(admin.ModelAdmin):
 
     list_display = ('number', 'department', )
-    list_filter = ['department__name']
+    list_filter = (('department', RelatedDropdownFilter),)
 
 
 @admin.register(UserServicesCategory)
