@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.db import models
 from educationpart.models import Studygroup, Discipline
 from college.models import Department, Auditory, CustomPerson
+from datetime import datetime, timedelta
 
 
 class NumberWeek(models.Model):
@@ -150,9 +151,36 @@ class Schedule(models.Model):
             'date': self.date
         })
 
+    @staticmethod
+    def _number_week(date: datetime.date) -> str:
+        """ Метод получения четности недели """
+        return 'Четная' if date.isocalendar()[1] % 2 == 0 else 'Нечетная'
+
     @classmethod
     def has_data_by_date(cls, date) -> bool:
         return cls.objects.filter(date=date).exists()
+
+    @classmethod
+    def has_date_by_range(cls, start_date: str, end_date: str, day: str):
+        dates = Schedule.get_date_by_range(start_date, end_date, day)
+        return cls.objects.filter(date__in=dates).exists()
+
+    @staticmethod
+    def get_date_by_range(start_date: str, end_date: str, week_day: str):
+        dates = []
+        start_date = datetime.strptime(start_date, '%Y-%m-%d')
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        current_date = start_date
+        while current_date <= end_date:
+            if week_day.split()[1] == 'Еженедельно':
+                if current_date.strftime('%A').capitalize() == week_day.split()[0]:
+                    dates.append(current_date.strftime('%Y-%m-%d'))
+            else:
+                if current_date.strftime('%A').capitalize() == week_day.split()[0]:
+                    if Schedule._number_week(current_date) == week_day.split()[1]:
+                        dates.append(current_date.strftime('%Y-%m-%d'))
+            current_date += timedelta(days=1)
+        return dates
 
 
 class UploadSchedules(models.Model):

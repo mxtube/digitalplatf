@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'django_celery_results',
     'debug_toolbar',
+    # https://github.com/silentsokolov/django-admin-rangefilter
+    'rangefilter',
+    # https://github.com/mrts/django-admin-list-filter-dropdown?ysclid=ltxamzeduk363659490
+    'django_admin_listfilter_dropdown',
 
     # modules
     'schedule_parsing.apps.ScheduleParsingConfig',

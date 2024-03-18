@@ -3,6 +3,8 @@ from .views import UploadSchedule, ScheduleDashboard
 from django.urls import path
 from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, Schedule, UploadSchedules,
                      DashboardSchedule)
+from rangefilter.filters import DateRangeQuickSelectListFilterBuilder
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
 
 @admin.register(UploadSchedules)
@@ -64,3 +66,4 @@ class ScheduleCalendarAdmin(admin.ModelAdmin):
 class ScheduleAdmin(admin.ModelAdmin):
 
     list_display = ('date', 'couple', 'group', 'auditory', 'discipline', 'teacher',)
+    list_filter = (('date', DateRangeQuickSelectListFilterBuilder()), ('group', RelatedDropdownFilter),)
