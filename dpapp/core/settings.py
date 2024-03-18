@@ -46,7 +46,6 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
-    'django_celery_results',
     'debug_toolbar',
     # https://github.com/silentsokolov/django-admin-rangefilter
     'rangefilter',
