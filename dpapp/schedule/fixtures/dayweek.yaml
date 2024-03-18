@@ -68,3 +68,38 @@
   fields:
     name: Воскресенье
     week_id: 2
+- model: schedule.dayweek
+  pk: 15
+  fields:
+    name: Понедельник
+    week_id: 3
+- model: schedule.dayweek
+  pk: 16
+  fields:
+    name: Вторник
+    week_id: 3
+- model: schedule.dayweek
+  pk: 17
+  fields:
+    name: Среда
+    week_id: 3
+- model: schedule.dayweek
+  pk: 18
+  fields:
+    name: Четверг
+    week_id: 3
+- model: schedule.dayweek
+  pk: 19
+  fields:
+    name: Пятница
+    week_id: 3
+- model: schedule.dayweek
+  pk: 20
+  fields:
+    name: Суббота
+    week_id: 3
+- model: schedule.dayweek
+  pk: 21
+  fields:
+    name: Воскресенье
+    week_id: 3

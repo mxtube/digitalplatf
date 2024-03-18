@@ -6,3 +6,7 @@
   pk: 2
   fields:
     name: Нечетная
+- model: schedule.numberweek
+  pk: 3
+  fields:
+    name: Еженедельно
