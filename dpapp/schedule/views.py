@@ -1,14 +1,14 @@
-import datetime
-import locale
 import os
+import locale
+import datetime
 from core import settings
-from django.shortcuts import render, get_object_or_404
 from django.views import View
-from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
 from .models import Schedule, Couple
-from college.models import Department
 from educationpart.models import Studygroup
 from schedule_parsing.parsing import Parsing
+from college.models import Department, CustomPerson
+from django.shortcuts import render, get_object_or_404
+from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -26,17 +26,17 @@ class ScheduleHome(View):
         """ Метод обработки GET запроса получения страницы с расписанием """
         department = get_object_or_404(Department, slug=department_name)
         to_day = datetime.date.today()
-        groups = Schedule.objects.filter(
-            date=to_day, group__department=department
-        ).order_by('group__name').distinct('group__name')
+        schedule = Schedule.objects.filter(date=to_day, group__department=department)
         context = {
             'title': department.short_name,
             'subtitle': f'Расписание на {to_day.strftime("%A %d %B %Y")}',
             'department': department,
-            'groups': groups,
+            'groups': schedule.order_by('group__name').distinct('group__name'),
             'date': to_day.strftime('%Y-%m-%d'),
             'date_form': self.date_form,
-            'teacher_form': self.teacher_form
+            'teacher_form': self.teacher_form(queryset=CustomPerson.objects.filter(
+                id__in=schedule.values_list('teacher', flat=True))
+            )
         }
         return render(request, template_name=self.template_name, context=context)
 
@@ -46,16 +46,16 @@ class ScheduleHome(View):
         form = self.date_form(request.POST)
         if form.is_valid():
             selected_date = form.cleaned_data.get('date')
-            groups = Schedule.objects.filter(
-                date=selected_date, group__department=department
-            ).order_by('group__name').distinct('group__name')
+            schedule = Schedule.objects.filter(date=selected_date, group__department=department)
             context = {
                 'title': department.short_name,
                 'subtitle': f'Расписание на {selected_date.strftime("%A %d %B %Y")}',
                 'department': department,
-                'groups': groups,
+                'groups': schedule.order_by('group__name').distinct('group__name'),
                 'date_form': self.date_form(initial={'date': selected_date}),
-                'teacher_form': self.teacher_form
+                'teacher_form': self.teacher_form(queryset=CustomPerson.objects.filter(
+                    id__in=schedule.values_list('teacher', flat=True))
+                )
             }
             return render(request, template_name=self.template_name, context=context)
 
