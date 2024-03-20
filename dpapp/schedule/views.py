@@ -5,6 +5,7 @@ from core import settings
 from django.views import View
 from .models import Schedule, Couple
 from educationpart.models import Studygroup
+from django.http import HttpResponseRedirect
 from schedule_parsing.parsing import Parsing
 from college.models import Department, CustomPerson
 from django.shortcuts import render, get_object_or_404
@@ -43,9 +44,10 @@ class ScheduleHome(View):
     def post(self, request, *args, **kwargs):
         """ Метод обработки POST запроса получения страницы с расписанием """
         department = get_object_or_404(Department, slug=kwargs.get('department_name'))
-        form = self.date_form(request.POST)
-        if form.is_valid():
-            selected_date = form.cleaned_data.get('date')
+        date_form = self.date_form(request.POST)
+        user_form = self.teacher_form(request.POST)
+        if date_form.is_valid():
+            selected_date = date_form.cleaned_data.get('date')
             schedule = Schedule.objects.filter(date=selected_date, group__department=department)
             context = {
                 'title': department.short_name,
@@ -53,11 +55,15 @@ class ScheduleHome(View):
                 'department': department,
                 'groups': schedule.order_by('group__name').distinct('group__name'),
                 'date_form': self.date_form(initial={'date': selected_date}),
+                'date': selected_date.strftime('%Y-%m-%d'),
                 'teacher_form': self.teacher_form(queryset=CustomPerson.objects.filter(
                     id__in=schedule.values_list('teacher', flat=True))
                 )
             }
             return render(request, template_name=self.template_name, context=context)
+        if user_form.is_valid():
+            selected_item = user_form.cleaned_data['teacher']
+            return HttpResponseRedirect(selected_item.get_absolute_url_teacher())
 
 
 class ScheduleDetailGroup(View):
@@ -74,6 +80,22 @@ class ScheduleDetailGroup(View):
             'schedule': Schedule.objects.filter(date=date, group=group).order_by('couple')
         }
         return render(request, template_name=self.template_name, context=context)
+
+
+class ScheduleDetailTeacher(View):
+
+    template = 'schedule/detail.html'
+
+    def get(self, request, department_name, teacher, date):
+        user = CustomPerson.objects.get(pk=teacher)
+        date = datetime.datetime.strptime(date, '%Y-%m-%d')
+        schedule = Schedule.objects.filter(date=date, teacher=user)
+        context = {
+            'title': 'Расписание %s' % (user.get_name_initials()),
+            'subtitle': 'на %s' % (date.strftime("%d %B")),
+            'schedule': schedule
+        }
+        return render(request, template_name=self.template, context=context)
 
 
 class ScheduleRing(View):

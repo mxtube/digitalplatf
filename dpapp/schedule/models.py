@@ -144,11 +144,18 @@ class Schedule(models.Model):
     def __str__(self):
         return f'{self.date} {self.group} {self.couple} {self.auditory} {self.discipline} {self.teacher}'
 
-    def get_absolute_url(self):
-        return reverse('schedule_detail_group', kwargs={
+    def get_absolute_url_group(self):
+        return reverse('schedule_group', kwargs={
             'department_name': self.group.department.slug,
             'group': self.group.slug,
             'date': self.date
+        })
+
+    def get_absolute_url_teacher(self):
+        return reverse('schedule_teacher', kwargs={
+            'department_name': self.group.department.slug,
+            'teacher': self.teacher.id,
+            'date': self.date.strftime('%Y-%m-%d')
         })
 
     @staticmethod

@@ -13,7 +13,7 @@
         <form method="post">
             {% csrf_token %}
             {{ date_form.as_p }}
-            <input type="submit" name="date_form" value="Показать">
+            <input type="submit" name="btn_date_form" value="Показать">
         </form>
     </div>
     {% endif %}
@@ -24,10 +24,10 @@
         <header class="major">
             <h3>Преподаватели</h3>
         </header>
-        <form action="#" method="post">
+        <form method="post">
             {% csrf_token %}
             {{ teacher_form.as_p }}
-            <button>Показать</button>
+            <input type="submit" name="btn_teacher_form" value="Показать">
         </form>
         {% endif %}
     </div>
@@ -36,7 +36,7 @@
     <div class="col-4 col-12-medium">
         <a href="#" class="button fit" style="margin-bottom: 10px;"><strong>Общее расписание</strong></a>
         <a href="{% url 'schedule_rings' department.slug %}" class="button fit" style="margin-bottom: 10px;"><strong>Расписание звонков</strong></a>
-        <a href="#" class="button fit" style="margin-bottom: 10px;"><strong>Расписание сессии</strong></a>
+        {#<a href="#" class="button fit" style="margin-bottom: 10px;"><strong>Расписание сессии</strong></a>#}
     </div>
 </div>
 
@@ -50,7 +50,7 @@
         <div class="col-4 col-12-small">
             <h5 style="height: 50px; vertical-align: middle; text-align: center;">{{ group.grouper|upper }}</h5>
             {% for group in group.list %}
-                <a href="{{ group.get_absolute_url }}" class="button fit" style="margin-bottom: 10px;"><strong>{{ group.group.name }}</strong></a>
+                <a href="{{ group.get_absolute_url_group }}" class="button fit" style="margin-bottom: 10px;"><strong>{{ group.group.name }}</strong></a>
         {% endfor %}
     </div>
     {% empty %}

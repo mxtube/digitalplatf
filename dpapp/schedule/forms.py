@@ -47,7 +47,7 @@ class ScheduleDateForm(forms.Form):
 
 class ScheduleTeacherForm(forms.Form):
 
-    teacher = forms.ModelChoiceField(CustomPerson.objects.all(), label='ФИО преподавателя')
+    teacher = forms.ModelChoiceField(Schedule.objects.all(), label='ФИО преподавателя')
 
     def __init__(self, *args, **kwargs):
         queryset = kwargs.pop('queryset', None)
