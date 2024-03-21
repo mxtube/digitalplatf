@@ -22,48 +22,40 @@ class ScheduleHome(View):
     template_name = 'schedule/index.html'
     date_form = ScheduleDateForm
     teacher_form = ScheduleTeacherForm
+    context = {}
 
     def get(self, request, department_name):
         """ Метод обработки GET запроса получения страницы с расписанием """
         department = get_object_or_404(Department, slug=department_name)
         to_day = datetime.date.today()
         schedule = Schedule.objects.filter(date=to_day, group__department=department)
-        context = {
-            'title': department.short_name,
-            'subtitle': f'Расписание на {to_day.strftime("%A %d %B %Y")}',
-            'department': department,
-            'groups': schedule.order_by('group__name').distinct('group__name'),
-            'date': to_day.strftime('%Y-%m-%d'),
-            'date_form': self.date_form,
-            'teacher_form': self.teacher_form(queryset=CustomPerson.objects.filter(
-                id__in=schedule.values_list('teacher', flat=True))
-            )
-        }
-        return render(request, template_name=self.template_name, context=context)
+        self.context['title'] = department.short_name
+        self.context['subtitle'] = f'Расписание на {to_day.strftime('%d %B')}'
+        self.context['department'] = department
+        self.context['groups'] = schedule.order_by('group__name').distinct('group__name')
+        self.context['date_form'] = self.date_form
+        return render(request, template_name=self.template_name, context=self.context)
 
     def post(self, request, *args, **kwargs):
         """ Метод обработки POST запроса получения страницы с расписанием """
         department = get_object_or_404(Department, slug=kwargs.get('department_name'))
         date_form = self.date_form(request.POST)
         user_form = self.teacher_form(request.POST)
+        self.context['title'] = department.short_name
+
         if date_form.is_valid():
             selected_date = date_form.cleaned_data.get('date')
             schedule = Schedule.objects.filter(date=selected_date, group__department=department)
-            context = {
-                'title': department.short_name,
-                'subtitle': f'Расписание на {selected_date.strftime("%A %d %B %Y")}',
-                'department': department,
-                'groups': schedule.order_by('group__name').distinct('group__name'),
-                'date_form': self.date_form(initial={'date': selected_date}),
-                'date': selected_date.strftime('%Y-%m-%d'),
-                'teacher_form': self.teacher_form(queryset=CustomPerson.objects.filter(
-                    id__in=schedule.values_list('teacher', flat=True))
-                )
-            }
-            return render(request, template_name=self.template_name, context=context)
+            self.context['subtitle'] = f'Расписание на {selected_date.strftime('%d %B')}'
+            self.context['department'] = department
+            self.context['groups'] = schedule.order_by('group__name').distinct('group__name')
+            self.context['date_form'] = self.date_form(initial={'date': selected_date})
+            return render(request, template_name=self.template_name, context=self.context)
         if user_form.is_valid():
             selected_item = user_form.cleaned_data['teacher']
             return HttpResponseRedirect(selected_item.get_absolute_url_teacher())
+        else:
+            return HttpResponseRedirect(f'schedule/{department.slug}')
 
 
 class ScheduleDetailGroup(View):

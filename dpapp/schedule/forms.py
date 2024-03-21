@@ -49,10 +49,4 @@ class ScheduleTeacherForm(forms.Form):
 
     teacher = forms.ModelChoiceField(Schedule.objects.all(), label='ФИО преподавателя')
 
-    def __init__(self, *args, **kwargs):
-        queryset = kwargs.pop('queryset', None)
-        super(ScheduleTeacherForm, self).__init__(*args, **kwargs)
-        if queryset is not None:
-            self.fields['teacher'].queryset = queryset
-
 
