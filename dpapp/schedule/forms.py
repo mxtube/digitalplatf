@@ -8,7 +8,9 @@ from django.core.exceptions import ValidationError
 
 
 class DepartmentForm(forms.Form):
+
     department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
+    date = forms.DateField(label='Дата', widget=forms.NumberInput(attrs={'type': 'date'}))
 
 
 class UploadSchedulesFormAdmin(forms.Form):
@@ -43,6 +45,7 @@ class UploadSchedulesFormAdmin(forms.Form):
 
 
 class ScheduleDateForm(forms.Form):
+
     date = forms.DateField(label='Дата', widget=forms.NumberInput(attrs={'type': 'date'}))
 
 
@@ -53,14 +56,13 @@ class CustomTeacherModelChoiceField(forms.ModelChoiceField):
 
 
 class ScheduleTeacherForm(forms.Form):
+    # TODO: исправить баг с отсутствующим расписанием
 
     def __init__(self, *args, **kwargs):
         qs = kwargs.pop('queryset', None)
         super(ScheduleTeacherForm, self).__init__(*args, **kwargs)
         if qs:
             self.fields['teacher'].queryset = qs
-        else:
-            self.fields['teacher'].queryset = Schedule.objects.none()
 
     teacher = CustomTeacherModelChoiceField(
         queryset=Schedule.objects.all().select_related(
