@@ -7,7 +7,7 @@ from .models import Schedule, DayWeek
 from django.core.exceptions import ValidationError
 
 
-class DepartmentForm(forms.Form):
+class DashboardForm(forms.Form):
 
     department = forms.ModelChoiceField(label='Площадка', queryset=Department.objects.all())
     date = forms.DateField(label='Дата', widget=forms.NumberInput(attrs={'type': 'date'}))

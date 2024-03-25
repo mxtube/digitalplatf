@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 from schedule_parsing.parsing import Parsing
 from college.models import Department, CustomPerson
 from django.shortcuts import render, get_object_or_404
-from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DepartmentForm
+from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DashboardForm
 
 # Настройки для отображения даты и времени на Русском
 # TODO: Убрать сделать глобально
@@ -162,14 +162,20 @@ class UploadSchedule(View):
 
 
 class ScheduleDashboard(View):
-    """
-    Класс отображения аналитики расписания в административной панели
-    """
+    """ Класс отображения аналитики расписания в административной панели """
     template_name = 'admin/schedule/dashboard.html'
-    department_form = DepartmentForm
-    context = {}
+    dashboard_form = DashboardForm
+    context = {'title': 'Dashboard', 'subtitle': 'Статистика по площадкам'}
 
     def get(self, request):
-        self.context['change_schedule'] = Schedule.objects.all()
-        self.context['department_form'] = self.department_form
-        return render(request, template_name=self.template_name, context=self.context)
+        context = {'dashboard_form': self.dashboard_form}
+        return render(request, template_name=self.template_name, context=self.context | context)
+
+    def post(self, request, *args, **kwargs):
+        dashboard_form = self.dashboard_form(request.POST)
+        if dashboard_form.is_valid():
+            selected_data = dashboard_form.cleaned_data
+            date = selected_data['date']
+            department = selected_data['department']
+        context = {'dashboard_form': dashboard_form}
+        return render(request, template_name=self.template_name, context=self.context | context)
