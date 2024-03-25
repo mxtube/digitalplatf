@@ -158,6 +158,12 @@ class Schedule(models.Model):
             'date': self.date.strftime('%Y-%m-%d')
         })
 
+    def get_absolute_url_all(self):
+        return reverse('schedule_dpt', kwargs={
+            'department_name': self.group.department.slug,
+            'date': self.date.strftime('%Y-%m-%d')
+        })
+
     @staticmethod
     def _number_week(date: datetime.date) -> str:
         """ Метод получения четности недели """

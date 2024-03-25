@@ -16,11 +16,12 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import ScheduleHome, ScheduleRing, ScheduleDetailGroup, ScheduleDetailTeacher
+from .views import ScheduleHome, ScheduleRing, ScheduleDetailGroup, ScheduleDetailTeacher, ScheduleDetail
 
 urlpatterns = [
     path('<slug:department_name>/', ScheduleHome.as_view(), name='schedule_home'),
     path('<slug:department_name>/rings/', ScheduleRing.as_view(), name='schedule_rings'),
+    path('<slug:department_name>/a/<str:date>', ScheduleDetail.as_view(), name='schedule_department'),
     path('<slug:department_name>/g/<str:group>/<str:date>', ScheduleDetailGroup.as_view(), name='schedule_group'),
     path('<slug:department_name>/t/<int:teacher>/<str:date>', ScheduleDetailTeacher.as_view(), name='schedule_teacher'),
 ]
