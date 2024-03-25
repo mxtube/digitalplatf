@@ -59,6 +59,8 @@ class ScheduleTeacherForm(forms.Form):
         super(ScheduleTeacherForm, self).__init__(*args, **kwargs)
         if qs:
             self.fields['teacher'].queryset = qs
+        else:
+            self.fields['teacher'].queryset = Schedule.objects.none()
 
     teacher = CustomTeacherModelChoiceField(
         queryset=Schedule.objects.all().select_related(
