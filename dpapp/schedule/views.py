@@ -31,7 +31,7 @@ class ScheduleHome(View):
         schedule = Schedule.objects.filter(date=to_day, group__department=department)
         context = {
             'title': department.short_name,
-            'subtitle': f'Расписание на {to_day.strftime('%d %B')}',
+            'subtitle': f'Расписание на {to_day.strftime("%d %B")}',
             'department': department,
             'groups': schedule.order_by('group__name').distinct('group__name'),
             'date': to_day.strftime('%Y-%m-%d'),
@@ -52,7 +52,7 @@ class ScheduleHome(View):
                                         'discipline', 'auditory'))
             context = {
                 'title': department.short_name,
-                'subtitle': f'Расписание на {selected_date.strftime('%d %B')}',
+                'subtitle': f'Расписание на {selected_date.strftime("%d %B")}',
                 'department': department,
                 'groups': schedule.order_by('group__name').distinct('group__name'),
                 'date': selected_date.strftime('%Y-%m-%d'),
