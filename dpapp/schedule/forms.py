@@ -65,7 +65,7 @@ class ScheduleTeacherForm(forms.Form):
             self.fields['teacher'].queryset = qs
 
     teacher = CustomTeacherModelChoiceField(
-        queryset=Schedule.objects.all().select_related(
+        queryset=Schedule.objects.all().order_by('teacher').distinct('teacher').select_related(
             'group', 'group__department', 'group__profession', 'couple', 'teacher', 'discipline', 'auditory'),
         label='Преподаватель',
         to_field_name='id',
