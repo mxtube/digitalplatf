@@ -1,0 +1,170 @@
+<mxfile host="Electron" modified="2024-04-03T17:36:20.327Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="7WzCqOt16_jBzGTeY_a6" version="23.1.5" type="device">
+  <diagram name="Страница — 1" id="gM4fSQgEOm8GgSYoI5t-">
+    <mxGraphModel dx="909" dy="587" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GH4-p8-SliDvZbflV7jW-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-6" target="GH4-p8-SliDvZbflV7jW-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-6" target="GH4-p8-SliDvZbflV7jW-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="110" />
+              <mxPoint x="360" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-6" value="3T-Main" style="shape=mxgraph.cisco.switches.layer_3_switch;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-7" value="ASA ULTRA" style="shape=mxgraph.cisco.misc.asa_5500;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="10.000000000000014" width="44.28" height="50.29" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-8" value="ASA DOGM" style="shape=mxgraph.cisco.misc.asa_5500;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="10.000000000000014" width="44.28" height="50.29" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.08;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-8" target="GH4-p8-SliDvZbflV7jW-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-7" target="GH4-p8-SliDvZbflV7jW-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="344" y="125" as="sourcePoint" />
+            <mxPoint x="406" y="192" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-12" value="HV-4" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="430" y="71" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-13" value="HV-3" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="371" y="200" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-14" value="NODA-2" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="157" y="190" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-15" value="&lt;b&gt;NODA-1&lt;/b&gt;" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-15" target="GH4-p8-SliDvZbflV7jW-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="254" y="45" as="sourcePoint" />
+            <mxPoint x="294" y="92" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="202" y="181" />
+              <mxPoint x="202" y="120" />
+              <mxPoint x="280" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-14" target="GH4-p8-SliDvZbflV7jW-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="264" y="55" as="sourcePoint" />
+            <mxPoint x="304" y="102" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="251" />
+              <mxPoint x="250" y="251" />
+              <mxPoint x="250" y="150" />
+              <mxPoint x="280" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-12" target="GH4-p8-SliDvZbflV7jW-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="274" y="65" as="sourcePoint" />
+            <mxPoint x="314" y="112" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="430" y="100" />
+              <mxPoint x="324" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;exitX=0.95;exitY=0.94;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-6" target="GH4-p8-SliDvZbflV7jW-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="284" y="75" as="sourcePoint" />
+            <mxPoint x="324" y="122" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="322" y="150" />
+              <mxPoint x="348" y="150" />
+              <mxPoint x="348" y="231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-20" target="GH4-p8-SliDvZbflV7jW-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-20" target="GH4-p8-SliDvZbflV7jW-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="348" />
+              <mxPoint x="351" y="348" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-20" target="GH4-p8-SliDvZbflV7jW-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-20" value="SW2" style="shape=mxgraph.cisco.misc.bbsm;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="269.5" y="290" width="65" height="27.03" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-22" value="ClassRoom" style="shape=mxgraph.cisco.computers_and_peripherals.pc;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="449" y="418" width="43" height="38.59" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-24" value="AP1" style="shape=mxgraph.cisco.routers.wireless_router;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="210" y="378.51" width="40" height="39.49" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-25" target="GH4-p8-SliDvZbflV7jW-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-25" value="AP2" style="shape=mxgraph.cisco.routers.wireless_router;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="269.5" y="378.51" width="40" height="39.49" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-26" value="AP3" style="shape=mxgraph.cisco.routers.wireless_router;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="331" y="378.51" width="40" height="39.49" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-27" value="SHD-1" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="530" y="60" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-28" value="&lt;b&gt;Dell_01&lt;/b&gt;" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="10" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="111" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-29" value="&lt;b&gt;Dell_02&lt;/b&gt;" style="shape=mxgraph.cisco.servers.fileserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="80" width="43" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-28" target="GH4-p8-SliDvZbflV7jW-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="112" y="80" />
+              <mxPoint x="207" y="80" />
+              <mxPoint x="207" y="102" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-32" value="AP4" style="shape=mxgraph.cisco.routers.wireless_router;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="394" y="378.51" width="40" height="39.49" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-32" target="GH4-p8-SliDvZbflV7jW-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.32;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-20" target="GH4-p8-SliDvZbflV7jW-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="GH4-p8-SliDvZbflV7jW-39" target="GH4-p8-SliDvZbflV7jW-27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="187" />
+              <mxPoint x="520" y="91" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GH4-p8-SliDvZbflV7jW-39" value="SW1" style="shape=mxgraph.cisco.misc.bbsm;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="449" y="172.97" width="65" height="27.03" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
