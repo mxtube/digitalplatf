@@ -11,17 +11,7 @@
 		<div id="wrapper">
 			<div id="main">
 				<div class="inner">
-					<header id="header">
-						<a href="{% url 'homepage' %}" class="logo"><strong>{{ title }}</strong>{% if subtitle %} - {{ subtitle }}{% endif %}</a>
-						<ul class="icons">
-						{% if user.is_authenticated %}
-                            Приветствую,
-							<a href="{% url 'profile' %}" class="icon solid"><strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong></a>
-                        {% else %}
-							<li><a href="{% url 'login' %}" class="icon"><i class="fas fa-sign-in-alt"></i> Вход</a></li>
-                        {% endif %}
-						</ul>
-					</header>
+					{% include 'core/header.html' %}
 					<section>
 						<div class="content">
 							{% block content %}	{% endblock %}
@@ -29,67 +19,8 @@
 					</section>
 				</div>
 			</div>
-			<div id="sidebar">
-				<div class="inner">
-						<!-- Logo -->
-						{% if site_settings.logotype != '' %}
-						<span class="image fit"><a href="{% url 'homepage' %}"><img src="{% get_media_prefix %}{{ site_settings.logotype }}" alt=""/></a></span>
-						{% else %}
-						<span class="image fit"><a href="{% url 'homepage' %}"><img src="{% static 'images/univer_logo.png' %}" alt=""/></a></span>
-						{% endif %}
-
-						<!-- Menu -->
-						<nav id="menu">
-							<header class="major">
-								<h2>Навигация</h2>
-							</header>
-							<ul>
-								<li><a href="{% url 'homepage' %}">Главная</a></li>
-								{% if departments %}
-								<li><span class="opener">Расписание</span>
-									<ul>
-										{% for department in departments %}
-										<li><a href="{{ department.get_absolute_url }}">{{ department.name }}</a></li>
-										{% endfor %}
-									</ul>
-								</li>
-								{% endif %}
-							</ul>
-						</nav>
-
-						<!-- Contacts -->
-						{% if site_settings.is_contacts  %}
-						<section>
-							<header class="major">
-								<h2>О нас</h2>
-							</header>
-							{% if site_settings.contact_description %}<p>{{ site_settings.contact_description }}</p>{% endif %}
-							<ul class="contact">
-								{% if site_settings.email %}<li class="icon solid fa-envelope"><a href="mailto:{{ site_settings.email }}">{{ site_settings.email }}</a></li>{% endif %}
-								{% if site_settings.phone %}<li class="icon solid fa-phone"><a href="tel:{{ site_settings.phone }}">{{ site_settings.phone }}</a></li>{% endif %}
-								{% if site_settings.address %}<li class="icon solid fa-home">{{ site_settings.address }}</li>{% endif %}
-							</ul>
-						</section>
-						{% endif %}
-
-						<!-- Footer -->
-						<footer id="footer">
-							<div style="text-align: center;">
-								<ul class="icons">
-									{% if site_settings.vk_link  %}<li><a href="{{ site_settings.vk_link }}" class="icon brands fa-vk"></a></li>{% endif %}
-									{% if site_settings.youtube_link  %}<li><a href="{{ site_settings.youtube_link }}" class="icon brands fa-youtube"></a></li>{% endif %}
-									{% if site_settings.odnoklassniki_link  %}<li><a href="{{ site_settings.odnoklassniki_link }}" class="icon brands fa-odnoklassniki"></a></li>{% endif %}
-									{% if site_settings.dzen_link  %}<li><a href="{{ site_settings.dzen_link }}" class="icon brands fa-yandex"></a></li>{% endif %}
-									{% if site_settings.telegram_link  %}<li><a href="{{ site_settings.telegram_link }}" class="icon brands fa-telegram-plane"></a></li>{% endif %}
-									{% if site_settings.whatsapp_link  %}<li><a href="{{ site_settings.whatsapp_link }}" class="icon brands fa-whatsapp"></a></li>{% endif %}
-								</ul>
-								<p class="copyright">Digital Platform 2024 &copy; Все права защищены.</br>Дизайн: <a href="https://html5up.net">HTML5 UP</a><br>Разработано: <a href="https://t.me/KirillKuznetsov">Kirill Kuznetsov</a></p>
-							</div>
-						</footer>
-
-				</div>
-			</div>
-		</div>
+            {% include 'core/sidebar.html' %}
+        </div>
 		{% block scripts %}
 		<script src="{% static 'js/jquery.min.js' %}"></script>
 		<script src="{% static 'js/browser.min.js' %}"></script>

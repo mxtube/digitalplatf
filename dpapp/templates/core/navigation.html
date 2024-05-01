@@ -1,0 +1,17 @@
+<nav id="menu">
+    <header class="major">
+        <h2>Навигация</h2>
+    </header>
+    <ul>
+        <li><a href="{% url 'homepage' %}">Главная</a></li>
+        {% if departments %}
+        <li><span class="opener">Расписание</span>
+            <ul>
+                {% for department in departments %}
+                <li><a href="{{ department.get_absolute_url }}">{{ department.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
