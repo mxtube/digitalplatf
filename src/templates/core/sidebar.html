@@ -1,0 +1,20 @@
+{% load static %}
+<div id="sidebar">
+    <div class="inner">
+        <!-- Logo -->
+        {% if site_settings.logotype != '' %}
+        <span class="image fit"><a href="{% url 'homepage' %}"><img src="{% get_media_prefix %}{{ site_settings.logotype }}" alt=""/></a></span>
+        {% else %}
+        <span class="image fit"><a href="{% url 'homepage' %}"><img src="{% static 'images/univer_logo.png' %}" alt=""/></a></span>
+        {% endif %}
+
+        <!-- Menu -->
+        {% include 'core/navigation.html' %}
+
+        <!-- Contacts -->
+        {% include 'core/contacts.html' %}
+
+        <!-- Footer -->
+        {% include 'core/footer.html' %}
+    </div>
+</div>

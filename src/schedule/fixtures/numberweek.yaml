@@ -1,0 +1,12 @@
+- model: schedule.numberweek
+  pk: 1
+  fields:
+    name: Четная
+- model: schedule.numberweek
+  pk: 2
+  fields:
+    name: Нечетная
+- model: schedule.numberweek
+  pk: 3
+  fields:
+    name: Еженедельно

@@ -1,0 +1,14 @@
+{% load static %}
+{% if site_settings.is_contacts  %}
+    <section>
+        <header class="major">
+            <h2>О нас</h2>
+        </header>
+        {% if site_settings.contact_description %}<p>{{ site_settings.contact_description }}</p>{% endif %}
+        <ul class="contact">
+            {% if site_settings.email %}<li class="icon solid fa-envelope"><a href="mailto:{{ site_settings.email }}">{{ site_settings.email }}</a></li>{% endif %}
+            {% if site_settings.phone %}<li class="icon solid fa-phone"><a href="tel:{{ site_settings.phone }}">{{ site_settings.phone }}</a></li>{% endif %}
+            {% if site_settings.address %}<li class="icon solid fa-home">{{ site_settings.address }}</li>{% endif %}
+        </ul>
+    </section>
+{% endif %}

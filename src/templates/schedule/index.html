@@ -1,0 +1,59 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Top bar -->
+<div class="row">
+
+    <!-- Date block -->
+    {% if date_form %}
+    <div class="col-4 col-12-medium">
+        <header class="major">
+            <h3>Дата</h3>
+        </header>
+        <form method="post">
+            {% csrf_token %}
+            {{ date_form.as_p }}
+            <input type="submit" name="btn_date_form" value="Показать">
+        </form>
+    </div>
+    {% endif %}
+    <!-- Teacher block -->
+    <div class="col-4 col-12-medium">
+        {% if teacher_form %}
+        <header class="major">
+            <h3>Преподаватели</h3>
+        </header>
+        <form method="post">
+            {% csrf_token %}
+            {{ teacher_form.as_p }}
+            <input type="submit" name="btn_teacher_form" value="Показать">
+        </form>
+        {% endif %}
+    </div>
+
+    <!-- Other block -->
+    <div class="col-4 col-12-medium">
+        <a href="{% url 'schedule_department' department.slug date %}" class="button fit" style="margin-bottom: 10px;"><strong>Общее расписание</strong></a>
+        <a href="{% url 'schedule_rings' department.slug %}" class="button fit" style="margin-bottom: 10px;"><strong>Расписание звонков</strong></a>
+        {#<a href="#" class="button fit" style="margin-bottom: 10px;"><strong>Расписание сессии</strong></a>#}
+    </div>
+</div>
+
+<!-- Group block -->
+{% regroup groups by group.profession as groups_list %}
+    <header class="major">
+        <h3>Группы</h3>
+    </header>
+    <div class="row">
+        {% for group in groups_list %}
+        <div class="col-4 col-12-small">
+            <h5 style="height: 50px; vertical-align: middle; text-align: center;">{{ group.grouper|upper }}</h5>
+            {% for group in group.list %}
+                <a href="{{ group.get_absolute_url_group }}" class="button fit" style="margin-bottom: 10px;"><strong>{{ group.group.name }}</strong></a>
+        {% endfor %}
+    </div>
+    {% empty %}
+    <p>Раписание отсутствует</p>
+{% endfor %}
+
+{% endblock %}

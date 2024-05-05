@@ -1,0 +1,482 @@
+[
+  {
+    "model": "college.customperson",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "password": "pbkdf2_sha256$720000$SezffbIp6vrCTBO8BSJvUX$zpmtPNn5Bh+6lXD/lH+werNaFqX4Uc+vTcVOcIIGWgU=",
+      "first_name": "Admin",
+      "last_name": "DP",
+      "is_staff": true,
+      "is_superuser": true,
+      "middle_name": "",
+      "email": "admin@example.com",
+      "alternative_email": "admin@example.com"
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 2,
+    "fields": {
+      "username": "none",
+      "password": "pbkdf2_sha256$720000$WlLDhJEYJ4OmHxErSuTd5c$n6KOUaejd2LI9LQ+BlkX6LpnxYmePsGm456m4rGjbOs=",
+      "first_name": "none",
+      "last_name": "none",
+      "is_staff": true,
+      "middle_name": "none",
+      "email": "none@example.com",
+      "alternative_email": "none@example.com"
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 3,
+    "fields": {
+      "username": "mamihin.m.v",
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs=",
+      "first_name": "Игорь",
+      "last_name": "Мамихин",
+      "is_staff": true,
+      "middle_name": "Викторович",
+      "email": "mamihin@example.com",
+      "alternative_email": "mamihin@example.com"
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 4,
+    "fields": {
+      "username": "lastovenko.i.a@corp.kp11.ru",
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs=",
+      "first_name": "Инна",
+      "last_name": "Ластовенко",
+      "email": "lastovenko.i.a@corp.kp11.ru",
+      "is_teacher": true,
+      "middle_name": "Геннадиевна",
+      "alternative_email": "inna.lastovenko@gmail.com"
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 5,
+    "fields": {
+      "username": "Mossakovskaia.I.IA@corp.kp11.ru",
+      "first_name": "Ирина",
+      "last_name": "Моссаковская",
+      "email": "irinmoss@gmail.com",
+      "middle_name": "Яновна",
+      "alternative_email": "Mossakovskaia.I.IA@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 6,
+    "fields": {
+      "username": "Vinogradov.V.V@corp.kp11.ru",
+      "first_name": "Виктор",
+      "last_name": "Виноградов",
+      "email": "victor.vin@mail.ru",
+      "middle_name": "Вячеславович",
+      "alternative_email": "Vinogradov.V.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 7,
+    "fields": {
+      "username": "Bespalov.D.A@corp.kp11.ru",
+      "first_name": "Дмитрий",
+      "last_name": "Беспалов",
+      "email": "bespalov.dimka000@mail.ru",
+      "middle_name": "Анатольевич",
+      "alternative_email": "Bespalov.D.A@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 8,
+    "fields": {
+      "username": "Timofeeva.V.M@corp.kp11.ru",
+      "first_name": "Варвара",
+      "last_name": "Тимофеева",
+      "email": "timofeeva.vm@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-10T10:55:50.703",
+      "middle_name": "Максимовна",
+      "alternative_email": "Timofeeva.V.M@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 9,
+    "fields": {
+      "username": "Barysheva.S.V@corp.kp11.ru",
+      "first_name": "Светлана",
+      "last_name": "Барышева",
+      "email": "svt.tihonova@gmail.com",
+      "middle_name": "Валерьевна",
+      "alternative_email": "Barysheva.S.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 10,
+    "fields": {
+      "username": "Ilina.E.IU@corp.kp11.ru",
+      "first_name": "Елена",
+      "last_name": "Ильина",
+      "email": "r21sm43@yandex.ru",
+      "middle_name": "Юрьевна",
+      "alternative_email": "Ilina.E.IU@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 11,
+    "fields": {
+      "username": "Polivanov.E.D@corp.kp11.ru",
+      "first_name": "Евгений",
+      "last_name": "Поливанов",
+      "email": "polivanov004@gmail.com",
+      "middle_name": "Дмитриевич",
+      "alternative_email": "Polivanov.E.D@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 12,
+    "fields": {
+      "username": "Sapelov.V.A@corp.kp11.ru",
+      "first_name": "Василий",
+      "last_name": "Сапелов",
+      "email": "Sapelovv.a@gmail.com",
+      "middle_name": "Александрович",
+      "alternative_email": "Sapelov.V.A@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 13,
+    "fields": {
+      "username": "Kamushkina.A.N@corp.kp11.ru",
+      "first_name": "Анастасия",
+      "last_name": "Камушкина",
+      "email": "kamushkina.anastasia@gmail.com",
+      "middle_name": "Николаевна",
+      "alternative_email": "Kamushkina.A.N@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 14,
+    "fields": {
+      "username": "Seregina.L.D@corp.kp11.ru",
+      "first_name": "Людмила",
+      "last_name": "Серегина",
+      "email": "milka25538@gmail.com",
+      "middle_name": "Дмитриевна",
+      "alternative_email": "Seregina.L.D@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 15,
+    "fields": {
+      "username": "popova.k.v@corp.kp11.ru",
+      "first_name": "Кристина",
+      "last_name": "Попова",
+      "email": "popova-kri@mail.ru",
+      "middle_name": "Владимировна",
+      "alternative_email": "popova.k.v@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 16,
+    "fields": {
+      "username": "Volodina.I.V@corp.kp11.ru",
+      "first_name": "Ирина",
+      "last_name": "Володина",
+      "email": "v.ira@inbox.ru",
+      "middle_name": "Владимировна",
+      "alternative_email": "Volodina.I.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 17,
+    "fields": {
+      "username": "Nochka.E.I@corp.kp11.ru",
+      "first_name": "Евгений",
+      "last_name": "Ночка",
+      "email": "n.nochka@gmail.com",
+      "middle_name": "Иванович",
+      "alternative_email": "Nochka.E.I@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 18,
+    "fields": {
+      "username": "Maslov.V.V@corp.kp11.ru",
+      "first_name": "Вадим",
+      "last_name": "Маслов",
+      "email": "nach321@mail.ru",
+      "middle_name": "Викторович",
+      "alternative_email": "Maslov.V.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 19,
+    "fields": {
+      "username": "Varov.D.E@corp.kp11.ru",
+      "first_name": "Дмитрий",
+      "last_name": "Варов",
+      "email": "xenar.mail@gmail.com",
+      "middle_name": "Евгеньевич",
+      "alternative_email": "Varov.D.E@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 20,
+    "fields": {
+      "username": "Anishchenko.V.V@corp.kp11.ru",
+      "first_name": "Виталий",
+      "last_name": "Анищенко",
+      "email": "anishenko.vit@mail.ru",
+      "middle_name": "Владиславович",
+      "alternative_email": "Anishchenko.V.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 21,
+    "fields": {
+      "username": "Losev.A.N@corp.kp11.ru",
+      "first_name": "Алексей",
+      "last_name": "Лосев",
+      "email": "a.losev32@gmail.com ",
+      "middle_name": "Николаевич",
+      "alternative_email": "Losev.A.N@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 22,
+    "fields": {
+      "username": "Kuplinova.E.D@corp.kp11.ru",
+      "first_name": "Елена",
+      "last_name": "Куплинова",
+      "email": "butilova_e@mail.ru",
+      "middle_name": "Дмитриевна",
+      "alternative_email": "Kuplinova.E.D@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 23,
+    "fields": {
+      "username": "Toivonen.E.B@corp.kp11.ru",
+      "first_name": "Елена",
+      "last_name": "Тойвонен",
+      "email": "etoivonen@mail.ru",
+      "middle_name": "Брониславовна",
+      "alternative_email": "Toivonen.E.B@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 24,
+    "fields": {
+      "username": "Podolinskiy.K.O@corp.kp11.ru",
+      "first_name": "Кирилл",
+      "last_name": "Подолинский",
+      "email": "podolinskyy@kp11.ru",
+      "middle_name": "Олегович",
+      "alternative_email": "Podolinskiy.K.O@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 25,
+    "fields": {
+      "username": "Kulitskaia.N.S@corp.kp11.ru",
+      "first_name": "Наталья",
+      "last_name": "Кулицкая",
+      "email": "natalulu@mail.ru ",
+      "middle_name": "Сергеевна",
+      "alternative_email": "Kulitskaia.N.S@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 26,
+    "fields": {
+      "username": "KHokhlov.K.V@corp.kp11.ru",
+      "first_name": "Кирилл",
+      "last_name": "Хохлов",
+      "email": "Kho.kv@yandex.ru",
+      "middle_name": "Владимирович",
+      "alternative_email": "KHokhlov.K.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 27,
+    "fields": {
+      "username": "Bystrov.A.G@corp.kp11.ru",
+      "first_name": "Андрей",
+      "last_name": "Быстров",
+      "email": "bistrov-temp@mail.ru",
+      "middle_name": "Геннадьевич",
+      "alternative_email": "Bystrov.A.G@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 28,
+    "fields": {
+      "username": "Patckevich.M.IU@corp.kp11.ru",
+      "first_name": "Марина",
+      "last_name": "Пацкевич",
+      "email": "pmu80@yandex.ru",
+      "middle_name": "Юрьевна",
+      "alternative_email": "Patckevich.M.IU@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 29,
+    "fields": {
+      "username": "Lutckov.D.V@corp.kp11.ru",
+      "first_name": "Дмитрий",
+      "last_name": "Луцков",
+      "email": "lutsckovdmitry@yandex.ru",
+      "middle_name": "Владимирович",
+      "alternative_email": "Lutckov.D.V@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 30,
+    "fields": {
+      "username": "Nikonorov.A.G@corp.kp11.ru",
+      "first_name": "Алексей",
+      "last_name": "Никоноров",
+      "email": "alesha_nikonorov@mail.ru",
+      "middle_name": "Геннадиевич",
+      "alternative_email": "Nikonorov.A.G@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 31,
+    "fields": {
+      "username": "Sapelova.E.N@corp.kp11.ru",
+      "first_name": "Елена",
+      "last_name": "Сапелова",
+      "email": "sapelova.908@yandex.ru",
+      "middle_name": "Николаевна",
+      "alternative_email": "Sapelova.E.N@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 32,
+    "fields": {
+      "username": "SHavrova.O.S@corp.kp11.ru",
+      "first_name": "Ольга",
+      "last_name": "Шаврова",
+      "email": "otpechatok.teni@gmail.com",
+      "middle_name": "Сергеевна",
+      "alternative_email": "SHavrova.O.S@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 33,
+    "fields": {
+      "username": "Afinogenov.A.A@corp.kp11.ru",
+      "first_name": "Александр",
+      "last_name": "Афиногенов",
+      "email": "afinogenov95@bk.ru",
+      "middle_name": "Алексеевич",
+      "alternative_email": "Afinogenov.A.A@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  },
+  {
+    "model": "college.customperson",
+    "pk": 34,
+    "fields": {
+      "username": "Papaduka.IU.N@corp.kp11.ru",
+      "first_name": "Юлия",
+      "last_name": "Пападука",
+      "email": "papady@mail.ru",
+      "middle_name": "Николаевна",
+      "alternative_email": "Papaduka.IU.N@corp.kp11.ru",
+      "is_teacher": true,
+      "password": "pbkdf2_sha256$720000$3VeskG8eruLnq9GZVnSWYv$FyZTZGPndM07hkB698dFsEZq5o+i4sDbSKN0HYn4bZs="
+    }
+  }
+]

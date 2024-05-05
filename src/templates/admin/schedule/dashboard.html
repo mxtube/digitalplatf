@@ -1,0 +1,7 @@
+{% extends 'admin/base_site.html' %}
+{% block content %}
+    <form method="POST">{% csrf_token %}
+        {{ dashboard_form.as_p }}
+        <input type="submit" name="btn_dashboard" value="Показать">
+    </form>
+{% endblock %}

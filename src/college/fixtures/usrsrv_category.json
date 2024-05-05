@@ -1,0 +1,16 @@
+[
+  {
+    "model": "college.userservicescategory",
+    "pk": 1,
+    "fields": {
+      "name": "Сервисы"
+    }
+  },
+  {
+    "model": "college.userservicescategory",
+    "pk": 2,
+    "fields": {
+      "name": "Куратор"
+    }
+  }
+]

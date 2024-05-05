@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<h2>Профиль пользователя</h2>
+<div class="row">
+    <div class="col-6 col-12-small">
+        <p>{{ request.user.username }}</p>
+    </div>
+    <div class="col-6 col-12-small">
+        <h3>Общие данные</h3>
+        <p><b>Личная почта:</b> {% if request.user.alternative_email %}{{ request.user.alternative_email }}{% else %} None {% endif %}</p>
+        <p><b>Дата рождения:</b> {% if request.user.birthday %}{{ request.user.birthday }}{% else %} None {% endif %}</p>
+        <p><b>Группа:</b> {% if request.user.birthday %}{{ request.user.birthday }}{% else %} None {% endif %}</p>
+    </div>
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button class="small"><i class="fas fa-sign-out-alt"></i> Выход</button>
+    </form>
+</div>
+<hr class="major" />
+{%  regroup user_services by category as category_list %}
+    {% for category in category_list %}
+        <header class="major">
+            <h3>{{ category.grouper }}</h3>
+        </header>
+
+        <div class="row">
+            {% for service in category.list %}
+            <div class="col-3 col-12-medium zoom">
+                <p>
+                    <a href="{{ service.link }}">
+                        <section class="box-element border">
+                            <span class="icon solid fa-2xl {{ service.icon }}"></span>
+                            <h3>{{ service.name }}</h3>
+                        </section>
+                    </a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
