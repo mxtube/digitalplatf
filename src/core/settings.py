@@ -14,12 +14,11 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 
-# Load environment variables from the .env file
-load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from the .env file
+load_dotenv(os.path.join(BASE_DIR, '../.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     'rangefilter',
     # https://github.com/mrts/django-admin-list-filter-dropdown?ysclid=ltxamzeduk363659490
     'django_admin_listfilter_dropdown',
+    'django_celery_results',
 
     # modules
     'schedule_parsing.apps.ScheduleParsingConfig',
@@ -105,28 +105,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # Important: use Postgresql in debug mode
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('PSQL_NAME'),
-            'USER': os.getenv('PSQL_USER'),
-            'PASSWORD': os.getenv('PSQL_PASSWORD'),
-            'HOST': os.getenv('PSQL_HOST'),
-            'PORT': os.getenv('PSQL_PORT')
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT')
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('PSQL_NAME'),
-            'USER': os.getenv('PSQL_USER'),
-            'PASSWORD': os.getenv('PSQL_PASSWORD'),
-            'HOST': os.getenv('PSQL_HOST'),
-            'PORT': os.getenv('PSQL_PORT')
-        }
-    }
+}
 
 
 # Fixtures
@@ -239,20 +227,15 @@ REDIS_PORT = os.getenv('REDIS_PORT')
 # https://docs.celeryq.dev/en/latest/index.html
 # RUN command: celery -A core worker -l INFO
 
-CELERY_BROKER_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
-
-CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility': 3600}
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
 
 CELERY_RESULT_BACKEND = 'django-db'
 
-CELERY_ACCEPT_CONTENT = ['application/json']
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/1',
+    }
+}
 
-CELERY_TASK_SERIALIZER = 'json'
-
-CELERY_RESULT_SERIALIZER = 'json'
-
-CELERY_TIMEZONE = 'Europe/Moscow'
-
-CELERY_TASK_TRACK_STARTED = True
-
-CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_CACHE_BACKEND = 'default'

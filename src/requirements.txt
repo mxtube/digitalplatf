@@ -17,6 +17,7 @@ django-debug-toolbar==4.3.0
 django-extensions==3.2.3
 django-js-asset==2.2.0
 django-phonenumber-field==7.3.0
+django-redis==5.4.0
 et-xmlfile==1.1.0
 imgkit==1.2.3
 kombu==5.3.5

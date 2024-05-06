@@ -8,7 +8,7 @@ Digital Platform написана на Python и Django и использует 
 
 ---
 # Установка
-Скачайте файлы проекта, активируйте виртуальное окружение и установите библиотеки из файла requirements.txt
+Скачайте файлы проекта, установите виртуальное окружение в папке src. Установите библиотеки из файла requirements.txt
 ```text
 pip install -r requirements.txt
 ```
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 REDIS_HOST=localhost
 REDIS_USER=admin
 REDIS_PASSWORD=admin
-REDIS_PORT=6379/6380 (SSL)
+REDIS_PORT=6379 or SSL 6380
 
 # PostgreSQL
 PSQL_NAME=dp_prom
@@ -28,6 +28,17 @@ PSQL_PASSWORD=admin
 PSQL_HOST=localhost
 PSQL_PORT=5432
 ```
+
+В корне проекта запустите docker compose
+```shell
+./docker_run.sh
+```
+
+Мигруруйте базу данных
+
+### Тестовые данные
+Для загрузки демо данных используйте файл run.sh в директории src.
+
 ---
 # Dev Debug
 ### CSS/Sass

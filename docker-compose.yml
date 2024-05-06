@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:16.2
+    container_name: dp_psql
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#    volumes:
+#      - ~/Docker/postgres/pg_data/dp-project:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  redis:
+      image: redis:7.2.4
+      container_name: dp_redis
+      volumes:
+        - ~/Docker/redis/dp_project:/root/redis
+        - ~/Docker/redis/dp_project/redis.conf:/usr/local/etc/redis/redis.conf
+      environment:
+        - REDIS_PASSWORD=${REDIS_PASSWORD}
+        - REDIS_PORT=${REDIS_PORT}
+      ports:
+        - 6379:6379

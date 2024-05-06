@@ -3,6 +3,7 @@ import locale
 import datetime
 from core import settings
 from django.views import View
+from .tasks import bar
 from .models import Schedule, Couple
 from django.shortcuts import redirect
 from educationpart.models import Studygroup
@@ -143,6 +144,7 @@ class UploadSchedule(View):
         return True if os.path.exists(self.PATH + f.name) else False
 
     def get(self, request):
+        bar.delay()
         return render(request, template_name=self.template_name, context=self.context)
 
     def post(self, request, *args, **kwargs):
