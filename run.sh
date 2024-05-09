@@ -56,6 +56,12 @@ case "$SERVICE" in
     pushd src
     PYTHONPATH="${PWD}:${PWD}/src" celery -A core worker -l INFO "$@"
   ;;
+
+  # Очистить data
+  clear_data|6)
+    pushd data
+    rm -R * "$@"
+  ;;
 esac
 
 

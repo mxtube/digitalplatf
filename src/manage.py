@@ -2,6 +2,16 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from core.settings import MEDIA_ROOT
+
+root_folders = ['img', 'json', 'pix', 'video', 'xls']
+user_folders = ['img/userpic', 'json/schedparsing', 'xls/schedparsing']
+
+def create_media_folders():
+
+    for i in root_folders + user_folders:
+        if not os.path.exists(MEDIA_ROOT + i):
+            os.makedirs(MEDIA_ROOT + i)
 
 
 def main():
@@ -15,6 +25,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    create_media_folders()
     execute_from_command_line(sys.argv)
 
 
