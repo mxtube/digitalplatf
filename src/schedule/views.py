@@ -3,7 +3,7 @@ import locale
 import datetime
 from core import settings
 from django.views import View
-from .tasks import bar
+from .tasks import upload_schedule
 from .models import Schedule, Couple
 from django.shortcuts import redirect
 from educationpart.models import Studygroup
@@ -144,7 +144,6 @@ class UploadSchedule(View):
         return True if os.path.exists(self.PATH + f.name) else False
 
     def get(self, request):
-        bar.delay()
         return render(request, template_name=self.template_name, context=self.context)
 
     def post(self, request, *args, **kwargs):
@@ -157,8 +156,14 @@ class UploadSchedule(View):
             day = self.upload_form.cleaned_data.get('day').__str__()
             if self.handle_uploaded_file(file):
                 department = self.upload_form.cleaned_data['department']
-                parse = Parsing(filename=file, start_row=start_row)
-                parse.start(department, date_start, date_end, day)
+                upload_schedule.delay(
+                    file=str(file),
+                    start_row=start_row,
+                    department=department.name,
+                    date_start=date_start,
+                    date_end=date_end,
+                    day=day
+                )
         self.context['form'] = self.upload_form
         return render(request, template_name=self.template_name, context=self.context)
 
