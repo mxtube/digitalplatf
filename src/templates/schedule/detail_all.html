@@ -1,17 +1,44 @@
-{% extends "core/temp.html" %}
+{% extends "core/base_fullpage.html" %}
 {% load static %}
 {% block content %}
-<header class="major">
+<header class="major align-center">
     <h3>
         <a href="{% url 'homepage' %}"><strong>{{ title }}</strong>{% if subtitle %} - {{ subtitle }}{% endif %}</a>
     </h3>
 </header>
-    {% regroup schedule by group as schedule_groups %}
+{% regroup schedule by group as schedule_groups %}
 <div class="row">
-{% for group in schedule_groups %}
-{{ group }}
-{% empty %}
-    <p>Расписание отсутствует</p>
-{% endfor %}
+    {% for group in schedule_groups %}
+    <div class="col-3 col-12-small">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="align-center" colspan="3">
+                            <header class="major">
+                                <h3>{{ group.grouper }}</h3>
+                            </header>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="align-center">Пара</th>
+                        <th class="align-center">Дисциплина/Преподаватель</th>
+                        <th class="align-center">Ауд.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for work in group.list %}
+                    <tr height="200">
+                        <td class="align-center">{{ work.couple }}<br><br>{{ work.couple.time_start }} {{ work.couple.time_end }}</td>
+                        <td class="align-center">{{ work.discipline }} / {{ work.teacher }}</td>
+                        <td class="align-center">{{ work.auditory }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
 </div>
+{% include 'core/pagination.html' %}
 {% endblock %}

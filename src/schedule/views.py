@@ -7,6 +7,7 @@ from .tasks import upload_schedule
 from .models import Schedule, Couple
 from django.shortcuts import redirect
 from educationpart.models import Studygroup
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from schedule_parsing.parsing import Parsing
 from college.models import Department, CustomPerson
@@ -69,17 +70,23 @@ class ScheduleHome(View):
 
 
 class ScheduleDetail(View):
+
     template_name = 'schedule/detail_all.html'
-    context = {}
 
     def get(self, request, department_name, date):
         department = get_object_or_404(Department, slug=department_name)
         schedule = (Schedule.objects.filter(date=date, group__department__slug__contains=department.slug)
                     .select_related('group', 'couple', 'teacher', 'discipline', 'auditory'))
-        self.context['title'] = f'Расписание {department.short_name}'
-        self.context['subtitle'] = f'на {date}'
-        self.context['schedule'] = schedule
-        return render(request, template_name=self.template_name, context=self.context)
+        page_num = request.GET.get('page', 1)
+        paginator = Paginator(schedule.values_list('group', flat=True).distinct(), 4)
+        page_obj = paginator.page(page_num)
+        context = {
+            'title': f'Расписание {department.short_name}',
+            'subtitle': f'на {date}',
+            'schedule': schedule.filter(group__in=page_obj.object_list),
+            'pagination_pages': page_obj
+        }
+        return render(request, template_name=self.template_name, context=context)
 
 
 class ScheduleDetailGroup(View):

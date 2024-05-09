@@ -1,0 +1,16 @@
+{% load static %}
+<ul class="pagination align-center">
+    {% if pagination_pages.has_previous %}
+        <li>
+            <a href="?page={{ pagination_pages.previous_page_number }}" class="button small fit"><i class="fas fa-arrow-left"></i> Назад</a>
+        </li>
+    {% endif %}
+    <li>
+        <span>Страница {{ pagination_pages.number }} из {{ pagination_pages.paginator.num_pages }}</span>
+    </li>
+    {% if pagination_pages.has_next %}
+        <li>
+            <a href="?page={{ pagination_pages.next_page_number }}" class="button small fit">Вперед <i class="fas fa-arrow-right"></i></a>
+        </li>
+    {% endif %}
+</ul>
