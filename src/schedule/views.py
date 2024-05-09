@@ -144,11 +144,14 @@ class UploadSchedule(View):
     context = {'title': 'Загрузить изменение в расписание', 'form': upload_form}
     PATH = settings.MEDIA_ROOT + 'xls/schedparsing/'
 
-    def handle_uploaded_file(self, f):
-        with open(self.PATH + f.name, "wb+") as destination:
-            for chunk in f.chunks():
+    def handle_uploaded_file(self, file, department: Department):
+        path = self.PATH + department.slug + '/'
+        if not os.path.exists(os.path.dirname(path)):
+            os.makedirs(os.path.dirname(path))
+        with open(path + file.name, "wb+") as destination:
+            for chunk in file.chunks():
                 destination.write(chunk)
-        return True if os.path.exists(self.PATH + f.name) else False
+        return True if os.path.exists(path + file.name) else False
 
     def get(self, request):
         return render(request, template_name=self.template_name, context=self.context)
@@ -161,8 +164,8 @@ class UploadSchedule(View):
             date_start = self.upload_form.cleaned_data['start_date'].strftime('%Y-%m-%d')
             date_end = self.upload_form.cleaned_data['end_date'].strftime('%Y-%m-%d')
             day = self.upload_form.cleaned_data.get('day').__str__()
-            if self.handle_uploaded_file(file):
-                department = self.upload_form.cleaned_data['department']
+            department = self.upload_form.cleaned_data['department']
+            if self.handle_uploaded_file(file, department):
                 upload_schedule.delay(
                     file=str(file),
                     start_row=start_row,
