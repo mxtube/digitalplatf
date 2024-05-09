@@ -18,10 +18,12 @@ class ProfilePage(LoginRequiredMixin, View):
 
     template_name = 'registration/profile.html'
     model = CustomPerson
-    context = {'title': 'Профиль пользователя'}
 
     def get(self, request):
-        self.context['subtitle'] = request.user.get_full_name
         user_services = UserServices.objects.filter(visible=True)
-        self.context['user_services'] = user_services
-        return render(request=request, template_name=self.template_name, context=self.context)
+        context = {
+            'title': 'Профиль пользователя',
+            'subtitle': request.user.username,
+            'user_services': user_services
+        }
+        return render(request=request, template_name=self.template_name, context=context)
