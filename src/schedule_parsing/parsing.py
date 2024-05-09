@@ -3,14 +3,16 @@ Created on Thu 7.03.24
 @author: Kirill Kuznetsov
 """
 import openpyxl, re
-from .scheduling import Scheduling
 from .event import Event
+from loguru import logger
+from .scheduling import Scheduling
 from core.settings import MEDIA_ROOT
+from educationpart.models import Studygroup
+from college.models import Department, CustomPerson
 from django.core.exceptions import ObjectDoesNotExist
 from schedule.models import Schedule, GroupStream, Couple, Discipline, Auditory
-from college.models import Department, CustomPerson
-from educationpart.models import Studygroup
 
+# TODO: Убрать баг для обработки ошибки если в выбраном диапозоне дат нет выбранного дня
 
 class Parsing(Scheduling, Event):
 
@@ -25,7 +27,7 @@ class Parsing(Scheduling, Event):
 
     def start(self, department, start_date, end_date, weekday):
         """ Функция запуска парсинга данных из файла. Функция запускает 3 операции. """
-        print('Запущен парсинг расписания')
+        logger.info('Запущен парсинг расписания')
         department = Department.objects.get(name=department)
         if self.__excel_reader():
             if self.__check_data_db(department):
@@ -35,7 +37,7 @@ class Parsing(Scheduling, Event):
 
     def __excel_reader(self):
         """ Функция чтения данных из файла. """
-        print('Чтение данных из файла')
+        logger.info('Чтение данных из файла')
         while self.current_col < self.file.max_column:
             group = self.file[1][self.current_col].value.strip()
             for file_row in range(self.start_row, self.file.max_row + 1):
@@ -75,7 +77,7 @@ class Parsing(Scheduling, Event):
 
     def __check_data_db(self, department):
         """ Функция проверки наличия информации в базе данных """
-        print('Проверка расписания в базе данных')
+        logger.info('Проверка расписания в базе данных')
         for group, couples in self.schedule.schedule.items():
             for couple, events in couples.items():
                 for event in events:
@@ -98,10 +100,10 @@ class Parsing(Scheduling, Event):
         return len(self.error_box) == 0
 
     def __save_change_gb(self, department: Department = None, date_range: list = None):
-        print('Добавление расписания в базу данных')
+        logger.info('Добавление расписания в базу данных')
         model = Schedule
         for date in date_range:
-            print('Добавление расписания на', date)
+            logger.info('Добавление расписания на %s' % date)
             for group, couples in self.schedule.schedule.items():
                 for couple, events in couples.items():
                     for event in events:
@@ -125,5 +127,6 @@ class Parsing(Scheduling, Event):
                             teacher=teacher
                         )
                         e.save()
+                        logger.info(e)
         else:
             return True
