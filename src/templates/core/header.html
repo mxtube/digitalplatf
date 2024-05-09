@@ -5,11 +5,13 @@
     </a>
     <ul class="icons">
     {% if user.is_authenticated %}
-        Приветствую,
-        <a href="{% url 'profile' %}" class="icon solid">
-            <strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong>
-        </a>
-    {% else %}
+        <li>Приветствую
+            <a href="{% url 'profile' %}" class="icon">
+                <strong>{{ request.user.first_name }} {{ request.user.middle_name }}</strong>
+                <i class="fas fa-user-circle fa-lg"></i>
+            </a>
+        </li>
+        {% else %}
         <li>
             <a href="{% url 'login' %}" class="icon"><i class="fas fa-sign-in-alt"></i> Вход</a>
         </li>
