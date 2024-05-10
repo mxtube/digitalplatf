@@ -21,20 +21,8 @@ case "$SERVICE" in
     PYTHONPATH="${PWD}:${PWD}/src" python3 manage.py runserver "$@"
   ;;
 
-  # Миграция базы данных
-  pg_migrate|2)
-    pushd src
-    PYTHONPATH="${PWD}:${PWD}/src" python3 manage.py migrate "$@"
-  ;;
-
-  # Импорт тестовых данных в базу
-  generate_test_data|3)
-    pushd src
-    "${PWD}/migrate_db.sh" "$@"
-  ;;
-
   # PostgreSQL в Docker
-  pg_docker|4)
+  pg_docker|2)
     docker run -d \
       --name ${POSTGRES_CONTAINER_NAME:-dp_psql} \
       -p ${POSTGRES_PORT:-5432}:5432 \
@@ -42,6 +30,18 @@ case "$SERVICE" in
       -e POSTGRES_USER=${POSTGRES_USER:-psqldp} \
       -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-Gthtgjkj12} \
       postgres:16.2 "$@"
+  ;;
+
+  # Миграция базы данных
+  pg_migrate|3)
+    pushd src
+    PYTHONPATH="${PWD}:${PWD}/src" python3 manage.py migrate "$@"
+  ;;
+
+  # Импорт тестовых данных в базу
+  generate_test_data|4)
+    pushd src
+    "${PWD}/migrate_db.sh" "$@"
   ;;
 
   # Redis в Docker
@@ -58,7 +58,7 @@ case "$SERVICE" in
   ;;
 
   # Очистить data
-  clear_data|6)
+  clear_data|7)
     pushd data
     rm -R * "$@"
   ;;
