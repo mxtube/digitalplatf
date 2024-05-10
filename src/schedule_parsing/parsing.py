@@ -18,21 +18,21 @@ class Parsing(Scheduling, Event):
 
     EXCEL_FILE_PATH = MEDIA_ROOT + 'xls/schedparsing/'
 
-    def __init__(self, filename: str, start_row: int):
-        self.file = openpyxl.open(f'{self.EXCEL_FILE_PATH}{filename}', read_only=True).active
+    def __init__(self, filename: str, start_row: int, department: str):
+        self.department = Department.objects.get(name=department)
+        self.file = openpyxl.open(f'{self.EXCEL_FILE_PATH}{self.department.slug}/{filename}', read_only=True).active
         self.current_col = 1
-        self.start_row = 2
+        self.start_row = start_row
         self.error_box = []
         self.schedule = Scheduling()
 
-    def start(self, department, start_date, end_date, weekday):
+    def start(self, start_date, end_date, weekday):
         """ Функция запуска парсинга данных из файла. Функция запускает 3 операции. """
         logger.info('Запущен парсинг расписания')
-        department = Department.objects.get(name=department)
         if self.__excel_reader():
-            if self.__check_data_db(department):
+            if self.__check_data_db(self.department):
                 groups: list = Schedule.get_date_by_range(start_date, end_date, weekday)
-                self.__save_change_gb(department, groups)
+                self.__save_change_gb(self.department, groups)
         return self.error_box
 
     def __excel_reader(self):
