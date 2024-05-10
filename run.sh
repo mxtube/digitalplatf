@@ -51,7 +51,10 @@ case "$SERVICE" in
      redis:7.2.4 "$@"
   ;;
 
-  # Запустить Celery
+  # Запустить Celery ... celery -A core worker -l INFO
+  # celery multi start w1 -A proj -l INFO
+  # celery  multi restart w1 -A proj -l INFO
+  # celery multi stop w1 -A proj -l INFO или celery multi stopwait w1 -A proj -l INFO
   celery|6)
     pushd src
     PYTHONPATH="${PWD}:${PWD}/src" celery -A core worker -l INFO "$@"
