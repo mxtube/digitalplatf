@@ -1,0 +1,23 @@
+- model: college.customperson
+  pk: 1
+  fields:
+    username: admin
+    password: 'pbkdf2_sha256$720000$SezffbIp6vrCTBO8BSJvUX$zpmtPNn5Bh+6lXD/lH+werNaFqX4Uc+vTcVOcIIGWgU='
+    first_name: Administrator
+    last_name: Digital
+    is_staff: true
+    is_superuser: true
+    middle_name: Platform
+    email: admin@example.com
+    alternative_email: admin@example.com
+- model: college.customperson
+  pk: 2
+  fields:
+    username: none
+    password: 'pbkdf2_sha256$720000$WlLDhJEYJ4OmHxErSuTd5c$n6KOUaejd2LI9LQ+BlkX6LpnxYmePsGm456m4rGjbOs='
+    first_name: none
+    last_name: none
+    is_staff: true
+    middle_name: none
+    email: none@example.com
+    alternative_email: none@example.com
