@@ -29,7 +29,7 @@ case "$SERVICE" in
       -e POSTGRES_DB=${POSTGRES_DB:-dev_dp} \
       -e POSTGRES_USER=${POSTGRES_USER:-psqldp} \
       -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-Gthtgjkj12} \
-      postgres:16.2 "$@"
+      postgres:16.2-alpine "$@"
   ;;
 
   # Миграция базы данных
