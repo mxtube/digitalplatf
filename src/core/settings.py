@@ -41,17 +41,17 @@ INTERNAL_IPS = ['127.0.0.1']
 # SECURITY Deploy on in production
 # https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/#critical-settings
 
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE', default=False)
 
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE', default=False)
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = env('SECURE_SSL_REDIRECT', default=False)
 
-SECURE_HSTS_SECONDS = True
+SECURE_HSTS_SECONDS = env('SECURE_HSTS_SECONDS', default=False)
 
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=False)
 
-SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_PRELOAD = env('SECURE_HSTS_PRELOAD', default=False)
 
 # Admins
 # https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-ADMINS
