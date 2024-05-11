@@ -39,6 +39,20 @@ PSQL_PORT=5432
 ### Тестовые данные
 Для загрузки демо данных используйте файл run.sh в директории src.
 
+### Deploy
+Сгенерируй новый секретный ключ и положи в .env:
+```dotenv
+DJANGO_SECRET_KEY=<key>
+```
+
+```python
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
+```
+
+
+
+
 ---
 # Dev Debug
 ### CSS/Sass
