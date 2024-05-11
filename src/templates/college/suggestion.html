@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div>
+    <p>Наша служба регулярно анализируют все обращения сотрудников и обучающих. Вы можете прочитать ответы на часто задаваемые вопросы в одном месте. Мы регулярно обновляем их и следим за актуальностью сведений.</p>
+    <p class="align-center">
+        <a class="button" href="">Найти ответ</a>
+    </p>
+</div>
+<header class="major">
+    <h3>Форма обратной связи</h3>
+</header>
+<p>Если вы не нашли ответа в разделе часто задаваемых вопросов, вы можете написать нам письмо.</p>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button" name="btn_suggestion">Отправить</button>
+</form>
+{% endblock %}
