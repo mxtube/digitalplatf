@@ -10,6 +10,10 @@ data/
 .pgpass
 .emailpass
 
+# Docker
+**/docker_compose_volumes/pg_data/
+**/docker_compose_volumes/redis/
+
 # Backup files #
 *.bak
 

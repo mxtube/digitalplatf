@@ -11,10 +11,11 @@ src/college/fixtures/
 src/educationpart/fixtures
 src/reference/fixtures
 src/schedule/fixtures
+**/core/static/*
 
 # Enviroments
 .venv
 venv/
 
 # Unit test / coverage reports
-.pytest_cache/
+**/.pytest_cache/
