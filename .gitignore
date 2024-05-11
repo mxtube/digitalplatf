@@ -9,10 +9,12 @@ media
 data/
 .pgpass
 .emailpass
+**/src/static/
 
 # Docker
 **/docker_compose_volumes/pg_data/
 **/docker_compose_volumes/redis/
+**/docker_compose_volumes/
 
 # Backup files #
 *.bak
