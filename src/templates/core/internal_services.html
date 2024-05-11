@@ -1,0 +1,33 @@
+{% load static %}
+<div class="col-3 col-12-medium zoom">
+    <p>
+        <a href="" class="icon">
+            <section class="box-element border">
+                <i class="solid fa-2x fas fa-book"></i>
+                <h4>Документация</h4>
+            </section>
+        </a>
+    </p>
+</div>
+<div class="col-3 col-12-medium zoom">
+    <p>
+        <a href="{% url 'suggestion' %}" class="icon">
+            <section class="box-element border">
+                <i class="solid fa-2x fas fa-lightbulb"></i>
+                <h4>Обратная связь</h4>
+            </section>
+        </a>
+    </p>
+</div>
+{% if request.user.group %}
+<div class="col-3 col-12-medium zoom">
+    <p>
+        <a href="{% url 'reference_home' %}" class="icon">
+            <section class="box-element border">
+                <i class="solid fa-2x fas fa-file-alt"></i>
+                <h4>Справки</h4>
+            </section>
+        </a>
+    </p>
+</div>
+{% endif %}
