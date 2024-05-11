@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from dotenv import load_dotenv
+import environ
 import os
 from pathlib import Path
 
@@ -18,20 +18,46 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load environment variables from the .env file
-load_dotenv(os.path.join(BASE_DIR, '../.env'))
+# https://github.com/joke2k/django-environ
+
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&#8iyhg(2c5o#5#wcm1%#a!#a5u6qwexdeziqbi#71-h1)2if7'
+
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+DEBUG = env('DEBUG')
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INTERNAL_IPS = ['127.0.0.1']
+
+# SECURITY Deploy on in production
+# https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/#critical-settings
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
+
+SECURE_HSTS_SECONDS = True
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_HSTS_PRELOAD = True
+
+# Admins
+# https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-ADMINS
+
+ADMINS = [("Kirill Kuznetsov", "kafomin@yandex.ru")]
+
 
 # Application definition
 
@@ -105,31 +131,21 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # Important: use Postgresql in debug mode
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('POSTGRES_DB'),
-            'USER': os.getenv('POSTGRES_USER'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-            'HOST': os.getenv('POSTGRES_HOST'),
-            'PORT': os.getenv('POSTGRES_PORT')
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT')
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('POSTGRES_DB'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'HOST': os.environ.get('POSTGRES_HOST'),
-            'PORT': os.environ.get('POSTGRES_PORT')
-        }
-    }
+}
+
 
 # Fixtures
 # https://docs.djangoproject.com/en/5.0/howto/initial-data/
+
 FIXTURE_DIRS = []
 
 
@@ -177,17 +193,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / 'static'
 
-STATICFILES_DIRS = ['core/static']
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'core/static'),
+]
 
 
 # MEDIA Files
 # https://docs.djangoproject.com/en/5.0/ref/settings/#media-root
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '../data/')
 
@@ -203,12 +221,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://www.abstractapi.com/guides/django-send-email
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_HOST = env('EMAIL_HOST', default='')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+EMAIL_PORT = env('EMAIL_PORT', default='')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=1)
+EMAIL_USE_SSL = env('EMAIL_USE_SSL', default=0)
 
 
 # CKEditor
@@ -225,13 +243,13 @@ SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
 # https://redis.io
 # https://timeweb.cloud/tutorials/redis/ustanovka-i-nastrojka-redis-dlya-raznyh-os
 
-REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_HOST = env('REDIS_HOST')
 
-REDIS_USER = os.getenv('REDIS_USER')
+REDIS_USER = env('REDIS_USER')
 
-REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
+REDIS_PASSWORD = env('REDIS_PASSWORD')
 
-REDIS_PORT = os.getenv('REDIS_PORT')
+REDIS_PORT = env('REDIS_PORT')
 
 
 # CELERY
@@ -248,7 +266,7 @@ CELERY_TASK_SERIALIZER = 'json'
 
 CELERY_RESULT_SERIALIZER = 'json'
 
-CELERY_TIMEZONE = 'Europe/Moscow'
+CELERY_TIMEZONE = TIME_ZONE
 
 CELERY_TASK_TRACK_STARTED = True
 
