@@ -1,0 +1,802 @@
+- model: docs.article
+  pk: 2
+  fields:
+    category: 2
+    name: Доступ по QR коду
+    slug: dostup-po-qr-kody
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для генерации QR кода воспользуйтесь бесплатным онлайн-сервисом <a
+      href=\"https://www.qrcode-monkey.com/ru/\">QRCode Monkey</a>. Для создания необходимо
+      настроить 4 шага:</p>\r\n\r\n<p><img alt=\"\" src=\"/media/uploads/docs/2022/12/28/image-20221228184315-1.png\"
+      style=\"float:left; height:117px; width:200px\" /></p>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<h3><strong>Шаг
+      1. &quot;Введите содержимое&quot;</strong></h3>\r\n\r\n<p>В этом пункте необходимио
+      вставить ссылку на страницу с расписанием. Скопируйте URL адрес расписания и
+      вставьте в поле &quot;Ваш URL-адрес&quot;.</p>\r\n\r\n<p><img src=\"/media/uploads/docs/2022/12/28/image-20221228184633-1.png\"
+      style=\"height:62px; width:200px\" />&nbsp;</p>\r\n\r\n<h3><strong>Шаг 2. &quot;Настройка
+      цвета&quot;</strong></h3>\r\n\r\n<p>Откройте пункт настройки цвета и установите
+      флажок на &quot;Цветовой градиент&quot;</p>\r\n\r\n<p>Используйте следующие
+      настройки:</p>\r\n\r\n<p>В первом поле введите код красного цвета&nbsp;#F56A6A,
+      а во втором серого&nbsp;#7F888F. В третьем поле выберите режим отображения &quot;Радиальный
+      градиент&quot;. Цвет фона установите белым #FFFFFF</p>\r\n\r\n<p><img src=\"/media/uploads/docs/2022/12/28/image-20221228184939-2.png\"
+      style=\"height:66px; width:200px\" /></p>"
+    is_active: false
+- model: docs.article
+  pk: 8
+  fields:
+    category: 2
+    name: Загрузка учебных групп
+    slug: zagruzka_uchebnih_grup
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для загрузки учебных групп перейдите в <a href=\"https://dp.kp11.ru/admin/college/studygroup/\">панель
+      администратора</a>, пройдите процедуру авторизации и выберите пункт &quot;Группы&quot;
+      в меню.</p>\r\n\r\n<p>В октрывшемся окне в правом верхнем углу нажмите на кнопку
+      &quot;Добавить группу&quot;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img src=\"/media/uploads/docs/2023/01/09/image-20230109114659-1.png\"
+      style=\"height:466px; width:500px\" /></p>"
+    is_active: false
+- model: docs.article
+  pk: 9
+  fields:
+    category: 1
+    name: Смена пароля
+    slug: smena-parolya
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Чтобы сменить пароль необходимо быть авторизованным в системе.</p>\r\n\r\n<p><strong>Шаг
+      1.</strong> После авторизации перейдите на страницу с профилем пользователя,
+      нажав на свое имя в правом верхнем углу экрана.</p>\r\n\r\n<p><img src=\"/media/uploads/docs/2023/01/10/image-20230110105741-1.png\"
+      style=\"height:0px; width:0px\" /><img src=\"/media/uploads/docs/2023/01/10/image-20230110105755-2.png\"
+      style=\"height:500px; width:488px\" /></p>\r\n\r\n<p><strong>Шаг 2.</strong>&nbsp;На
+      странице &quot;Профиль пользователя&quot; нажмите на кнопку &quot;Сменить пароль&quot;</p>\r\n\r\n<p><img
+      src=\"/media/uploads/docs/2023/01/20/image-20230120124429-1.png\" style=\"height:432px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Шаг 3</strong>. Заполните данные в поля
+      для ввода и нажмите на кнопку &quot;Сменить пароль&quot;</p>\r\n\r\n<p><img
+      src=\"/media/uploads/docs/2023/01/10/image-20230110110057-1.png\" style=\"height:512px;
+      width:500px\" /></p>\r\n\r\n<p>&nbsp;</p>"
+    is_active: false
+- model: docs.article
+  pk: 10
+  fields:
+    category: 1
+    name: Восстановление доступа
+    slug: vosstanovlenie-dostupa
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Вы можете самостоятельно восстановить доступ к своему аккаунту с
+      помощью формы восстановления пароля.</p>\r\n\r\n<p><strong>Шаг 1.</strong> Нажмите
+      на кнопку &quot;Вход&quot; в шапке сайта.</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116121844-1.png\" style=\"height:0px;
+      width:0px\" /><img alt=\"\" src=\"/media/uploads/docs/2023/01/16/image-20230116121844-1.png\"
+      style=\"height:320px; width:500px\" /></p>\r\n\r\n<p><strong>Шаг 2. </strong>На&nbsp;открывшейся
+      странице нажмите на ссылку &quot;Забыли пароль?&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116121942-2.png\" style=\"height:320px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Шаг 3. </strong>Введите в поле <strong>КП11
+      ID</strong> логин в формате Ivanov.I.I@corp.kp11.ru).</p>\r\n\r\n<p>В поле &quot;Личная
+      почта&quot; электронный адрес указанный при поступлении.</p>\r\n\r\n<p>После
+      ввода данных нажмите на кнопку &quot;Восстановить&quot;. В случае успешной валидации
+      данных на личный электронный адрес придет сообщение с инструкцией.</p>\r\n\r\n<p
+      style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/01/09/image-20230109114221-1.png\"
+      style=\"height:466px; width:500px\" /></p>\r\n\r\n<p>Если по какой-то причине
+      у вас не получается восстановить доступ самостоятельно, обратитесь в ИТ службу.</p>"
+    is_active: true
+- model: docs.article
+  pk: 12
+  fields:
+    category: 3
+    name: Запрос справки
+    slug: zapros-spravki
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p><strong>Справка о подтверждении обучения</strong></p>\r\n\r\n<p>Справка
+      о подтверждении обучения представляет собой документ, содержащий информацию
+      об учебном заведении, обучающемся, и необходимый для подтверждения факта обучения
+      студента в учебном заведении.</p>\r\n\r\n<p><strong>Типы справок</strong></p>\r\n\r\n<p>В
+      системе предоставляется возможность создать запрос для следующих типов справок:</p>\r\n\r\n<p>1.
+      Стипендия</p>\r\n\r\n<p>2. В&nbsp;военный комиссариат</p>\r\n\r\n<p>3. Обучении</p>\r\n\r\n<p>Посмотреть
+      примеры справок можно на странице &quot;Справки&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116113445-1.png\" style=\"height:565px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Как заказать справку</strong></p>\r\n\r\n<p><strong>Шаг
+      1.</strong> Авторизируйтесь в системе и перейдите в профиль пользователя</p>\r\n\r\n<p
+      style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/01/10/image-20230110105755-2.png\"
+      style=\"height:512px; width:500px\" /></p>\r\n\r\n<p><strong>Шаг 2.</strong>
+      В категории &quot;Доступные ресурсы&quot; выберите пункт&nbsp;<img src=\"/media/uploads/docs/2023/01/10/image-20230110161602-1.png\"
+      style=\"height:0px; width:0px\" />&quot;Справки&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/docs/2023/01/10/image-20230110161602-1.png\" style=\"height:435px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Шаг 3.</strong> В выпадающем списке выберите
+      необходимый пункт и нажмите на кнопку &quot;Выбрать&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/10/image-20230110161719-1.png\" style=\"height:435px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Шаг 4.</strong>&nbsp;Заполните поля для
+      ввода. В поле &quot;Количество&quot; введите сколько справок необходимо сделать,
+      нажмите на кнопку &quot;Заказать&quot;&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/10/image-20230110161824-2.png\" style=\"height:435px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Шаг 5. </strong>После нажатия на кнопку
+      Ваш запрос будет отправлен в секретариат учебного центра, сайт автоматически
+      переведет Вас на страницу с историей запросов. Дождитесь статуса &quot;Готово/Выполнен&quot;
+      или обратитесь в секретариат для уточнения готовности справки.</p>\r\n\r\n<p>Выполнение
+      запроса на новую справку составляет от 3-х до 5-ти дней</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/10/image-20230110162154-3.png\" style=\"height:435px;
+      width:500px\" /></p>\r\n\r\n<p style=\"text-align:center\"><a href=\"https://dp.kp11.ru/login/?next=/profile/\">ВОЙТИ</a></p>"
+    is_active: true
+- model: docs.article
+  pk: 14
+  fields:
+    category: 3
+    name: Просмотр запросов
+    slug: prosmotr-zaprosov
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Вы можете просмотреть историю запросов в модуле &quot;Справки&quot;.</p>\r\n\r\n<p><strong>Шаг
+      1.</strong> Авторизуйтесь в системе и перейдите в профиль пользователя</p>\r\n\r\n<p
+      style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/01/16/2023-01-16-133433.png\"
+      style=\"height:320px; width:500px\" /></p>\r\n\r\n<p><strong>Шаг 2.&nbsp;</strong>В
+      профиле пользователя выберите пункт меню &quot;Справки&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116133616-1.png\" style=\"height:0px;
+      width:0px\" /><img alt=\"\" src=\"/media/uploads/docs/2023/01/16/image-20230116133616-1.png\"
+      style=\"height:320px; width:500px\" /></p>\r\n\r\n<p><strong>Шаг 3.</strong>
+      На странице &quot;Справки&quot; нажмите на кнопку &quot;История запросов&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/01/16/image-20230116133638-2.png\"
+      style=\"height:320px; width:500px\" /></p>\r\n\r\n<p><strong>Шаг 4.</strong>
+      На открывшейся странице будет отображена история запросов заказанных ранее справок
+      и детальная информация по каждой</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116133830-1.png\" style=\"height:320px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 16
+  fields:
+    category: 2
+    name: Экспорт в календарь
+    slug: eksport-v-kalendar
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Модуль &quot;Расписание&quot; позволяет экспортировать расписание
+      на выбранный день в каледарь мобильного приложения, персонального компьютера
+      или других сервисов поддерживающих формат .ics</p>\r\n\r\n<p><strong>Шаг 1.</strong>
+      Перейдите на страницу с расписанием</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/docs/2023/01/16/image-20230116134323-1.png\" style=\"height:320px;
+      width:500px\" /></p>\r\n\r\n<p><strong>Шаг 2.</strong> На открывшейся странице
+      нажмите на кнопку &quot;Экспорт&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116134447-2.png\" style=\"height:0px;
+      width:0px\" /><img alt=\"\" src=\"/media/uploads/docs/2023/01/16/image-20230116134447-2.png\"
+      style=\"height:320px; width:500px\" /></p>\r\n\r\n<p><strong>Шаг 3.</strong>
+      После генерации файла браузер предложит вам скачать файл в формате .ics</p>\r\n\r\n<p><img
+      src=\"/media/uploads/docs/2023/01/16/image-20230116134323-1.png\" style=\"height:0px;
+      width:0px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 17
+  fields:
+    category: 2
+    name: Подготовка файла расписания
+    slug: podgotovka-fajla-raspisaniya
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p><em>Пример</em>: <a href=\"https://dp.kp11.ru/media/schedule/schedule_template.xlsx\">файла
+      с расписанием</a></p>\r\n\r\n<p><strong>Расписание на сайте хранится в двух
+      вариантах:</strong></p>\r\n\r\n<p>1. Основное расписание, составляется на семестр</p>\r\n\r\n<p>2.
+      Расписание с заменами, составляет на определенный день</p>\r\n\r\n<p><strong>Требования
+      к файлу</strong></p>\r\n\r\n<p>Перед загрузкой расписания на сайт необходимо
+      подготовить файл по следующим параметрам:</p>\r\n\r\n<p>- Файл должен быть сохранен
+      в формате Excel (имя_файла.xlsx)</p>\r\n\r\n<p>- Для файла с основным расписанием
+      - наименование файла должно содержать наименование дня недели и наименование
+      недели (например, для нечетного понедельника MondayOdd.xlsx, для четного понедельника
+      MondayEven.xlsx). Таким образом должно получится как минимум 5 файлов на каждый
+      день четной недели и 5 файлов на каждый день нечетной недели, всего 10 файлов.</p>\r\n\r\n<p>-
+      Для файла с изминениями в расписанием на определенный день - наименование файла
+      должно содержать дату в формате день.месяц.год (пример, 01.12.2010.xlsx)</p>\r\n\r\n<p>-
+      Файл должен содержать только один лист</p>\r\n\r\n<p><strong>Требования к содержанию
+      файла</strong></p>\r\n\r\n<p>На первой строке на листе должны быть заполнены
+      наименования групп <span style=\"color:#e74c3c\">(* Учебные группы должны быть
+      заранее загружены в базу данных, их имена должны соответствовать наименованиям
+      в файле).&nbsp;</span>Инструкцию по загрузке групп смотрите в документации.</p>\r\n\r\n<p>Ячейка
+      (A1) не заполняется</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/01/09/image-20230109101515-1.png\"
+      style=\"height:30px; width:967px\" /></p>\r\n\r\n<p>Ячейки в диапозоне A2:A21
+      должны содержать наименование номера пары, пример:</p>\r\n\r\n<p>A2:A5 - 1 пара</p>\r\n\r\n<p>A6:A9
+      - 2 пара</p>\r\n\r\n<p>A10:A13 - 3 пара</p>\r\n\r\n<p>A14:A17 - 4 пара</p>\r\n\r\n<p>A18:A21
+      - 5 пара</p>\r\n\r\n<p>Далее слева на право под названием группы, ячейки содержат
+      информацию о занятии и в соседней справа ячейки номер аудитории. Столбец с номерами
+      аудиторий не именуется. Ячейки с расписанием не должны содержать объединений.</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/01/09/image-20230109115831-1.png\"
+      style=\"height:416px; width:600px\" /></p>\r\n\r\n<p>Остальная информацию заполняется
+      по аналогии. При отсутствии у группы пары, данные в ячейки не заполняются и
+      остаются пустыми, обязательно проверьте что в них нет пробелов или других специальных
+      символов.</p>\r\n\r\n<p><strong>Варианты занятий</strong></p>\r\n\r\n<p><strong>Без
+      деления на подгруппы</strong></p>\r\n\r\n<p>Во всех ячейках с соответствующей
+      парой пишется <em>наименование дисциплины</em>, далее ставится прообел, слэш
+      /, еще один пробел и пишется Фамилия и инициалы преподавателя. В соседней справа
+      ячейки заполняется номер аудитории.</p>\r\n\r\n<p><em>Пример:</em></p>\r\n\r\n<p>Основы
+      психологии / Оковалков В.И.</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/01/09/image-20230109121510-1.png\"
+      style=\"height:193px; width:500px\" /></p>\r\n\r\n<p><strong>С делением на подгруппы</strong></p>\r\n\r\n<p>Во
+      всех ячейках с соответствующей парой пишется <em>наименование дисциплины и в
+      скобках номер подгруппы</em>, далее ставится слэш / и пишется Фамилия и инициалы
+      преподавателя. В соседней справа ячейки заполняется номер аудитории.</p>\r\n\r\n<p>Во
+      всех ячейках с соответствующей парой пишется <em>наименование дисциплины</em>,
+      далее ставится прообел, слэш /, еще один пробел и пишется Фамилия и инициалы
+      преподавателя. В соседней справа ячейки заполняется номер аудитории.</p>\r\n\r\n<p><em>Пример:</em></p>\r\n\r\n<p>Основы
+      психологии (1п) / Оковалков В.И.</p>\r\n\r\n<p>Техническое обеспечение (2п)
+      / Уткин А.С.</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/01/09/image-20230109121756-2.png\"
+      style=\"height:200px; width:166px\" /></p>\r\n\r\n<p><strong>Самостоятельная
+      работа</strong></p>\r\n\r\n<p>В ячейках у дисциплин с самостоятельной работой
+      и где отсутствует преподаватель, необходимо добавить / none, например.&nbsp;Самрстоятельная
+      работа. Проектирование деятельности / none</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/01/12/image-20230112081039-1.png\" style=\"height:300px;
+      width:177px\" /></p>\r\n\r\n<p>&nbsp;</p>"
+    is_active: true
+- model: docs.article
+  pk: 18
+  fields:
+    category: 1
+    name: Просмотр профиля
+    slug: prosmotr-profilya
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>После прохождения авторизации в системе, Вы окажетесь на главной
+      странице, но теперь ваше имя будет отображено в правой верхней части страницы.
+      Обратите внимание, имя пользователя выделено как меню &ndash; активизируйте
+      эту ссылку щелчком мышки для отображения Вашего профиля.</p>\r\n\r\n<p style=\"text-align:center\"><br
+      />\r\n<img alt=\"\" src=\"/media/uploads/docs/2023/01/10/image-20230110105755-2.png\"
+      style=\"height:512px; width:500px\" /><br />\r\n&nbsp;</p>"
+    is_active: true
+- model: docs.article
+  pk: 19
+  fields:
+    category: 4
+    name: Удаление курса
+    slug: udalenie-kursa
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Авторизуйтесь в системе под своей учетной записью. После авторизации
+      перейдите на страницу с вашими курсами.</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/docs/2023/02/03/2023-02-03-133253.png\" style=\"height:294px;
+      width:500px\" /></p>\r\n\r\n<p>На странице с курсами нажмите на кнопку &quot;Подробнее&quot;.&nbsp;В
+      выпадающем списке выберите пункт меню &quot;Управление курсами&quot;.</p>\r\n\r\n<p
+      style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/02/03/2023-02-03-133300.png\"
+      style=\"height:294px; width:500px\" /></p>\r\n\r\n<p>После перехода на новую
+      страницу пролистайте страницу в самый низ экрана пока не увидете свою категорию
+      с курсами.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/02/03/2023-02-03-133323.png\"
+      style=\"height:294px; width:500px\" /></p>\r\n\r\n<p>Для удаления курса нажмите
+      на иконку &quot;Корзина&quot;.</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/docs/2023/02/03/2023-02-03-133338.png\" style=\"height:294px;
+      width:500px\" /></p>\r\n\r\n<p>Система попросит подтвердить решение об удалении.</p>\r\n\r\n<p
+      style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/02/03/2023-02-03-133415.png\"
+      style=\"height:294px; width:500px\" /></p>\r\n\r\n<p>При успешном удалении система
+      откроет страницу с информацией, нажмите на кнопку продолжить.</p>\r\n\r\n<p
+      style=\"text-align:center\"><img alt=\"\" src=\"/media/uploads/docs/2023/02/03/2023-02-03-133452.png\"
+      style=\"height:294px; width:500px\" /></p>\r\n\r\n<p>&nbsp;</p>"
+    is_active: false
+- model: docs.article
+  pk: 20
+  fields:
+    category: 4
+    name: Зачисление студентов на курс
+    slug: zachislenie-studentov-na-kurs
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p><em>Глобальная группа - это группа с обучающимися например (ИСиП-13).</em>&nbsp;</p>\r\n\r\n<p>Синхронизация
+      глобальной группы предназначена для автоматического зачисления группы на курс.
+      Если пользователь добавляется или удаляется из глобальной группы, он автоматически
+      добавляется или удаляется в курсе соответственно. Другими словами, синхронизация
+      глобальных групп синхронизирует членство в группе с зачислением на курсы.</p>\r\n\r\n<p>&nbsp;</p>"
+    is_active: false
+- model: docs.article
+  pk: 21
+  fields:
+    category: 2
+    name: Просмотр расписания
+    slug: prosmotr-raspisaniya
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для просмотра расписания откройте боковую панель и нажмите на пункт
+      &quot;Расписание&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209090733-1.png\"
+      style=\"height:470px; width:500px\" /></p>\r\n\r\n<p>В открывшемся списке выбрите
+      площадку</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209090806-2.png\"
+      style=\"height:470px; width:500px\" /></p>\r\n\r\n<p>По умолчанию расписание
+      отображается на текущий день</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/docs/2023/02/09/image-20230209090837-3.png\" style=\"height:470px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 22
+  fields:
+    category: 2
+    name: Просмотр расписания по дате
+    slug: prosmotr-raspisaniya-po-date
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Откройте страницу с расписанием. В категории &quot;Выберите дату&quot;
+      нажмите на поле</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209093250-1.png\"
+      style=\"height:470px; width:500px\" /></p>\r\n\r\n<p>В выпадающем меню выберите
+      необходимую дату <em>(В зависимости от операционной системы и браузера вид выпадающего
+      меню может отличаться)</em><img src=\"/media/uploads/docs/2023/02/09/image-20230209093336-2.png\"
+      style=\"height:0px; width:0px\" /></p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/docs/2023/02/09/image-20230209093336-2.png\" style=\"height:470px;
+      width:500px\" /></p>\r\n\r\n<p>Нажмите на кнопку &quot;Показать&quot;, после
+      этого браузер обновит страницу с расписанием</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/02/09/image-20230209105126-1.png\" style=\"height:470px;
+      width:500px\" /></p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209105316-1.png\"
+      style=\"height:586px; width:500px\" /></p>\r\n\r\n<p>&nbsp;</p>"
+    is_active: true
+- model: docs.article
+  pk: 23
+  fields:
+    category: 2
+    name: Просмотр расписания по группе
+    slug: prosmotr-raspisaniya-po-gruppe
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для просмотра расписания на день по группе перейдите на страницу
+      с расписанием</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209105552-1.png\"
+      style=\"height:586px; width:500px\" /></p>\r\n\r\n<p>Найдите необходимую группу
+      и нажмите на ней левой клавишей мыши</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/02/09/image-20230209105647-2.png\" style=\"height:586px;
+      width:500px\" /></p>\r\n\r\n<p>На открывшейся странице в центре экрана будет
+      отображена дата на которое отображается расписание. В таблице ниже отображается
+      расписание с информацией о номере пары, времени начала и окончания, дисциплина,
+      ФИО преподавателя и аудитория</p>"
+    is_active: true
+- model: docs.article
+  pk: 24
+  fields:
+    category: 2
+    name: Просмотр расписания по преподавателю
+    slug: prosmotr-raspisaniya-po-prepodavatelyu
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для просмотра расписания на день по группе перейдите на страницу
+      с расписанием</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209110206-1.png\"
+      style=\"height:586px; width:500px\" /></p>\r\n\r\n<p>В категории &quot;Преподаватели&quot;
+      нажмите на поле. В выпадающем меню выберите необходимого преподателя&nbsp;<em>(В
+      зависимости от операционной системы и браузера вид выпадающего меню может отличаться).&nbsp;</em></p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/09/image-20230209110329-2.png\"
+      style=\"height:586px; width:500px\" /></p>\r\n\r\n<p>Нажмите на кнопку &quot;Показать&quot;,
+      после этого браузер обновит страницу с расписанием<img alt=\"\" src=\"/media/uploads/2023/02/09/image-20230209110418-3.png\"
+      style=\"height:586px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      будет отображена дата на которое отображается расписание. В таблице ниже отображается
+      расписание с информацией о номере пары, времени начала и окончания, наименовании
+      дисциплины, номере группы и номер аудитории</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/02/09/image-20230209110550-4.png\" style=\"height:586px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 25
+  fields:
+    category: 5
+    name: Подготовка экзаменационных билетов
+    slug: podgotovka-ekzamenacionnyh-biletov
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Экзаменационные билеты по дисциплине является неотъемлемой частью
+      нормативного &ndash; методического обеспечения системы оценки качества освоения
+      обучающимися программы. В этой инструкции расмотрим один из примеров подготовки
+      файла с билетами.</p>\r\n\r\n<p>Для работы поднадобиться следующие программное
+      обеспечение: Microsoft Office Excel и Word.</p>\r\n\r\n<p>В файле Excel будет
+      хранится информация с вопросами и практическими заданиям, а в файле Word будет
+      шаблон для экзаменнационного билета.</p>"
+    is_active: false
+- model: docs.article
+  pk: 26
+  fields:
+    category: 1
+    name: Смена пароля в Windows
+    slug: smena-parolya-v-windows
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Сменить пароль единой учетной записи *@corp.kp11.ru возможно с помощью
+      Windows на компьютерах колледжа.</p>\r\n\r\n<p>Войдите под своей учетной записью
+      в компьютер, если на компьютере отображается другая учетная запись пользователя
+      смените режим ввода.&nbsp;Для этого необходимо выбрать пункт&nbsp;<strong>Другой
+      пользователь</strong>&nbsp;и ввести свой логин и пароль.</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/02/14/image-20230214100937-1.png\" style=\"height:349px;
+      width:500px\" /></p>\r\n\r\n<p>После успешного входа необходимо нажать сочетание
+      клавиш&nbsp;<kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>Delete</kbd></p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/14/image-20230214101213-2.png\"
+      style=\"height:142px; width:500px\" /></p>\r\n\r\n<p>В открывшемся окне необходимо
+      выбрать пункт&nbsp;<strong>Изменить пароль</strong></p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/docs/2023/02/14/image-20230214101302-3.png\" style=\"height:287px;
+      width:300px\" /></p>\r\n\r\n<p>Далее в полях для ввода укажите&nbsp;<strong>Старый
+      пароль </strong>(Это пароль&nbsp;с которым заходили в Windows)<br />\r\nИ ввести&nbsp;<strong>новый
+      пароль</strong>&nbsp;и&nbsp;<strong>подтверждение&nbsp;</strong>(Подтверждение
+      это повтор нового пароль, необходим для проверки что вы не ошиблись в новом
+      пароле)</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/docs/2023/02/14/image-20230214101321-4.png\"
+      style=\"height:404px; width:300px\" /></p>\r\n\r\n<p>Для завершения операции
+      нажмите на клавишу Enter</p>"
+    is_active: true
+- model: docs.article
+  pk: 27
+  fields:
+    category: 6
+    name: Авторизация в системе
+    slug: avtorizaciya-v-sisteme
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для авторизации в LMS Moodle нажмите на ссылку &quot;Вход&quot; в
+      правом верхнем углу</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216095801-1.png\"
+      style=\"height:0px; width:0px\" /><img alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216095801-1.png\"
+      style=\"height:397px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      введите логин и пароль от учетной записи и нажмите на кнопку &quot;Вход&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216100129-5.png\"
+      style=\"height:397px; width:500px\" /></p>\r\n\r\n<p>При успешном прохождении
+      процедуры авторизации сайт перенаправит Вас на домашнюю страницу.</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216100350-1.png\"
+      style=\"height:397px; width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 28
+  fields:
+    category: 6
+    name: Добавление категории преподавателя на центр
+    slug: dobavleniya-kategorii-prepodavatelya-na-centr
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для добавления новой категории с преподавателем на своем центре откройте
+      страницу со своим центром.</p>\r\n\r\n<p><img src=\"/media/uploads/2023/02/16/image-20230216101118-1.png\"
+      style=\"height:0px; width:0px\" /><img alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216101118-1.png\"
+      style=\"height:337px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      нажмите на кнопку &quot;Подбронее&quot; и клините по пункту &quot;Добавить подкатегорию&quot;</p>\r\n\r\n<p><img
+      src=\"/media/uploads/2023/02/16/image-20230216101507-2.png\" style=\"height:337px;
+      width:500px\" /></p>\r\n\r\n<p>На странице добавления категории проверьте, что
+      в пункте &quot;Родительская категория&quot; указан необходимый центр. Если необходимо
+      исправить родительскую категория для удаления нажмите на крестик в левой части
+      надписи и в поле &quot;Найти&quot; ниже выберите необходимый пункт</p>\r\n\r\n<p>В
+      поле &quot;Название категории&quot; укажите полностью ФИО преподавателя (Например,
+      Климович Сергей Владимирович)</p>\r\n\r\n<p>В поле &quot;Идентификационный номер
+      категории&quot; указажите Фамилия и инициалы преподавателя (Например, Климович
+      С.В.)</p>\r\n\r\n<p>Для завершения процедуры создания нажмите на кнопку &quot;Создать
+      категорию&quot;</p>\r\n\r\n<p><img src=\"/media/uploads/2023/02/16/image-20230216101659-3.png\"
+      style=\"height:457px; width:500px\" /></p>\r\n\r\n<p>После создания новой категории
+      сайт перебросить вас на страницу с &quot;Управление категориями курсов и курсами&quot;.
+      На этой странице найдите созданую категорию, нажмите на иконку шестеренка и
+      в открывшемся контекстном меню нажмите на пункт &quot;Права&quot;</p>\r\n\r\n<p>&nbsp;&nbsp;<img
+      src=\"/media/uploads/2023/02/16/image-20230216102428-1.png\" style=\"height:457px;
+      width:500px\" /></p>\r\n\r\n<p>В левом верхнем углу страницы кликните по выпадающему
+      списку и выберите пункт &quot;Назначить роли&quot;</p>\r\n\r\n<p><img alt=\"\"
+      src=\"/media/uploads/2023/02/16/image-20230216102715-1.png\" style=\"height:457px;
+      width:500px\" /><img src=\"/media/uploads/2023/02/16/image-20230216102715-1.png\"
+      style=\"height:0px; width:0px\" /></p>\r\n\r\n<p>На открывшейся странице выберите
+      пункт &quot;Управляющий&quot;</p>\r\n\r\n<p><img alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216103006-4.png\"
+      style=\"height:457px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      вправой части экрана в поле &quot;Найти&quot; введите фамилию преподавателя,
+      выше над полем в окне отобразиться список пользователей системы. Кликните по
+      необходимому пользователю и нажмите на кнопку &quot;Добавить&quot; в центре
+      окна. &nbsp;&nbsp;<img src=\"/media/uploads/2023/02/16/image-20230216103006-4.png\"
+      style=\"height:0px; width:0px\" /></p>\r\n\r\n<p><img src=\"/media/uploads/2023/02/16/image-20230216102920-2.png\"
+      style=\"height:0px; width:0px\" /><img src=\"/media/uploads/2023/02/16/image-20230216102956-3.png\"
+      style=\"height:457px; width:500px\" /></p>\r\n\r\n<p>При успешном добавлении
+      пользователя он отображить в левой части экрана. (В левом окне отображается
+      список пользователей имеющих доступ на управление данной категорией&quot;</p>\r\n\r\n<p><img
+      src=\"/media/uploads/2023/02/16/image-20230216103424-6.png\" style=\"height:457px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 29
+  fields:
+    category: 6
+    name: Добавление нового курса
+    slug: dobavlenie-novogo-kursa
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p><em>Преподаватели системы LMS Moodle самостоятельно добавляют курсы
+      в свою категорию на центре(ы).</em></p>\r\n\r\n<p>Для добавления нового курса
+      в свою категорию перейдите на страницу своей категории в выбранном центре. В
+      правом верхнем углу экрана нажмите на кнопку &quot;Подробнее&quot; и выберите
+      пункт &quot;Добавить курс&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216105916-1.png\" style=\"height:457px;
+      width:500px\" /></p>\r\n\r\n<p>На открывшейся странице &quot;Добавить курс&quot;:</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216110202-2.png\"
+      style=\"height:457px; width:500px\" /></p>\r\n\r\n<p>Категория <strong>&quot;Общее&quot;</strong></p>\r\n\r\n<p>Введите
+      в поле &quot;Полное название курса&quot; - наименование вашего курса (Например,
+      Разработка мобильных приложений) Название курс должно соответствовать названию
+      дисциплины в учебном плане.</p>\r\n\r\n<p>В поле &quot;Краткое название курса&quot;
+      введите Фамилию и инициалы и аббревиатуру своего курса (Например, РМП)</p>\r\n\r\n<p>В
+      поле &quot;Категория курса&quot; проверьте место куда будет сохранен курс</p>\r\n\r\n<p>Поле
+      &quot;Видимость курса&quot; отвечает за отображение курса пользователям</p>\r\n\r\n<p>В
+      поле &quot;Дата начала курса&quot; укажите дату когда курс будет доступен пользователям</p>\r\n\r\n<p>В
+      поле &quot;Дата окончания курса&quot; укажите дату когда курс будет автоматически
+      закрыт для доступа пользователям</p>\r\n\r\n<p>Поле &quot;Идентификационный
+      номер курса&quot; оставьте пустым</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216112041-1.png\" style=\"height:0px;
+      width:0px\" /><img alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216112041-1.png\"
+      style=\"height:457px; width:500px\" /></p>\r\n\r\n<p>Категория <strong>&quot;Описание&quot;</strong></p>\r\n\r\n<p>Поле
+      &quot;Описание курса&quot; оставьте пустым</p>\r\n\r\n<p>Поле &quot;Изображение
+      курса&quot; позволяет добавить изображение для курса который будет отображаться
+      на странице преподавателя со всеми категориями</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216112244-3.png\" style=\"height:457px;
+      width:500px\" /></p>\r\n\r\n<p>Категория <strong>&quot;Формат курса&quot;</strong></p>\r\n\r\n<p>Поле
+      &quot;Формат&quot; имеет множество опций, рассмотрим наиболее востребованные</p>\r\n\r\n<p>-
+      Пункт &quot;Разделы по темам&quot; (По умолчанию), данная настройка позволяет
+      разделить материалы курса на темы (Максимальное кол-во тем в одном курсе равно
+      256). На главной странице курса отображается список тем, для доступа к материалам
+      темы необходима кликнуть по названию темы</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216112601-1.png\" style=\"height:0px;
+      width:0px\" /><img alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216112601-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>- Пункт &quot;Разделы по
+      неделям&quot; данный раздел подходит для курсом у которых проходит одна пара
+      в неделю. Разделы курса обозначаются датой проведения занятия и названием темы.
+      Система автоматически берет дату создания курса и выделяет раздел который является
+      актуальным на текущую дату виджетом &quot;Текущая неделя&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216112829-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>- Пункт &quot;Плитки&quot;
+      позволяет отобразить курс в виде плиток</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216112215-2.png\" style=\"height:457px;
+      width:500px\" /></p>\r\n\r\n<p>Любой из форматов на главной странице курса отображает
+      список тем, для доступа к материалам курса по теме необходимо нажать на ее название</p>\r\n\r\n<p>Категория
+      <strong>&quot;Внешний вид&quot;</strong></p>\r\n\r\n<p>Поле &quot;Принудительный
+      язык&quot; позволяет выбрать язык страницы, в системе доступны 2 языка &quot;Русский&quot;
+      и &quot;Английский&quot;. (Актуально для преподавателей Иностранного языка).
+      ! При необходимости обратитесь в службу ИТ для добавления нового языка.</p>\r\n\r\n<p>Поле
+      &quot;Количество отображаемых объявлений&quot; в каждом курсе по умолчанию создается
+      элелемент &quot;Объявления&quot; в шапке курса. С помощью этого элемента можно
+      отображаться новости для ваших участников.</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216114002-1.png\" style=\"height:0px;
+      width:0px\" /><img alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216114002-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>Поле &quot;Показывать журнал
+      оценок студентам&quot; отвечает за просмотр обучающими журнала с оценками за
+      выполненные задания</p>\r\n\r\n<p>Поле &quot;Показывать отчеты о деятельности&quot;
+      не реализовано в системе</p>\r\n\r\n<p>Поле &quot;Показать даты активных элементов&quot;&nbsp;<img
+      src=\"/media/uploads/2023/02/16/image-20230216112215-2.png\" style=\"height:0px;
+      width:0px\" />не реализовано в системе</p>\r\n\r\n<p>Категория <strong>&quot;Файлы
+      и загрузки&quot;</strong></p>\r\n\r\n<p>Поле &quot;Максимальный размер загружаемого
+      файла&quot; отвечает за настройку допустимого размера файла</p>\r\n\r\n<p>Категория
+      <strong>&quot;Отслеживание и выполнение&quot;</strong></p>\r\n\r\n<p>Данная
+      категория включает отслеживание выполенения у обучающихся в виде иконок</p>\r\n\r\n<p>Категория
+      <strong>&quot;Группы&quot;</strong></p>\r\n\r\n<p>Вы можете добавлять на один
+      курс несколько групп, или делить одну группу на подгруппы</p>\r\n\r\n<p>Поле
+      &quot;Группой режим&quot; отвечает за включение модуля. Нажмите на иконку &quot;Вопрос&quot;
+      для получения справочной информации&quot;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Для
+      завершения создания нового курса нажмите на кнопку &quot;Сохранить и показать&quot;&nbsp;</p>"
+    is_active: true
+- model: docs.article
+  pk: 30
+  fields:
+    category: 6
+    name: Изменения настроек существующего курса
+    slug: izmeneniya-nastroek-sushestvuyushego-kursa
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для измнения настроек существующего курса перейдите на страницу курса
+      и в верхней части экрана нажмите на кнопку &quot;Настройки&quot;.&nbsp;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216114207-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>Описание настроек курса
+      вы можете прочитать в документации &quot;Добавления нового курса&quot;</p>"
+    is_active: true
+- model: docs.article
+  pk: 31
+  fields:
+    category: 6
+    name: Зачисление обучающихся на курс
+    slug: zachislenie-obuchayushihsya-na-kurs
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для зачисления обучающихся на созданный курс перейдите на страницу
+      курса. В верхней части экрана выберите пункт &quot;Участники&quot;.&nbsp;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216114816-2.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      нажмите на выпадающий список и выберите пункт &quot;Способы зачисления на курс&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216114600-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>В открывшемся контекстном
+      меню выберите пункт &quot;Способы зачисления на курс&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216114914-3.png\" style=\"height:184px;
+      width:200px\" /></p>\r\n\r\n<p>На открывшейся странице в нижней части экрана
+      нажмите на выпадающий список в поле &quot;Добавить способ&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216115026-4.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>В контекстном меню выберите
+      пункт &quot;Синхронизация с глобальной группой&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216115107-5.png\" style=\"height:72px;
+      width:200px\" /></p>\r\n\r\n<p>На открывшейся странице измените необходимые
+      настройки:</p>\r\n\r\n<p>Поле &quot;Активный&quot; отвечает за работу способа</p>\r\n\r\n<p>Поле
+      &quot;Глобальная группа&quot; в данном поле выберите название необходимой учебной
+      группы (Учтите что наименования групп в системе после обновления видоизменено,
+      вначале пишеться сокращение от специальности группы, далее год поступления и
+      через дефис номер группы). Например, ИСиП2021-4 это ИСиП-24</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216115814-1.png\" style=\"height:347px;
+      width:500px\" /></p>\r\n\r\n<p>При необходимости вы можете добавить несколько
+      групп в поле</p>\r\n\r\n<p>Поле &quot;Назначить роль&quot; отвечает за роль
+      для новых пользователей (По умолчанию - Студент)</p>\r\n\r\n<p>Для завершения
+      процедуры добавления группы нажмите на кнопку &quot;Добавить способ&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216120020-2.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      сайт отобразит добавленные группы и кол-во обучающихся в них</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216120334-1.png\" style=\"height:347px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 32
+  fields:
+    category: 6
+    name: Просмотр обучающихся курса
+    slug: prosmotr-obuchayushihsya-kursa
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Перейдите на страницу необходимого курса в верхней части экрана выберите
+      пункт &quot;Участники&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216121732-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>На открывшейся странице
+      будут отображены участники вашего курса</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216121758-2.png\" style=\"height:347px;
+      width:500px\" /></p>\r\n\r\n<p>Если на Ваш курс записаны несколько групп Вы
+      можете применить фильтр для сортировки, для этого в вехрней части экрана в поле
+      &quot;Соответствие&quot; выберите пункт &quot;Способы зачисления на курс&quot;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216124342-3.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>В соседнем поле выберите
+      группу которую необходимо отобразить</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216124412-4.png\" style=\"height:347px;
+      width:500px\" /></p>\r\n\r\n<p>Для завершения нажмите на кнопку &quot;Применить
+      фильтры&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216124514-5.png\"
+      style=\"height:347px; width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 33
+  fields:
+    category: 6
+    name: Просмотр оценок обучающихся на курсе
+    slug: prosmotr-ocenok-obuchayushihsya-na-kurse
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для просмотра оценок обучающихся перейдите на страницу с курсом,
+      в верхней части экрана выберите пункт &quot;Оценки&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216124841-1.png\" style=\"height:347px;
+      width:500px\" /></p>\r\n\r\n<p>На открывшейся странице будет отображен список
+      обучающихся с ФИО и логином, оценками по каждому заданию</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/16/image-20230216124951-2.png\" style=\"height:347px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 34
+  fields:
+    category: 6
+    name: Редактирование курса и добавление новых элементов
+    slug: redaktirovanie-kursa
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для добавления новых материалов в курсе необходимо активировать режим
+      редактирования, для этого перейдите на страницу с курсом и в правом верхнем
+      углу нажмите на кнопку &quot;Режим редактирования&quot;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      alt=\"\" src=\"/media/uploads/2023/02/16/image-20230216125222-1.png\" style=\"height:347px;
+      width:500px\" /></p>\r\n\r\n<p>Для добавления нового элемента курса нажмите
+      под необходимым разделом кнопку &quot;Добавить элемент или ресурс&quot;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216125638-1.png\"
+      style=\"height:347px; width:500px\" /></p>\r\n\r\n<p>В открывшемся окне выберите
+      новый элемент для добавления (О настройках новых элементов курса читайте инструкции
+      в документации)</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/2023/02/16/image-20230216125749-2.png\"
+      style=\"height:347px; width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 35
+  fields:
+    category: 6
+    name: Добавление элемента курса "Файл"
+    slug: dobavlenie-elementa-kursa-fajl
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Элемент &quot;Файл&quot; позволяет добавить на курс файл для скачивания.
+      Например для таких материалов как: презентация, pdf, word, excel и тд.</p>\r\n\r\n<p>При
+      добавлении такого элемента доступен ряд следующих настроек:</p>\r\n\r\n<p><img
+      src=\"/media/uploads/2023/02/16/image-20230216130113-1.png\" style=\"height:347px;
+      width:500px\" /></p>\r\n\r\n<p>Категория <strong>&quot;Общее&quot;</strong></p>\r\n\r\n<p>Поле
+      &quot;Название&quot; введите сюда название вашего элемента</p>\r\n\r\n<p>Поле
+      &quot;Описание&quot; введите сюда описание, если оно не обходимо</p>\r\n\r\n<p>Поле
+      &quot;Выберите файл&quot; перетащите файл с компьютера в данное окно для загрузки
+      в систему LMS Moodle (Обратите внимание что в правом верхнем углу данного поля
+      есть надпись &quot;Максимальный размер для новых файлов&quot; в котором обозначен
+      допустимый размер файла</p>\r\n\r\n<p>Категория <strong>&quot;Внешний вид&quot;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Категория
+      <strong>&quot;Общие настройки модуля&quot;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Категория
+      <strong>&quot;Выполнение элемента курса&quot;</strong></p>"
+    is_active: false
+- model: docs.article
+  pk: 36
+  fields:
+    category: 7
+    name: Подключение к Wi-Fi
+    slug: podklyuchenie
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p><em>На данный момент единая wifi сеть доступна на центре ИКТ (В режиме
+      тестирования)</em></p>\r\n\r\n<p>На площадках колледжа сотрудникам и обучающися
+      доступна единая беспороводная сеть Wi-Fi</p>\r\n\r\n<p>Для использования сети
+      выберите в списке доступных Wi-Fi устройств SSID с именем &quot;wifi.kp11&quot;</p>\r\n\r\n<p><em>SSID
+      (Service Set Identifier) &mdash; это символьное название беспроводной точки
+      доступа Wi-Fi, служащее для идентификации её среди других точек пользователями
+      или устройствами, подключающимися к сети</em></p>\r\n\r\n<p>После подключения
+      к сети ваше устройство откроет страницу авторизации, на которой необходимо ввести
+      логин и пароль от единой учетной записи *@corp.kp11.ru&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p
+      style=\"text-align:center\">&nbsp;&nbsp;&nbsp;<img src=\"/media/uploads/2023/02/16/image-20230216164123-2.png\"
+      style=\"height:341px; width:500px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>После
+      ввода поставьте галочку напротив надписи &quot;I accept the terms of use&quot;
+      и нажмите на кнопку &quot;CONNECT&quot;. При успешной авторизации страница откроет
+      сайт с цифровой платформой.</p>"
+    is_active: true
+- model: docs.article
+  pk: 37
+  fields:
+    category: 7
+    name: Подключение из Windows
+    slug: podklyuchenie-iz-windows
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Для подключения к Wi-Fi в операционной системе Windows откройте диспетчер
+      подключения кликнув на иконку сети в правом нижнем углу экрана</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/20/image-20230220110114-1.png\"
+      style=\"height:199px; width:300px\" /></p>\r\n\r\n<p>Выберите в списке доступных
+      Wi-Fi сетей SSID с именем&nbsp;<code>wifi.kp11</code>&nbsp;и нажмите подключиться</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/20/image-20230220110208-2.png\"
+      style=\"height:171px; width:300px\" /></p>\r\n\r\n<p>Далее откроется страница
+      авторизации, на которой необходимо указать данные для входа и подтвердить согласие
+      с правилами использования</p>\r\n\r\n<p><span class=\"marker\">Для авторизации
+      используйте единую учетную запись ( КП 11 ID)</span></p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220110257-3.png\" style=\"height:209px;
+      width:500px\" /></p>\r\n\r\n<p>В случае успешной авторизации вы автоматически
+      попадете на страницу Цифровой Платформы КП 11</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220110420-4.png\" style=\"height:151px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 38
+  fields:
+    category: 7
+    name: Подключение из MacOS
+    slug: podklyuchenie-iz-macos
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Откройте диспетчер подключения к Wi-Fi сетям в правом верхнем углу
+      экрана, выберите в списке доступных Wi-Fi сетей SSID с именем&nbsp;wifi.kp11&nbsp;и
+      нажмите подключиться</p>\r\n\r\n<p style=\"text-align:center\"><img src=\"/media/uploads/2023/02/20/image-20230220110646-1.png\"
+      style=\"height:220px; width:300px\" /></p>\r\n\r\n<p>Далее откроется страница
+      авторизации, на которой необходимо указать данные для входа и подтвердить согласие
+      с правилами использования</p>\r\n\r\n<p><span class=\"marker\">Для авторизации
+      используйте единую учетную запись ( КП 11 ID)</span></p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220110257-3.png\" style=\"height:209px;
+      width:500px\" /></p>\r\n\r\n<p>В случае успешной авторизации вы автоматически
+      попадете на страницу Цифровой Платформы КП 11</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220110420-4.png\" style=\"height:151px;
+      width:500px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 39
+  fields:
+    category: 7
+    name: Подключение из iOS
+    slug: podklyuchenie-iz-ios
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>Откройте экран настроек нажав на иконку&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220111859-1.png\" style=\"height:47px;
+      width:50px\" /></p>\r\n\r\n<p>В открывшемся окне выберите пункт Wi-Fi</p>\r\n\r\n<p
+      style=\"text-align:center\"><img src=\"/media/uploads/2023/02/20/image-20230220112005-2.png\"
+      style=\"height:433px; width:200px\" /></p>\r\n\r\n<p>Выберите в списке доступных
+      Wi-Fi сетей SSID с именем wifi.kp11 и нажмите подключиться</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220111122-1.jpeg\" style=\"height:356px;
+      width:200px\" /></p>\r\n\r\n<p>Далее откроется страница авторизации, на которой
+      необходимо указать данные для входа и подтвердить согласие с правилами использования</p>\r\n\r\n<p>Для
+      авторизации используйте единую учетную запись ( КП 11 ID)</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220111147-2.jpeg\" style=\"height:356px;
+      width:200px\" /></p>\r\n\r\n<p>В случае успешной авторизации вы автоматически
+      попадете на страницу Цифровой Платформы КП 11</p>\r\n\r\n<p style=\"text-align:center\"><img
+      src=\"/media/uploads/2023/02/20/image-20230220111224-3.jpeg\" style=\"height:356px;
+      width:200px\" /></p>"
+    is_active: true
+- model: docs.article
+  pk: 40
+  fields:
+    category: 6
+    name: Добавление роли учитель в курсе
+    slug: dobavlenie-roli-uchitel-v-kurse
+    created_at: 2023-01-10T07:26:29.288578
+    updated_at: 2023-01-10T07:26:29.288578
+    content: "<p>При просмотре категории преподавателя внизу карточки курса можно
+      сделать отображение информации с преподавателями (одного или несколько) &nbsp;этого
+      курса. (Пример показан на рисунке)</p>\r\n\r\n<p><img src=\"/media/uploads/2023/04/03/image-20230403095136-1.png\"
+      style=\"height:299px; width:500px\" /></p>\r\n\r\n<p>Для добавления преподавателя
+      перейдите на страницу курса и выберите пункт &quot;Участники&quot;</p>\r\n\r\n<p><img
+      src=\"/media/uploads/2023/04/03/image-20230403095456-2.png\" style=\"height:299px;
+      width:500px\" /></p>\r\n\r\n<p>На открывшейся странице кликните по кнопке &quot;Зачисление
+      пользователей на курс&quot;</p>\r\n\r\n<p><img src=\"/media/uploads/2023/04/03/image-20230403095607-3.png\"
+      style=\"height:299px; width:500px\" /></p>\r\n\r\n<p>В открывшемся окне найдите
+      в поле &quot;Выберите пользователей&quot; необходимого преподавателя или нескольких</p>\r\n\r\n<p><img
+      src=\"/media/uploads/2023/04/03/image-20230403095643-4.png\" style=\"height:299px;
+      width:500px\" /></p>\r\n\r\n<p>Далее в поле &quot;Назначить роль&quot; выберите
+      пункт &quot;Учитель&quot; и нажмите на кнопку &quot;Зачислить выбранных пользователей
+      и глобальные группы&quot;</p>\r\n\r\n<p><img alt=\"\" src=\"/media/uploads/2023/04/03/image-20230403095749-5.png\"
+      style=\"height:299px; width:500px\" /></p>\r\n\r\n<p>После проделанных операций
+      на странице с категорией преподавателя будет отображаться список преподавателей
+      курса как на первом скриншоте</p>"
+    is_active: true

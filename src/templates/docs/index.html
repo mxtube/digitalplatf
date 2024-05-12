@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<h2 class="align-center">Чем вам помочь?</h2>
+<section id="search" class="alt">
+    <form action="" method="get">
+        <input type="text" name="s" placeholder="Поиск в документации" />
+    </form>
+    {% csrf_token %}
+</section>
+<p class="align-center">Для отображения полного списка инструкций нажмите на название категории</p>
+{% regroup article by category as category_list %}
+<div class="row">
+    {% for category in category_list %}
+    <div class="col-4 col-12-small">
+        <header class="major">
+            <h3>
+                <a href="{{ category.grouper.get_absolute_url }}">
+                    <i class="{{ category.grouper.icon }}"></i> {{ category.grouper }} ({{ category.list|length }})
+                </a>
+            </h3>
+        </header>
+        <ul>
+            {% for article in category.list|slice:3 %}
+                <li>
+                    <a href="{{ article.get_absolute_url }}" class="icon">{{ article.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

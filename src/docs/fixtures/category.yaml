@@ -1,0 +1,49 @@
+- model: docs.category
+  pk: 1
+  fields:
+    name: Ваш аккаунт
+    slug: vash_akkaunt
+    description: ''
+    icon: fas fa-key
+- model: docs.category
+  pk: 2
+  fields:
+    name: Расписание
+    slug: raspisanie
+    description: ''
+    icon: fas fa-calendar-day
+- model: docs.category
+  pk: 3
+  fields:
+    name: Справки (ЦИКТ)
+    slug: spravki
+    description: ''
+    icon: fas fa-file-alt
+- model: docs.category
+  pk: 4
+  fields:
+    name: Академия
+    slug: akademiya
+    description: ''
+    icon: fas fa-graduation-cap
+- model: docs.category
+  pk: 5
+  fields:
+    name: Преподавателям
+    slug: prepodavatelyam
+    description: ''
+    icon: fas fa-person-chalkboard
+- model: docs.category
+  pk: 6
+  fields:
+    name: Moodle 4.0
+    slug: moodle-40
+    description: Внедрение осень 2023 года
+    icon: fas fa-chalkboard-user
+- model: docs.category
+  pk: 7
+  fields:
+    name: Wi-Fi
+    slug: wi-fi
+    description: ''
+    icon: fas fa-wifi

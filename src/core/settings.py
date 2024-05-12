@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'educationpart.apps.EducationpartConfig',
     'schedule.apps.ScheduleConfig',
     'reference.apps.ReferenceConfig',
+    'docs.apps.DocsConfig',
 
     'phonenumber_field',
     'django_cleanup.apps.CleanupConfig',
