@@ -17,7 +17,7 @@
     password: 'pbkdf2_sha256$720000$WlLDhJEYJ4OmHxErSuTd5c$n6KOUaejd2LI9LQ+BlkX6LpnxYmePsGm456m4rGjbOs='
     first_name: none
     last_name: none
-    is_staff: true
+    is_teacher: true
     middle_name: none
     email: none@example.com
     alternative_email: none@example.com
