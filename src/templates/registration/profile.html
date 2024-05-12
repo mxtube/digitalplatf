@@ -25,13 +25,17 @@
             {% endif %}
         </span>
         <h3>{{ request.user.get_fullname }}</h3>
-        <a href="" class="button small"><i class="fas fa-user-edit"></i> Редактировать профиль</a>
+        <a href="{% url 'edit_profile' %}" class="button small"><i class="fas fa-user-edit"></i> Редактировать профиль</a>
     </div>
     <div class="col-6 col-12-small">
         <h3>Персональная информация</h3>
         <p>
             <b>Личная почта:</b>
             {{ request.user.alternative_email }}
+        </p>
+        <p>
+            <b>Личный телефон:</b>
+            {{ request.user.mobile }}
         </p>
         <p>
             <b>Дата рождения:</b>

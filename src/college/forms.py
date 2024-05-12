@@ -1,11 +1,11 @@
 from django import forms
+from .models import SiteSettings, CustomPerson
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from .models import SiteSettings
 
 
 class SiteSettingsAdminForm(forms.ModelForm):
 
-    description = forms.CharField(widget=CKEditorUploadingWidget())
+    description = forms.CharField(widget=CKEditorUploadingWidget(), label="Описание главной страницы")
 
     class Meta:
         model = SiteSettings
@@ -24,3 +24,12 @@ class SuggestionForm(forms.Form):
                             widget=forms.TextInput(attrs={'placeholder': 'Напишите тему вашего обращения'}))
     message = forms.CharField(label='Сообщение', min_length=10, max_length=5000,
                               widget=forms.Textarea(attrs={'placeholder': 'Напишите тут ваше сообщение', 'rows': '8' }))
+
+class EditProfileForm(forms.ModelForm):
+
+    mobile = forms.CharField(label='Мобильный телефон', required=False, help_text='Номер телефона в формате +79998887766')
+    alternative_email = forms.EmailField(label='Личный адрес электронной почты', required=True)
+
+    class Meta:
+        model = CustomPerson
+        fields = ['mobile', 'alternative_email']
