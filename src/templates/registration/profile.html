@@ -29,22 +29,12 @@
     </div>
     <div class="col-6 col-12-small">
         <h3>Персональная информация</h3>
-        <p>
-            <b>Личная почта:</b>
-            {{ request.user.alternative_email }}
-        </p>
-        <p>
-            <b>Личный телефон:</b>
-            {{ request.user.mobile }}
-        </p>
-        <p>
-            <b>Дата рождения:</b>
-            {{ request.user.birthday }}
-        </p>
-        <p>
-            <b>Группа:</b>
-            {{ request.user.group }}
-        </p>
+        <ul class="alt">
+            <li><b>Личная почта:</b> {{ request.user.alternative_email }}</li>
+            <li><b>Личный телефон:</b> {{ request.user.mobile }}</li>
+            <li><b>Дата рождения:</b> {{ request.user.birthday }}</li>
+            <li><b>Группа:</b> {{ request.user.group }}</li>
+        </ul>
     </div>
 </div>
 <hr class="major" />
