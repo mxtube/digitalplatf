@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="row">
+    <ul>
+        <a href="{% url 'docs_home' %}" class="icon"><i class="fas fa-2xs fa-solid fa-home"></i></a>
+        <i class="fas fa-2xs fa-solid fa-chevron-right"></i>
+        <a href="{{ object.category.get_absolute_url }}" class="icon">{{ article.category }}</a>
+        <i class="fas fa-2xs fa-solid fa-chevron-right"></i>
+        {{ article.name }}
+    </ul>
+</div>
+<h2 class="align-center">{{ article.name }}</h2>
+<div>{{ article.content|safe }}</div>
+<p class="align-right"><i class="fas fa-user"></i> Автор: {{ 'Администратор'|lower }}</p>
+{% endblock %}
