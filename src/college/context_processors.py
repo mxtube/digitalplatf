@@ -8,7 +8,8 @@ def load_settings(request):
     :param request:
     :return:
     """
-    return {'site_settings': SiteSettings.load()}
+    settings = SiteSettings.objects.first()
+    return {'site_settings': settings}
 
 
 def departments(request):
