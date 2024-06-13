@@ -9,7 +9,7 @@ from core.settings import MEDIA_ROOT
 
 
 class Scheduling:
-    """ Класс хранящий расписание для парсинга """
+    """ Класс обрабатывающий файл с расписанием """
 
     JSON_PATH = MEDIA_ROOT + 'json/schedparsing/'
     IMAGE_PATH = MEDIA_ROOT + 'pix/schedparsing/'

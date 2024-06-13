@@ -164,6 +164,7 @@ class UploadSchedule(View):
             date_start = self.upload_form.cleaned_data['start_date'].strftime('%Y-%m-%d')
             date_end = self.upload_form.cleaned_data['end_date'].strftime('%Y-%m-%d')
             day = self.upload_form.cleaned_data.get('day').__str__()
+            print(type(date_start), type(date_end), type(day))
             department = self.upload_form.cleaned_data['department']
             if self.handle_uploaded_file(file, department):
                 upload_schedule.delay(
@@ -174,6 +175,7 @@ class UploadSchedule(View):
                     date_end=date_end,
                     day=day
                 )
+                self.context['message'] = 'Файл с расписанием загружен'
         self.context['form'] = self.upload_form
         return render(request, template_name=self.template_name, context=self.context)
 
