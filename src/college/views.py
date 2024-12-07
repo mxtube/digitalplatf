@@ -11,7 +11,10 @@ class HomePage(View):
 
     def get(self, request):
         site_settings = SiteSettings.objects.first()
-        context = {'title': site_settings.site_name, 'subtitle': site_settings.short_site_name}
+        if site_settings:
+            context = {'title': site_settings.site_name, 'subtitle': site_settings.short_site_name}
+        else:
+            context = {'title': 'Цифровая', 'subtitle': 'платформа'}
         return render(request, self.template_name, context=context)
 
 
