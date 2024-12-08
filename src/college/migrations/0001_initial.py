@@ -42,6 +42,7 @@ class Migration(migrations.Migration):
                                             verbose_name='Мобильный телефон')),
                 ('birthday', models.DateField(blank=True, max_length=10, null=True, verbose_name='Дата рождения')),
                 ('note', models.TextField(blank=True, max_length=200, verbose_name='Примечание')),
+                ('job_title', models.TextField(blank=True, verbose_name='Должность')),
                 ('is_teacher', models.BooleanField(verbose_name='Преподаватель', default=False)),
                 ('alternative_email', models.EmailField(blank=True, max_length=254,
                                                         verbose_name='Альтернативный адрес электронной почты')),

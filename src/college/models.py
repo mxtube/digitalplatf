@@ -51,6 +51,7 @@ class CustomPerson(AbstractUser):
     mobile = PhoneNumberField(verbose_name='Мобильный телефон', region='', blank=True, null=True)
     birthday = models.DateField(max_length=10, blank=True, null=True, verbose_name='Дата рождения')
     note = models.TextField(max_length=200, verbose_name='Примечание', blank=True)
+    job_title = models.TextField(verbose_name='Должность', blank=True)
     alternative_email = models.EmailField(blank=True, verbose_name='Альтернативный адрес электронной почты')
     is_teacher = models.BooleanField(verbose_name='Преподаватель', default=False)
     group = models.ForeignKey('educationpart.Studygroup', on_delete=models.PROTECT, verbose_name='Учебная группа',
@@ -82,6 +83,7 @@ class Department(models.Model):
     slug = models.SlugField(verbose_name='URL', max_length=200, db_index=True, unique=True)
     short_name = models.CharField(max_length=50, verbose_name='Сокращение', help_text='Сокращенное название')
     phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, verbose_name='Телефон', help_text='Введите номер телефона в формате: +999999999', blank=True)
+    email = models.EmailField(blank=True, verbose_name='Адрес электронной почты')
     coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки', blank=True)
     supervisor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Руководитель', null=True, blank=True, related_name='department_supervisor_to_customperson_id_fkey')
 
