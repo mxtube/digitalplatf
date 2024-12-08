@@ -15,6 +15,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customperson',
             name='group',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='user_group_to_studygroup_id_fkey', to='educationpart.studygroup', verbose_name='Учебная группа'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='user_group_to_studygroup_id_fkey',
+                to='educationpart.studygroup',
+                verbose_name='Учебная группа'
+            ),
         ),
     ]

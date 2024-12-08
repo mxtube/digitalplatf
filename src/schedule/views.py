@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 from educationpart.models import Studygroup
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
-from schedule_parsing.parsing import Parsing
+from schedule_parsing.parsing import Parsing # noqa F401
 from college.models import Department, CustomPerson
 from django.shortcuts import render, get_object_or_404
 from schedule.forms import UploadSchedulesFormAdmin, ScheduleDateForm, ScheduleTeacherForm, DashboardForm
@@ -194,7 +194,7 @@ class ScheduleDashboard(View):
         dashboard_form = self.dashboard_form(request.POST)
         if dashboard_form.is_valid():
             selected_data = dashboard_form.cleaned_data
-            date = selected_data['date']
-            department = selected_data['department']
+            date = selected_data['date'] # noqa F841
+            department = selected_data['department'] # noqa F841
         context = {'dashboard_form': dashboard_form}
         return render(request, template_name=self.template_name, context=self.context | context)

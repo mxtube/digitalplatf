@@ -13,8 +13,18 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Status',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Наименование статуса', max_length=50, unique=True, verbose_name='Название')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                )),
+                ('name', models.CharField(
+                    help_text='Наименование статуса',
+                    max_length=50,
+                    unique=True,
+                    verbose_name='Название'
+                )),
             ],
             options={
                 'verbose_name': 'Статус',

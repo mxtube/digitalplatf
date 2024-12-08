@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Profession, Discipline, Studygroup
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
+
 @admin.register(Profession)
 class ProfessionAdmin(admin.ModelAdmin):
 
@@ -12,11 +13,12 @@ class ProfessionAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Информация о специальности', {
-            'fields': (('number', 'name', 'shortname',)),
-            'description': 'Специальность — это отдельная отрасль науки, техники, мастерства или искусства, в которой работают специалисты.',
+            'fields': ('number', 'name', 'shortname',),
+            'description': 'Специальность — это отдельная отрасль науки, техники, мастерства или искусства, в которой '
+                           'работают специалисты.',
         }),
         ('Дополнительная информация', {
-            'fields': (('department'),),
+            'fields': ('department',),
             'classes': ('wide',),
         }),
     )

@@ -60,4 +60,3 @@ class Scheduling:
         now = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         with open(self.JSON_PATH + now + '.json', 'w', encoding='utf-8') as f:
             json.dump(self.schedule, f, ensure_ascii=False, indent=4)
-

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Status, Type, Reference
 
+
 @admin.register(Reference)
 class ReferenceAdmin(admin.ModelAdmin):
 
@@ -9,8 +10,8 @@ class ReferenceAdmin(admin.ModelAdmin):
     list_filter = ('status', 'type',)
 
     fieldsets = (
-        ('Инфомарция о заявителе', {"fields": (('user',)),}),
-        ('Инфомарция о справке', {"fields": (('type', 'comment', 'status', 'reference_count',)),}),
+        ('Инфомарция о заявителе', {"fields": ('user',), }),
+        ('Инфомарция о справке', {"fields": ('type', 'comment', 'status', 'reference_count',), }),
     )
 
     @admin.display(description='Заявитель')
@@ -35,5 +36,5 @@ class TypeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Type)
-class TypeAdmin(admin.ModelAdmin):
+class TypeAdmin(admin.ModelAdmin): # noqa F811
     list_display = ('name',)

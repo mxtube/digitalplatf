@@ -2,7 +2,8 @@
 Created on Thu 7.03.24
 @author: Kirill Kuznetsov
 """
-import openpyxl, re
+import openpyxl
+import re
 from .event import Event
 from loguru import logger
 from .scheduling import Scheduling
@@ -14,13 +15,15 @@ from schedule.models import Schedule, GroupStream, Couple, Discipline, Auditory
 
 # TODO: Убрать баг для обработки ошибки если в выбраном диапозоне дат нет выбранного дня
 
+
 class Parsing(Scheduling, Event):
 
     EXCEL_FILE_PATH = MEDIA_ROOT + 'xls/schedparsing/'
 
     def __init__(self, filename: str, start_row: int, department: str):
         self.department = Department.objects.get(name=department)
-        self.file = openpyxl.open(f'{self.EXCEL_FILE_PATH}{self.department.slug}/{filename}', read_only=True).active
+        self.file = openpyxl.open(f'{self.EXCEL_FILE_PATH}{self.department.slug}/{filename}',
+                                  read_only=True).active
         self.current_col = 1
         self.start_row = start_row
         self.error_box = []
@@ -85,9 +88,9 @@ class Parsing(Scheduling, Event):
                         stdgrp = Studygroup.objects.get(department=department, name=group)
                         gs = GroupStream.objects.get(group=stdgrp)
                         couple = Couple.objects.get(number=couple, stream=gs.stream)
-                        discipline = Discipline.objects.get(name=event.get('discipline'))
-                        auditory = Auditory.objects.get(number=event.get('auditory'), department=department)
-                        teacher = CustomPerson.objects.get(
+                        discipline = Discipline.objects.get(name=event.get('discipline')) # noqa F841
+                        auditory = Auditory.objects.get(number=event.get('auditory'), department=department) # noqa F841
+                        teacher = CustomPerson.objects.get( # noqa 841
                             last_name=re.split(r'[.\s]', event.get('teacher'))[0],
                             first_name__contains=re.split(r'[.\s]', event.get('teacher'))[1],
                             middle_name__contains=re.split(r'[.\s]', event.get('teacher'))[2],

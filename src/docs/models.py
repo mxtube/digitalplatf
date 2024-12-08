@@ -23,7 +23,7 @@ class Category(models.Model):
 
 class Article(models.Model):
 
-    category = models.ForeignKey(Category, on_delete=models.PROTECT,verbose_name='Категория',
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория',
                                  related_name='article_cat_to_cat_id_fkey')
     name = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=150, unique=True, db_index=True, verbose_name='URL')

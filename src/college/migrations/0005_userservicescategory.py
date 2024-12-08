@@ -13,9 +13,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserServicesCategory',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, unique=True, verbose_name='Название')),
-                ('visible', models.BooleanField(default=True, verbose_name='Видимость')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                )),
+                ('name', models.CharField(
+                    max_length=50,
+                    unique=True,
+                    verbose_name='Название'
+                )),
+                ('visible', models.BooleanField(
+                    default=True,
+                    verbose_name='Видимость'
+                )),
             ],
             options={
                 'verbose_name': 'Категория сервиса',

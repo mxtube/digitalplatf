@@ -7,6 +7,7 @@ from core.settings import MEDIA_ROOT
 root_folders = ['img', 'json', 'pix', 'video', 'xls']
 user_folders = ['img/userpic', 'json/schedparsing', 'xls/schedparsing']
 
+
 def create_media_folders():
 
     for i in root_folders + user_folders:

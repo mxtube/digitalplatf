@@ -2,7 +2,7 @@ from django.views import View
 from django.shortcuts import render, redirect
 from .forms import SuggestionForm, EditProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import SiteSettings, CustomPerson, UserServicesCategory, UserServices
+from .models import SiteSettings, CustomPerson, UserServices
 
 
 class HomePage(View):
@@ -63,13 +63,14 @@ class ProfileEditPage(LoginRequiredMixin, View):
             context['form'] = form
         return render(request, self.template_name, context=context)
 
+
 class SuggestionPage(LoginRequiredMixin, View):
 
     template_name = 'college/suggestion.html'
     form = SuggestionForm
 
     def get(self, request):
-        self.form = SuggestionForm(initial={'user': request.user.username })
+        self.form = SuggestionForm(initial={'user': request.user.username})
         context = {
             'title': 'Обратная связь',
             'subtitle': 'Идеи и предложения',

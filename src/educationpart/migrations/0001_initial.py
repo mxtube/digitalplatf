@@ -16,11 +16,35 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Profession',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('number', models.CharField(help_text='Номер специальности. Пример: "09.02.07"', max_length=20, verbose_name='Код')),
-                ('name', models.CharField(db_index=True, help_text='Полное наименование специальности. Пример: "Информационные системы и программирование"', max_length=70, verbose_name='Наименование')),
-                ('shortname', models.CharField(help_text='Префикс используемый в названиях учебных групп. Пример: "ИСиП", "СИТ', max_length=25, verbose_name='Идентификатор учебных групп')),
-                ('department', models.ForeignKey(help_text='Основная площадка', on_delete=django.db.models.deletion.PROTECT, related_name='profession_department_to_department_id_fkey', to='college.department', verbose_name='Площадка')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                )),
+                ('number', models.CharField(
+                    help_text='Номер специальности. Пример: "09.02.07"',
+                    max_length=20,
+                    verbose_name='Код'
+                )),
+                ('name', models.CharField(
+                    db_index=True,
+                    help_text='Полное наименование специальности. Пример: "Информационные системы и программирование"',
+                    max_length=70,
+                    verbose_name='Наименование'
+                )),
+                ('shortname', models.CharField(
+                    help_text='Префикс используемый в названиях учебных групп. Пример: "ИСиП", "СИТ',
+                    max_length=25,
+                    verbose_name='Идентификатор учебных групп'
+                )),
+                ('department', models.ForeignKey(
+                    help_text='Основная площадка',
+                    on_delete=django.db.models.deletion.PROTECT,
+                    related_name='profession_department_to_department_id_fkey',
+                    to='college.department',
+                    verbose_name='Площадка'
+                )),
             ],
             options={
                 'verbose_name': 'Специальность',

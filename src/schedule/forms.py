@@ -1,8 +1,7 @@
 import datetime
 from django import forms
-from django.forms import ModelForm, Select
 
-from college.models import Department, CustomPerson
+from college.models import Department
 from .models import Schedule, DayWeek
 from django.core.exceptions import ValidationError
 

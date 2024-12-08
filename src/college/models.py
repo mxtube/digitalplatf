@@ -41,7 +41,7 @@ class SiteSettings(models.Model):
         return 'Настройки'
 
     def is_contacts(self):
-        return True if self.contact_description is not None or self.phone is not None or self.email is not None or self.address is not None else False
+        return True if self.contact_description is not None or self.phone is not None or self.email is not None or self.address is not None else False # noqa E501
 
 
 class CustomPerson(AbstractUser):
@@ -82,10 +82,13 @@ class Department(models.Model):
     name = models.CharField(max_length=200, verbose_name='Наименование', help_text='Полное наименование')
     slug = models.SlugField(verbose_name='URL', max_length=200, db_index=True, unique=True)
     short_name = models.CharField(max_length=50, verbose_name='Сокращение', help_text='Сокращенное название')
-    phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, verbose_name='Телефон', help_text='Введите номер телефона в формате: +999999999', blank=True)
+    phone = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$')], max_length=17, blank=True,
+                             verbose_name='Телефон', help_text='Введите номер телефона в формате: +999999999')
     email = models.EmailField(blank=True, verbose_name='Адрес электронной почты')
-    coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки', blank=True)
-    supervisor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Руководитель', null=True, blank=True, related_name='department_supervisor_to_customperson_id_fkey')
+    coordinate = models.CharField(max_length=500, verbose_name='Адрес', help_text='Введите адрес расположения площадки',
+                                  blank=True)
+    supervisor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='Руководитель',
+                                   null=True, blank=True, related_name='department_supervisor_to_customperson_id_fkey')
 
     def __repr__(self):
         return f'{self.__class__}: {self.pk} {self.name}'
@@ -106,7 +109,8 @@ class Auditory(models.Model):
         unique_together = ('number', 'department')
 
     number = models.CharField(max_length=20, help_text='Номер аудитории', verbose_name='Номер')
-    department = models.ForeignKey(Department, on_delete=models.PROTECT, default=None, verbose_name='Площадка', related_name='auditory_department_to_department_id_fkey')
+    department = models.ForeignKey(Department, on_delete=models.PROTECT, default=None, verbose_name='Площадка',
+                                   related_name='auditory_department_to_department_id_fkey')
 
     def __repr__(self):
         return f'{self.__class__}: {self.pk} {self.department} {self.number}'
