@@ -71,6 +71,14 @@ class CustomPerson(AbstractUser):
     def get_name_initials(self):
         return f'{self.last_name} {self.first_name[0]}.{self.middle_name[0]}.'
 
+    @staticmethod
+    def get_user_by_fio(fio: str):
+        value = fio.split()
+        if len(value) == 2:
+            return CustomPerson.objects.get(first_name=value[1], last_name=value[0])
+        elif len(value) == 3:
+            return CustomPerson.objects.get(first_name=value[1], last_name=value[0], middle_name=value[2])
+
 
 class Department(models.Model):
 

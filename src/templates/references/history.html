@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>Тип заявки</th>
+                <th>Доп. информация</th>
+                <th>Статус</th>
+                <th>Кол-во</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reference in references %}
+            <tr>
+                <td>{{ reference.created_at }}</td>
+                <td>{{ reference.type }}</td>
+                <td>{{ reference.comment }}</td>
+                <td>{{ reference.status }}</td>
+                <td>{{ reference.reference_count }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="align-center">Вы еще не заказывали справки</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

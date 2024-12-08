@@ -6,7 +6,8 @@ from .models import Status, Type, Reference
 class ReferenceAdmin(admin.ModelAdmin):
 
     model = Reference
-    list_display = ('get_user', 'get_type', 'comment', 'reference_count', 'status', 'created_at', 'updated_at',)
+    list_display = ('get_user', 'get_type', 'get_study_group', 'comment', 'reference_count', 'status', 'created_at',
+                    'updated_at',)
     list_filter = ('status', 'type',)
 
     fieldsets = (
@@ -23,8 +24,8 @@ class ReferenceAdmin(admin.ModelAdmin):
         return obj.type.name
 
     @admin.display(description='Группа')
-    def get_studygroup(self, obj):
-        return f'{obj.user.studygroup_id}' if obj.user.studygroup_id else 'Отсутствует'
+    def get_study_group(self, obj):
+        return f'{obj.user.group}' if obj.user.group else 'Отсутствует'
 
     def get_status(self, obj):
         return obj.status.name

@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-6 col-12-medium">
+        <header class="major">
+            <h3>Заказать справку</h3>
+        </header>
+        <form method="POST">
+            {% csrf_token %}
+            {{ choose_form.as_p }}
+            <input type="submit" name="btn_reference_choose" value="Выбрать">
+            <a href="{% url 'reference_history' %}" class="button">История запросов</a>
+        </form>
+    </div>
+    <div class="col-6 col-12-medium">
+        <header class="major">
+            <h3>Образцы справок</h3>
+        </header>
+        <ul class="alt">
+            {% for reference in reference_example %}
+                <li><a href="{{ reference.example }}">{{ reference.name }}</a></li>
+            {% empty %}
+                <p>Нет образцов справок</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% if get_choose_form %}
+<header class="major">
+    <h3>Заполните форму</h3>
+</header>
+<form method="post">
+    {% csrf_token %}
+    {{ get_choose_form.as_p }}
+    <input type="submit" name="btn_reference_order" value="Заказать">
+</form>
+{% endif %}
+{% endblock %}

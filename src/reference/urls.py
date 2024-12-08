@@ -16,8 +16,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import ReferenceHome
+from .views import ReferenceHome, ReferenceHistory
 
 urlpatterns = [
-    path('', ReferenceHome.as_view(), name='reference_home')
+    path('', ReferenceHome.as_view(), name='reference_home'),
+    path('history', ReferenceHistory.as_view(), name='reference_history')
 ]
