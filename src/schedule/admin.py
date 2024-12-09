@@ -18,14 +18,14 @@ class UploadSchedulesAdmin(admin.ModelAdmin):
         return [path('', UploadSchedule.as_view(), name=view_name),]
 
 
-@admin.register(DashboardSchedule)
-class DashboardScheduleAdmin(admin.ModelAdmin):
-
-    model = Schedule
-
-    def get_urls(self):
-        view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
-        return [path('', ScheduleDashboard.as_view(), name=view_name),]
+# @admin.register(DashboardSchedule)
+# class DashboardScheduleAdmin(admin.ModelAdmin):
+#
+#     model = Schedule
+#
+#     def get_urls(self):
+#         view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
+#         return [path('', ScheduleDashboard.as_view(), name=view_name),]
 
 
 @admin.register(Stream)
