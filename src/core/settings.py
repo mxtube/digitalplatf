@@ -328,6 +328,9 @@ ldap_connection_string = f"CN={env('LDAP_CN')},OU={env('LDAP_OU')},DC={env('LDAP
 LDAP_AUTH_CONNECTION_USERNAME = ldap_connection_string
 LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_PASSWORD')
 
+LDAP3_USER = env('LDAP3_USER')
+LDAP3_PASSWORD = env('LDAP3_PASSWORD')
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
