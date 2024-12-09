@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Status, Type, Reference
+from .models import Status, Type, Reference, ReferenceNotify
 
 
 @admin.register(Reference)
@@ -39,3 +39,10 @@ class TypeAdmin(admin.ModelAdmin):
 @admin.register(Type)
 class TypeAdmin(admin.ModelAdmin): # noqa F811
     list_display = ('name',)
+
+
+@admin.register(ReferenceNotify)
+class ReferenceNotifyAdmin(admin.ModelAdmin):
+
+    list_display = ('department', 'email',)
+    list_filter = ('department',)

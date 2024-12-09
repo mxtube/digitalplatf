@@ -1,13 +1,18 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.views import View
 from django.shortcuts import render
-from .models import Type, Reference
-from college.models import CustomPerson
+
+from .models import Type, Reference, ReferenceNotify
+from college.models import CustomPerson, Department
 from .forms import (ReferenceChooseForm, ReferenceMilitaryForm, ReferenceGrandForm, ReferenceDiplomaForm,
                     ReferenceEducationForm)
 
 
-class ReferenceHome(View):
+class ReferenceHome(LoginRequiredMixin, View):
     """ Контроллер отображения страницы заказа справок """
 
     template_name = 'references/index.html'
@@ -23,7 +28,7 @@ class ReferenceHome(View):
             return ReferenceMilitaryForm
         elif choose_form == 'Стипендия':
             return ReferenceGrandForm
-        elif choose_form == 'Обучении':
+        elif choose_form == 'Обучение':
             return ReferenceDiplomaForm
         elif choose_form == 'Копия аттестата':
             return ReferenceEducationForm
@@ -39,8 +44,24 @@ class ReferenceHome(View):
             new_reference.comment = data['comment']
         new_reference.reference_count = data['count']
         new_reference.save()
-        # send_notify_secretary(object.id)
+        self._send_notify(new_reference)
         return HttpResponseRedirect('history')
+
+    def _send_notify(self, reference):
+        """ Метод оповещения о новой заявки на почту """
+        subject = 'Цифровая платформа КП11 - Новая заявка на получение справки'
+        from_email = 'k31101993@yandex.ru'
+        department = Department.objects.get(name=reference.user.group.department)
+        to = ReferenceNotify.get_emails_by_department(department=department)
+        context = {
+            'title': 'Зарегистрирована новая заявка на получение справки',
+            'reference': reference
+        }
+        html_content = render_to_string('email/reference.html', context=context)
+        text_content = strip_tags(html_content)
+        msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
 
     def get(self, request):
         """ Метод обработки GET запроса получения страницы с заказом справок """
@@ -84,11 +105,12 @@ class ReferenceHome(View):
             return render(request, template_name=self.template_name, context=context)
 
 
-class ReferenceHistory(View):
-
+class ReferenceHistory(LoginRequiredMixin, View):
+    """ Контроллер отображения страницы с историей заявок на получение справки """
     template_name = 'references/history.html'
 
     def get(self, request, *args, **kwargs):
+        """ Метод обработки GET запрос получения страницы с историей справок """
         history = Reference.objects.filter(user=request.user.pk).order_by('-created_at')
         context = {
             'title': 'Справки',

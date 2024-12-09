@@ -222,12 +222,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://www.abstractapi.com/guides/django-send-email
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST', default='')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
-EMAIL_PORT = env('EMAIL_PORT', default='')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=1)
-EMAIL_USE_SSL = env('EMAIL_USE_SSL', default=0)
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env('EMAIL_PORT', default=465)
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False)
+EMAIL_USE_SSL = env('EMAIL_USE_SSL', default=True)
 
 
 # CKEditor

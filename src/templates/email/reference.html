@@ -1,0 +1,12 @@
+{% extends "email/base.html" %}
+{% block content %}
+<div>
+    <p><b>Данные о запросе # {{ reference.pk }}</b></p>
+    <p>ФИО инициатора: {{ reference.user }}</p>
+    <p>Дата рождения: {{ reference.user.birthday }}</p>
+    <p>Группа: {{ reference.user.group }}</p>
+    <p>Тип справки: {{ reference.type }}</p>
+    <p>Комментарий: {{ reference.comment }}</p>
+    <p>Количество: {{ reference.reference_count }}</p>
+</div>
+{% endblock %}
