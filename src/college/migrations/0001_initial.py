@@ -83,6 +83,11 @@ class Migration(migrations.Migration):
                     upload_to='img/users/',
                     verbose_name='Изображение'
                 )),
+                ('ldap_userpic', models.BinaryField(
+                    blank=True,
+                    null=True,
+                    verbose_name='Изображение LDAP'
+                )),
                 ('middle_name', models.CharField(
                     blank=True,
                     max_length=50,

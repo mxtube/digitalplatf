@@ -47,6 +47,7 @@ class SiteSettings(models.Model):
 class CustomPerson(AbstractUser):
     """ Extension for basic user model """
     userpic = models.ImageField(upload_to='img/users/', verbose_name='Изображение', blank=True, null=True)
+    ldap_userpic = models.BinaryField(verbose_name='Изображение LDAP', null=True, blank=True)
     middle_name = models.CharField(max_length=50, verbose_name='Отчество', blank=True)
     mobile = PhoneNumberField(verbose_name='Мобильный телефон', region='', blank=True, null=True)
     birthday = models.DateField(max_length=10, blank=True, null=True, verbose_name='Дата рождения')

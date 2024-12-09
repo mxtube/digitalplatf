@@ -18,12 +18,14 @@ django-environ==0.11.2
 django-extensions==3.2.3
 django-js-asset==2.2.0
 django-phonenumber-field==7.3.0
+django-python3-ldap==0.15.8
 django-redis==5.4.0
 environ==1.0
 et-xmlfile==1.1.0
 flake8==7.1.1
 imgkit==1.2.3
 kombu==5.3.5
+ldap3==2.9.1
 loguru==0.7.2
 mccabe==0.7.0
 openpyxl==3.1.2
@@ -32,6 +34,7 @@ pillow==10.2.0
 prompt-toolkit==3.0.43
 psycopg==3.1.18
 psycopg-binary==3.1.18
+pyasn1==0.5.1
 pycodestyle==2.12.1
 pyflakes==3.2.0
 python-dateutil==2.8.2
