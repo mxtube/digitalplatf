@@ -20,7 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables from the .env file
 # https://github.com/joke2k/django-environ
 
-env = environ.Env(DEBUG=(bool, False))
+env = environ.Env(
+    DEBUG=(bool, False),
+    STORAGE_MEDIA=(str, (os.path.join(BASE_DIR, '../dp_data/'))),
+    STORAGE_STATIC=(str, (os.path.join(BASE_DIR, '../dp_static/')))
+)
 environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
 
 # Quick-start development settings - unsuitable for production
@@ -196,7 +200,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = env('STORAGE_STATIC')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core/static'),
@@ -208,7 +212,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '../data/')
+MEDIA_ROOT = env('STORAGE_MEDIA')
 
 
 # Default primary key field type

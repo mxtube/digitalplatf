@@ -16,29 +16,47 @@ pip install -r requirements.txt
 Для работы приложения разверните Redis и PostgreSQL, создайте файл .env в папке dpapp и укажите значения:
 ```shell
 # Project
+DEBUG=False
+
+#DJANGO
 DJANGO_SECRET_KEY=''
-DEBUG=1
 
-# Redis
-REDIS_HOST=''
-REDIS_USER=''
-REDIS_PASSWORD=''
-REDIS_PORT=6379
+# EMAIL
+EMAIL_HOST='smtp.yandex.ru'
+EMAIL_PORT=465
+EMAIL_HOST_USER=''
+EMAIL_HOST_PASSWORD=''
+EMAIL_USE_TLS=False
+EMAIL_USE_SSL=True
 
-# Postgres
+# DATABASE
 POSTGRES_DB=''
 POSTGRES_USER=''
 POSTGRES_PASSWORD=''
 POSTGRES_HOST=127.0.0.1
 POSTGRES_PORT=5432
 
-# Email
-EMAIL_HOST='smtp.yandex.ru'
-EMAIL_HOST_USER=''
-EMAIL_HOST_PASSWORD=''
-EMAIL_PORT=465
-EMAIL_USE_TLS=0
-EMAIL_USE_SSL=1
+# LDAP
+LDAP_CN=''
+LDAP_OU=''
+LDAP_DC_PRE=''
+LDAP_DC_POST=''
+LDAP_PASSWORD=''
+LDAP_AUTH_URL=''
+
+LDAP_ASB_DC='kp11'
+LDAP_ASB_DC_POST='local'
+
+# REDIS
+REDIS_HOST=''
+REDIS_USER='default'
+REDIS_PASSWORD=''
+REDIS_PORT=6379
+
+# STORAGE
+STORAGE_MEDIA='/opt/dp_data/'
+STORAGE_STATIC='/opt/dp_static'
+
 ```
 
 В корне проекта запустите docker compose
