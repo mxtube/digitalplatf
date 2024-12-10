@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .views import UploadSchedule, ScheduleDashboard
+from .views import UploadSchedule, ScheduleDashboard # noqa F401
 from django.urls import path
-from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, Schedule, UploadSchedules,
+from .models import (Stream, GroupStream, Couple, ScheduleCalendarMark, ScheduleCalendar, Schedule, UploadSchedules, # noqa F401
                      DashboardSchedule)
 from rangefilter.filters import DateRangeQuickSelectListFilterBuilder
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
