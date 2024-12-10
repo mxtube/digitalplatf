@@ -72,6 +72,15 @@ class CustomPerson(AbstractUser):
     def get_name_initials(self):
         return f'{self.last_name} {self.first_name[0]}.{self.middle_name[0]}.'
 
+    def get_user_professional(self):
+        return f'{self.group.profession.number} {self.group.profession.name}'
+
+    def get_user_department(self):
+        return f'{self.group.department}'
+
+    def get_user_supervisor(self):
+        return f'{self.group.supervisor}'
+
     @staticmethod
     def get_user_by_fio(fio: str):
         value = fio.split()
