@@ -16,11 +16,12 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import HomePage, ProfilePage, ProfileEditPage, SuggestionPage
+from .views import HomePage, ProfilePage, ProfileEditPage, SuggestionPage, CustomPasswordResetView
 
 urlpatterns = [
     path('', HomePage.as_view(), name='homepage'),
     path('accounts/profile/', ProfilePage.as_view(), name='profile'),
+    path('password-reset/', CustomPasswordResetView.as_view(), name='password_reset'),
     path('edit_profile/', ProfileEditPage.as_view(), name='edit_profile'),
     path('suggestion', SuggestionPage.as_view(), name='suggestion'),
 ]
