@@ -39,7 +39,10 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+else:
+    ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = ['127.0.0.1']
 
@@ -207,7 +210,10 @@ DATE_INPUT_FORMATS = [
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = env('STORAGE_STATIC')
+if DEBUG:
+    STATIC_ROOT = env('STORAGE_STATIC')
+else:
+    STATIC_ROOT = '/opt/dp_static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core/static'),
@@ -219,7 +225,10 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = env('STORAGE_MEDIA')
+if DEBUG:
+    MEDIA_ROOT = env('STORAGE_MEDIA')
+else:
+    MEDIA_ROOT = '/opt/dp_media/'
 
 
 # Default primary key field type
