@@ -12,8 +12,7 @@ services:
       - ./src:/opt/digitalplatform
       - ./src/static:/opt/digitalplatform/static
       - ../data:/opt/data
-    command: >
-      sh -c "python manage.py collectstatic --no-input && python manage.py migrate && python manage.py loaddata core/fixtures/*.* && python manage.py runserver 0.0.0.0:8000"
+    command: python manage.py collectstatic --no-input && python manage.py migrate && python manage.py loaddata core/fixtures/*.* && python manage.py runserver 0.0.0.0:8000
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_DB=${POSTGRES_DB}
@@ -21,16 +20,34 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_PORT=${POSTGRES_PORT}
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
-      - REDIS_HOST=${REDIS_HOST}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_USE_TLS=${EMAIL_USE_TLS}
+      - EMAIL_USE_SSL=${EMAIL_USE_SSL}
+      - REDIS_HOST=redis
       - REDIS_USER=${REDIS_USER}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=${REDIS_PORT}
+      - LDAP_CN=${LDAP_CN}
+      - LDAP_OU=${LDAP_OU}
+      - LDAP_DC_PRE=${LDAP_DC_PRE}
+      - LDAP_DC_POST=${LDAP_DC_POST}
+      - LDAP_PASSWORD=${LDAP_PASSWORD}
+      - LDAP_AUTH_URL=${LDAP_AUTH_URL}
+      - LDAP_ASB_DC=${LDAP_ASB_DC}
+      - LDAP_ASB_DC_POST=${LDAP_ASB_DC_POST}
+      - LDAP3_USER=${LDAP3_USER}
+      - LDAP3_PASSWORD=${LDAP3_PASSWORD}
       - CSRF_COOKIE_SECURE=True
       - SESSION_COOKIE_SECURE=True
       - SECURE_SSL_REDIRECT=True
       - SECURE_HSTS_SECONDS=True
       - SECURE_HSTS_INCLUDE_SUBDOMAINS=True
       - SECURE_HSTS_PRELOAD=True
+      - STORAGE_MEDIA=${STORAGE_MEDIA}
+      - STORAGE_STATIC=${STORAGE_STATIC}
     depends_on:
       - db
       - redis
