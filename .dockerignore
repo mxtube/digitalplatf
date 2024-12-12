@@ -1,21 +1,36 @@
+# IDE и системныые файлы
 .idea
-**/__pycache__/
-**/venv
-**/.*
 .DS_Store
 
-**.git/
+# Кэш Python
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
 
-# Django Fixtures
+# Виртуальные окружения
+**/venv
+.venv/
+
+# Git файлы
+.git/
+.gitignore
+
+# Django fixtures
 src/college/fixtures/
-src/educationpart/fixtures
-src/reference/fixtures
-src/schedule/fixtures
+src/educationpart/fixtures/
+src/reference/fixtures/
+src/schedule/fixtures/
+
+# Статические файлы
 **/core/static/*
 
-# Enviroments
-.venv
-venv/
-
-# Unit test / coverage reports
+# Тесты и отчёты покрытия
 **/.pytest_cache/
+**/coverage/
+
+# Игнор скрытых файлов
+**/.*
+
+# Исключение Dockerfile и .dockerignore из игнорирования
+!Dockerfile
+!.dockerignore
