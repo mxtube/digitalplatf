@@ -5,14 +5,13 @@ Created on Thu 7.03.24
 
 import datetime
 import json
-from core.settings import MEDIA_ROOT
 
 
 class Scheduling:
     """ Класс обрабатывающий файл с расписанием """
 
-    JSON_PATH = MEDIA_ROOT + 'json/schedparsing/'
-    IMAGE_PATH = MEDIA_ROOT + 'pix/schedparsing/'
+    JSON_PATH = 'json/schedparsing/'
+    IMAGE_PATH = 'pix/schedparsing/'
 
     def __init__(self):
         self.schedule = {}

@@ -1,7 +1,6 @@
 import os
 import locale
 import datetime
-from core import settings
 from django.views import View
 from .tasks import upload_schedule
 from .models import Schedule, Couple
@@ -142,7 +141,7 @@ class UploadSchedule(View):
     template_name = 'admin/schedule/upload_schedule.html'
     upload_form = UploadSchedulesFormAdmin
     context = {'title': 'Загрузить изменение в расписание', 'form': upload_form}
-    PATH = settings.MEDIA_ROOT + 'xls/schedparsing/'
+    PATH = 'xls/schedparsing/'
 
     def handle_uploaded_file(self, file, department: Department):
         path = self.PATH + department.slug + '/'
