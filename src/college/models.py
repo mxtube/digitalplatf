@@ -70,6 +70,8 @@ class CustomPerson(AbstractUser):
         return f'{self.last_name} {self.first_name} {self.middle_name}'
 
     def get_name_initials(self):
+        if not self.middle_name:
+            return f'{self.last_name} {self.first_name[0]}.'
         return f'{self.last_name} {self.first_name[0]}.{self.middle_name[0]}.'
 
     def get_user_professional(self):
