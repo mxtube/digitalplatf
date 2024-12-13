@@ -34,20 +34,20 @@
         </ul>
     </div>
 </div>
+{% if request.user.group %}
 <hr class="major" />
     <h3>Информация об образовании:</h3>
     <div class="row">
         <div class="col-12 col-12-small">
-            {% if request.user.group %}
             <ul class="alt">
                 <li><b>Группа:</b> {{ request.user.group }}</li>
                 <li><b>Учебный центр:</b> {{ request.user.get_user_department }}</li>
                 <li><b>Специальность:</b> {{ request.user.get_user_professional }}</li>
                 <li><b>Куратор:</b> {{ request.user.get_user_supervisor }}</li>
             </ul>
-            {% endif %}
         </div>
     </div>
+{% endif %}
 <hr class="major" />
 <header class="major">
     <h3>Внутренние сервисы</h3>
