@@ -85,11 +85,16 @@ class CustomPerson(AbstractUser):
 
     @staticmethod
     def get_user_by_fio(fio: str):
-        value = fio.split()
-        if len(value) == 2:
-            return CustomPerson.objects.get(first_name=value[1], last_name=value[0])
-        elif len(value) == 3:
-            return CustomPerson.objects.get(first_name=value[1], last_name=value[0], middle_name=value[2])
+        try:
+            value = fio.split()
+            if len(value) == 2:
+                return CustomPerson.objects.get(first_name=value[1], last_name=value[0])
+            elif len(value) == 3:
+                return CustomPerson.objects.get(first_name=value[1], last_name=value[0], middle_name=value[2])
+            else:
+                return None
+        except CustomPerson.DoesNotExist:
+            return None
 
 
 class Department(models.Model):
