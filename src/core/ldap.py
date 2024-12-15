@@ -2,7 +2,7 @@ import ssl
 from ldap3 import Server, Connection, ALL, Tls
 from loguru import logger
 
-from .settings import LDAP_AUTH_URL, LDAP3_USER, LDAP3_PASSWORD, LDAP_AUTH_SEARCH_BASE
+from .settings.production import LDAP_AUTH_URL, LDAP3_USER, LDAP3_PASSWORD, LDAP_AUTH_SEARCH_BASE
 
 server = Server(
         host=f'ldaps://{LDAP_AUTH_URL}',

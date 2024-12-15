@@ -45,10 +45,6 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('-last_login',)
     search_fields = ['username', 'email', 'first_name', 'last_name', 'middle_name']
     autocomplete_fields = ['group']
-    add_fieldsets = (
-        *UserAdmin.fieldsets,
-        ('Дополнительная информация', {'fields': ('middle_name', 'alternative_email',)})
-    )
 
     fieldsets = (
         (None, {'fields': ('username', 'email',), }),

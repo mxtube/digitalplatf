@@ -7,7 +7,7 @@ from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from core.settings import EMAIL_HOST_USER
+from core.settings.base import EMAIL_HOST_USER
 from core.ldap import search_and_modify_password
 from .forms import SuggestionForm, EditProfileForm, CustomPasswordResetForm
 from .models import SiteSettings, CustomPerson, UserServices

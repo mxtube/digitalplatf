@@ -7,18 +7,18 @@ import re
 from .event import Event
 from loguru import logger
 from .scheduling import Scheduling
-from core.settings import MEDIA_ROOT
 from educationpart.models import Studygroup
-from college.models import Department, CustomPerson
+from college.models import Department, CustomPerson, Auditory
 from django.core.exceptions import ObjectDoesNotExist
-from schedule.models import Schedule, GroupStream, Couple, Discipline, Auditory
+from schedule.models import Schedule, GroupStream, Couple
+from educationpart.models import Discipline
 
 # TODO: Убрать баг для обработки ошибки если в выбраном диапозоне дат нет выбранного дня
 
 
 class Parsing(Scheduling, Event):
 
-    EXCEL_FILE_PATH = MEDIA_ROOT + 'xls/schedparsing/'
+    EXCEL_FILE_PATH = 'xls/schedparsing/'
 
     def __init__(self, filename: str, start_row: int, department: str):
         self.department = Department.objects.get(name=department)
