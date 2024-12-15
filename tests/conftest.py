@@ -1,6 +1,29 @@
 import pytest
 import datetime
-from college.models import CustomPerson, Department, Auditory
+from college.models import CustomPerson, Department, Auditory, SiteSettings
+from reference.models import Reference, Type, Status
+
+
+@pytest.fixture
+def site_settings():
+    settings = SiteSettings.objects.create(
+        site_name='Государственное автономное профессиональное образовательное учреждение города Москвы Колледж предпринимательства №11',  # noqa E501
+        short_site_name='ГАПОУ КП №11',
+        logotype='logo.png',
+        description='Образовательная организация',
+        contact_description='Мы находимся по адресу: г. Москва, Онежская дом 3',
+        phone='+74954445566',
+        email='support@kp11.ru',
+        address='129344, г. Москва, Проспект мира д.1',
+        vk_link='https://vk.com/',
+        youtube_link='https://youtube.com/',
+        odnoklassniki_link='https://ok.ru/',
+        dzen_link='https://dzen.ru/',
+        telegram_link='https://t.me/',
+        whatsapp_link='https://whatsapp.ru/'
+    )
+    settings.save()
+    return settings
 
 
 @pytest.fixture
@@ -30,6 +53,22 @@ def users():
 
 
 @pytest.fixture
+def user():
+    user = CustomPerson(
+        username='petrovsa',
+        first_name='Сергей',
+        last_name='Петров',
+        middle_name='Алексеевич',
+        email='kafomin@yandex.ru',
+        birthday=datetime.date(1997, 3, 1),
+        job_title='Stydent',
+        is_active=True
+    )
+    user.save()
+    return user
+
+
+@pytest.fixture
 def department():
     supervisor = CustomPerson.objects.create(
         username='ivanovia',
@@ -55,3 +94,28 @@ def auditory(department):
     auditory = Auditory(number='404', department=department)
     auditory.save()
     return auditory
+
+
+@pytest.fixture
+def reference_type_military():
+    reference_type = Type(name='В военкомат', example='files/military.pdf')
+    reference_type.save()
+    return reference_type
+
+
+@pytest.fixture
+def reference_status_create():
+    reference_status = Status(name='Создан')
+    reference_status.save()
+    return reference_status
+
+
+@pytest.fixture
+def reference_military(user, reference_type_military, reference_status_create):
+    reference = Reference(
+        user=user,
+        type=reference_type_military,
+        comment='Военный комиссариат Бабушкинского района СВАО города Москвы'
+    )
+    reference.save()
+    return reference
