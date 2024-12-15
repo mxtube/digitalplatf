@@ -9,7 +9,6 @@ media
 data/
 .pgpass
 .emailpass
-**/src/static/
 
 # Docker
 **/docker_compose_volumes/pg_data/

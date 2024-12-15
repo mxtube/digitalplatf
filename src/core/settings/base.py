@@ -10,21 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import environ
 import os
+import environ
 from pathlib import Path
+
+env = environ.Env()
+
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-# Load environment variables from the .env file
-# https://github.com/joke2k/django-environ
-
-env = environ.Env(
-    DEBUG=(bool, False),
-)
-
-environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -33,28 +28,10 @@ environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
 
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-INTERNAL_IPS = ['127.0.0.1']
-
-# SECURITY Deploy on in production
-# https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/#critical-settings
-
-CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE', default=False)
-
-SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE', default=False)
-
-SECURE_SSL_REDIRECT = env('SECURE_SSL_REDIRECT', default=False)
-
-SECURE_HSTS_SECONDS = env('SECURE_HSTS_SECONDS', default=False)
-
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=False)
-
-SECURE_HSTS_PRELOAD = env('SECURE_HSTS_PRELOAD', default=False)
-
 # Admins
 # https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-ADMINS
 
 ADMINS = [("Kirill Kuznetsov", "kafomin@yandex.ru")]
-
 
 # Application definition
 
@@ -95,7 +72,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -237,7 +213,7 @@ REDIS_PORT = env('REDIS_PORT')
 # https://docs.celeryq.dev/en/latest/index.html
 # RUN command: celery -A core worker -l INFO
 
-CELERY_BROKER_URL = (f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0', 'redis://redis:6378/0')
+CELERY_BROKER_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 10}
 

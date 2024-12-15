@@ -19,7 +19,7 @@ class TestSiteSettings:
         assert site_settings.dzen_link == 'https://dzen.ru/'
         assert site_settings.telegram_link == 'https://t.me/'
         assert site_settings.whatsapp_link == 'https://whatsapp.ru/'
-        settings.delete()
+        site_settings.delete()
 
     def test_social_network(self):
         pass

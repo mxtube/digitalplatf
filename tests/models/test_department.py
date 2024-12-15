@@ -5,7 +5,7 @@ from django.urls import reverse
 class TestDepartment:
 
     @pytest.mark.django_db
-    def test_create_department(self, department):
+    def test_create_department(self, department, user_db):
 
         assert department.name == 'Центр информационно-коммуникационных технологий'
         assert department.slug == 'cikt'
@@ -14,7 +14,7 @@ class TestDepartment:
         assert department.email == 'cikt@kp11.ru'
         assert department.coordinate == 'г. Москва, Ленинградское шоссе, 13А'
         assert department.supervisor == department.supervisor
-        assert department.supervisor.username == 'ivanovia'
+        assert department.supervisor.username == user_db.username
 
         department.delete()
 

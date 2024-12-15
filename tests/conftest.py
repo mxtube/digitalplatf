@@ -31,6 +31,7 @@ def users():
     return [
         CustomPerson(
             username='kuznetsovka',
+            password='Pa$$w0rd',
             first_name='Кирилл',
             last_name='Кузнецов',
             middle_name='Александрович',
@@ -41,6 +42,7 @@ def users():
         ),
         CustomPerson(
             username='utkina',
+            password='Pa$$w0rd',
             first_name='Alex',
             last_name='Utkin',
             middle_name='',
@@ -53,9 +55,10 @@ def users():
 
 
 @pytest.fixture
-def user():
-    user = CustomPerson(
+def user_db():
+    user = CustomPerson.objects.create_user(
         username='petrovsa',
+        password='Pa$$w0rd',
         first_name='Сергей',
         last_name='Петров',
         middle_name='Алексеевич',
@@ -64,18 +67,11 @@ def user():
         job_title='Stydent',
         is_active=True
     )
-    user.save()
     return user
 
 
 @pytest.fixture
-def department():
-    supervisor = CustomPerson.objects.create(
-        username='ivanovia',
-        first_name='Иван',
-        last_name='Иванов',
-        middle_name='Иванович'
-    )
+def department(user_db):
     department = Department(
         name='Центр информационно-коммуникационных технологий',
         slug='cikt',
@@ -83,7 +79,7 @@ def department():
         phone='+79169998877',
         email='cikt@kp11.ru',
         coordinate='г. Москва, Ленинградское шоссе, 13А',
-        supervisor=supervisor
+        supervisor=user_db
     )
     department.save()
     return department
@@ -111,9 +107,9 @@ def reference_status_create():
 
 
 @pytest.fixture
-def reference_military(user, reference_type_military, reference_status_create):
+def reference_military(user_db, reference_type_military, reference_status_create):
     reference = Reference(
-        user=user,
+        user=user_db,
         type=reference_type_military,
         comment='Военный комиссариат Бабушкинского района СВАО города Москвы'
     )

@@ -1,17 +1,32 @@
 import ssl
 from .base import *
 
-DEBUG = False
+DEBUG = env.bool('DEBUG', False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+
+# SECURITY Deploy on in production
+# https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/#critical-settings
+
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=False)
+
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
+
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=False)
+
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
+
+SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=0)
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=False)
+
+SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=False)
 
 # Application definition
 
-INSTALLED_APPS += [
-    'django_python3_ldap',
-]
+INSTALLED_APPS += ['django_python3_ldap',]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -64,7 +79,7 @@ ldap_connection_string = f"CN={env('LDAP_CN')},OU={env('LDAP_OU')},DC={env('LDAP
 LDAP_AUTH_CONNECTION_USERNAME = ldap_connection_string
 LDAP_AUTH_CONNECTION_PASSWORD = env('LDAP_PASSWORD')
 
-LDAP3_USER = env('LDAP3_USER')
+LDAP3_USER = os.getenv('LDAP3_USER')
 LDAP3_PASSWORD = env('LDAP3_PASSWORD')
 
 LOGGING = {

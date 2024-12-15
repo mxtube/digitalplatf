@@ -1,0 +1,91 @@
+version: "2.0"
+services:
+
+  db:
+    image: postgres:16.2-alpine
+    container_name: dp_psql
+    restart: always
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - /opt/dp_pg_data/:/var/lib/postgresql/data
+
+  redis:
+      image: redis:alpine
+      restart: always
+      container_name: dp_redis
+      volumes:
+        - /opt/dp_redis:/root/redis
+        - /opt/dp_redis/redis.conf:/usr/local/etc/redis/redis.conf
+      environment:
+        - REDIS_PASSWORD=${REDIS_PASSWORD}
+      ports:
+        - "6379:6379"
+
+  app:
+    image: mxtube/digitalplatform:0.0.912
+    container_name: dp_app
+    restart: always
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn core.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - /opt/dp_data/:/opt/dp_media/
+      - /opt/dp_static/:/opt/dp_static/
+      - ./nginx.conf:/opt/nginx/
+    expose:
+      - 8000
+    depends_on:
+      - db
+      - redis
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_USE_TLS=${EMAIL_USE_TLS}
+      - EMAIL_USE_SSL=${EMAIL_USE_SSL}
+      - REDIS_HOST=redis
+      - REDIS_USER=${REDIS_USER}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - LDAP_CN=${LDAP_CN}
+      - LDAP_OU=${LDAP_OU}
+      - LDAP_DC_PRE=${LDAP_DC_PRE}
+      - LDAP_DC_POST=${LDAP_DC_POST}
+      - LDAP_PASSWORD=${LDAP_PASSWORD}
+      - LDAP_AUTH_URL=${LDAP_AUTH_URL}
+      - LDAP_ASB_DC=${LDAP_ASB_DC}
+      - LDAP_ASB_DC_POST=${LDAP_ASB_DC_POST}
+      - LDAP3_USER=${LDAP3_USER}
+      - LDAP3_PASSWORD=${LDAP3_PASSWORD}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - INTERNAL_IPS=${INTERNAL_IPS}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DEBUG=${DEBUG}
+
+
+  nginx:
+    image: nginx
+    container_name: dp_nginx
+    restart: unless-stopped
+    volumes:
+      - /opt/dp_static/:/opt/staticfiles
+      - /opt/dp_data/:/opt/mediafiles
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - /opt/dp_nginx/.log:/var/log/nginx/
+    ports:
+      - "80:80"
+    depends_on:
+      - app

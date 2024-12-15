@@ -21,9 +21,6 @@ src/educationpart/fixtures/
 src/reference/fixtures/
 src/schedule/fixtures/
 
-# Статические файлы
-**/core/static/*
-
 # Тесты и отчёты покрытия
 **/.pytest_cache/
 **/coverage/
