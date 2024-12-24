@@ -4,7 +4,7 @@ from django_celery_results.apps import CeleryResultConfig
 
 CeleryResultConfig.verbose_name = "Задачи"
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
 app = Celery('core')
 

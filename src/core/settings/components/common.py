@@ -9,21 +9,12 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
 import os
-import environ
-from pathlib import Path
+from core.settings.components import BASE_DIR, env
 
-env = environ.Env()
-
-environ.Env.read_env()
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = env('DJANGO_SECRET_KEY')
@@ -36,23 +27,29 @@ ADMINS = [("Kirill Kuznetsov", "kafomin@yandex.ru")]
 # Application definition
 
 INSTALLED_APPS = [
+    # Django admin
     'django.contrib.admin',
+
+    # Default django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
 
+    # Django extension
+    'django_extensions',
     'ckeditor',
     'ckeditor_uploader',
+    # Django Admin Range Filter
     # https://github.com/silentsokolov/django-admin-rangefilter
     'rangefilter',
+    # Django Admin List Filter
     # https://github.com/mrts/django-admin-list-filter-dropdown?ysclid=ltxamzeduk363659490
     'django_admin_listfilter_dropdown',
     'django_celery_results',
 
-    # modules
+    # Django extension apps
     'schedule_parsing.apps.ScheduleParsingConfig',
     'college.apps.CollegeConfig',
     'educationpart.apps.EducationpartConfig',
@@ -60,6 +57,7 @@ INSTALLED_APPS = [
     'reference.apps.ReferenceConfig',
     'docs.apps.DocsConfig',
 
+    # Django extension (to end)
     'phonenumber_field',
     'django_cleanup.apps.CleanupConfig',
 ]
@@ -99,28 +97,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-# Important: use Postgresql in debug mode
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': env('POSTGRES_HOST'),
-        'PORT': env('POSTGRES_PORT')
-    }
-}
-
-
 # Fixtures
 # https://docs.djangoproject.com/en/5.0/howto/initial-data/
 
 FIXTURE_DIRS = []
-
 
 # Auth
 # https://docs.djangoproject.com/en/5.0/topics/auth/customizing/
@@ -130,7 +110,6 @@ AUTH_USER_MODEL = 'college.CustomPerson'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -149,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -171,69 +149,3 @@ DATE_INPUT_FORMATS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# Email Server
-# https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-EMAIL_BACKEND
-# https://www.abstractapi.com/guides/django-send-email
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = env('EMAIL_PORT', default=465)
-EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False)
-EMAIL_USE_SSL = env('EMAIL_USE_SSL', default=True)
-
-
-# CKEditor
-# https://django-ckeditor.readthedocs.io/en/latest/#installation
-
-# TODO: изменить путь сохранения файлов для разных типов
-CKEDITOR_UPLOAD_PATH = 'ckeditor/'
-
-# TODO: Скрываем предупреждение о CKEditor 4.22.1, проверить обновление в будущем
-SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
-
-
-# REDIS
-# https://redis.io
-# https://timeweb.cloud/tutorials/redis/ustanovka-i-nastrojka-redis-dlya-raznyh-os
-
-REDIS_HOST = env('REDIS_HOST')
-
-REDIS_USER = env('REDIS_USER')
-
-REDIS_PASSWORD = env('REDIS_PASSWORD')
-
-REDIS_PORT = env('REDIS_PORT')
-
-
-# CELERY
-# https://docs.celeryq.dev/en/latest/index.html
-# RUN command: celery -A core worker -l INFO
-
-CELERY_BROKER_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
-
-CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 10}
-
-CELERY_ACCEPT_CONTENT = ['application/json']
-
-CELERY_TASK_SERIALIZER = 'json'
-
-CELERY_RESULT_SERIALIZER = 'json'
-
-CELERY_TIMEZONE = TIME_ZONE
-
-CELERY_TASK_TRACK_STARTED = True
-
-CELERY_RESULT_BACKEND = 'django-db'
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/1',
-    }
-}
-
-CELERY_CACHE_BACKEND = 'default'
