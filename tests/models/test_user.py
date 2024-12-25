@@ -1,7 +1,9 @@
 import pytest
-from college.models import CustomPerson
-
+import os
 from datetime import date
+from django.core.files.uploadedfile import SimpleUploadedFile
+
+from college.models import CustomPerson
 
 
 class TestCustomPerson:
@@ -74,3 +76,34 @@ class TestCustomPerson:
 
         assert found_user is not None
         assert found_user == user
+
+    @pytest.mark.django_db
+    def test_create_custom_person_with_userpic(self, media_root):
+        """ Проверяем, что пользователь может быть создан с изображением """
+        # Создаём тестовый файл
+        image_content = b'\x47\x49\x46\x38\x39\x61'  # GIF-заголовок
+        uploaded_file = SimpleUploadedFile(
+            name='test_image.gif',
+            content=image_content,
+            content_type='image/gif'
+        )
+
+        user = CustomPerson.objects.create_user(
+            username='testuser_with_pic',
+            password='secret',
+            email='test_with_pic@example.com',
+            userpic=uploaded_file
+        )
+
+        # Проверяем, что файл действительно прикреплён
+        assert user.userpic
+
+        # user.userpic.name -> 'img/userpic/test_image.gif' (относительно MEDIA_ROOT)
+        # user.userpic.path -> '/<tmp_dir>/img/userpic/test_image.gif' (абсолютный путь)
+
+        # Проверяем, что абсолютный путь начинается с временного media_root
+        assert user.userpic.path.startswith(media_root)
+
+        # Дополнительно можно проверить, что файл физически существует
+        assert os.path.exists(user.userpic.path)
+

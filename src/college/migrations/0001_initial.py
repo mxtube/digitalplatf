@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
                 ('userpic', models.ImageField(
                     blank=True,
                     null=True,
-                    upload_to='img/users/',
+                    upload_to='userpic',
                     verbose_name='Изображение'
                 )),
                 ('ldap_userpic', models.BinaryField(

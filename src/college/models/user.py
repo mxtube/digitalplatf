@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib import admin
+from core.storage import get_media_upload_path
 from phonenumber_field.modelfields import PhoneNumberField
 
 
 class CustomPerson(AbstractUser):
     """ Extension for basic user model """
-    userpic = models.ImageField(upload_to='img/users/', verbose_name='Изображение', blank=True, null=True)
+    userpic = models.ImageField(upload_to='img/userpic/', verbose_name='Изображение', blank=True, null=True)
     ldap_userpic = models.BinaryField(verbose_name='Изображение LDAP', null=True, blank=True)
     middle_name = models.CharField(max_length=50, verbose_name='Отчество', blank=True)
     mobile = PhoneNumberField(verbose_name='Мобильный телефон', region='', blank=True, null=True)

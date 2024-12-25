@@ -5,6 +5,16 @@ from reference.models import Reference, Type, Status
 
 
 @pytest.fixture
+def media_root(tmpdir, settings):
+    """
+    Подменяем MEDIA_ROOT на временную директорию, чтобы
+    все загруженные файлы во время тестов сохранялись там.
+    """
+    settings.MEDIA_ROOT = tmpdir.strpath
+    return settings.MEDIA_ROOT
+
+
+@pytest.fixture
 def site_settings():
     settings = SiteSettings.objects.create(
         site_name='Государственное автономное профессиональное образовательное учреждение города Москвы Колледж предпринимательства №11',  # noqa E501
