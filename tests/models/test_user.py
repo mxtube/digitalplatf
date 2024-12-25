@@ -106,4 +106,3 @@ class TestCustomPerson:
 
         # Дополнительно можно проверить, что файл физически существует
         assert os.path.exists(user.userpic.path)
-

@@ -11,7 +11,6 @@ class TestScheduleParsingEvent:
         assert schedule_event.couple == '1 пара'
         assert schedule_event.group == 'ИСиП-24 (11 кл.)'
 
-
     @pytest.mark.parametrize('sut, expected', [
         ('ИСиП-23 (9 кл.)', 'ИСиП-23 (9 кл.)'),
         (' ИСиП-23 (9 кл.)', 'ИСиП-23 (9 кл.)'),
@@ -67,14 +66,7 @@ class TestScheduleParsingEvent:
     @pytest.mark.parametrize('sut_name', ['Кузнецов Кирилл Александрович Александрович'])
     def test_no_valid_teacher_name(self, sut_name):
         with pytest.raises(ValueError):
-            event = Event(
-                group='С-23 (9кл.)',
-                couple='1 пара',
-                discipline='ОБЖ',
-                teacher=sut_name,
-                auditory='402'
-            )
-
+            Event(group='С-23 (9кл.)', couple='1 пара', discipline='ОБЖ', teacher=sut_name, auditory='402')
 
     @pytest.mark.parametrize('sut, expected', [('402', '402'), ('40', '40'), ('40 ', '40')])
     def test_number_auditory(self, sut, expected):
