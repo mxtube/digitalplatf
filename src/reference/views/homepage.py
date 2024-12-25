@@ -6,10 +6,10 @@ from django.utils.html import strip_tags
 from django.views import View
 from django.shortcuts import render
 
-from .models import Type, Reference, ReferenceNotify
 from college.models import CustomPerson, Department
-from .forms import (ReferenceChooseForm, ReferenceMilitaryForm, ReferenceGrandForm, ReferenceDiplomaForm,
-                    ReferenceEducationForm)
+from ..models import Type, Reference, ReferenceNotify
+from ..forms import (ReferenceChooseForm, ReferenceMilitaryForm, ReferenceGrandForm, ReferenceDiplomaForm,
+                     ReferenceEducationForm)
 
 
 class ReferenceHome(LoginRequiredMixin, View):
@@ -103,18 +103,3 @@ class ReferenceHome(LoginRequiredMixin, View):
                 'choose_form': self.choose_form
             }
             return render(request, template_name=self.template_name, context=context)
-
-
-class ReferenceHistory(LoginRequiredMixin, View):
-    """ Контроллер отображения страницы с историей заявок на получение справки """
-    template_name = 'references/history.html'
-
-    def get(self, request, *args, **kwargs):
-        """ Метод обработки GET запрос получения страницы с историей справок """
-        history = Reference.objects.filter(user=request.user.pk).order_by('-created_at')
-        context = {
-            'title': 'Справки',
-            'subtitle': 'История заказов',
-            'references': history
-        }
-        return render(request, template_name=self.template_name, context=context)
