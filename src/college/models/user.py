@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib import admin
-from core.storage import get_media_upload_path
 from phonenumber_field.modelfields import PhoneNumberField
 
 

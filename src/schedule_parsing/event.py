@@ -61,7 +61,6 @@ class Event:
     def auditory(self):
         return f'{self._auditory}'
 
-
     @auditory.setter
     def auditory(self, value):
         self._auditory = value.strip()
