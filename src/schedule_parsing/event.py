@@ -5,14 +5,7 @@ Created on Thu 7.03.24
 
 
 class Event:
-    def __init__(
-            self,
-            group: str,
-            couple: str,
-            discipline: str,
-            teacher: str,
-            auditory: str
-    ):
+    def __init__(self, group: str, couple: str, discipline: str, teacher: str, auditory: str):
         self.group = group
         self.couple = couple
         self.discipline = discipline
@@ -20,7 +13,16 @@ class Event:
         self.auditory = auditory
 
     def __str__(self):
-        return f'{self.couple} {self.discipline} {self.teacher} {self.auditory}'
+        return f'{self.group} - {self.couple} {self.discipline} / {self.teacher} {self.auditory}'
+
+    def to_dict(self):
+        return {
+            'couple': self.couple,
+            'group': self.group,
+            'discipline': self.discipline,
+            'teacher': self.teacher,
+            'auditory': self.auditory
+        }
 
     @property
     def group(self):
@@ -52,9 +54,14 @@ class Event:
 
     @teacher.setter
     def teacher(self, value):
-        clean_name = value.split()
-        if len(clean_name) not in (2, 3):
-            raise ValueError(f'Ошибка в имени преподавателя. Ожидается 2 или 3 слова, но получено {len(clean_name)}.')
+        clear_name = value.strip()
+        clean_name = clear_name.split()
+        if len(clean_name) not in (2, 3) and not clear_name.lower() == 'none':
+            raise ValueError(f'Ошибка в имени преподавателя {clean_name}. '
+                             f'Ожидается 2 или 3 слова, но получено {len(clean_name)}.')
+        if clear_name.lower() == 'none':
+            self._teacher = 'None None None'
+            return
         self._teacher = value.strip()
 
     @property
@@ -63,4 +70,7 @@ class Event:
 
     @auditory.setter
     def auditory(self, value):
-        self._auditory = value.strip()
+        if isinstance(value, str):
+            self._auditory = value.strip()
+        else:
+            self._auditory = str(value)

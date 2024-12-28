@@ -3,80 +3,70 @@ Created on Thu 7.03.24
 @author: Kirill Kuznetsov
 """
 import openpyxl
-import re
-from .event import Event
 from loguru import logger
-from .scheduling import Scheduling
-from educationpart.models import Studygroup
-from college.models import Department, CustomPerson, Auditory
 from django.core.exceptions import ObjectDoesNotExist
+
+from college.models import Department, CustomPerson, Auditory
+from educationpart.models import Studygroup, Discipline
 from schedule.models import Schedule, GroupStream, Couple
-from educationpart.models import Discipline
 
-# TODO: Убрать баг для обработки ошибки если в выбраном диапозоне дат нет выбранного дня
+from .event import Event
+from .schedule_table import ScheduleTable
 
 
-class Parsing(Scheduling, Event):
+class ParsingFile:
 
-    EXCEL_FILE_PATH = 'xls/schedparsing/'
-
-    def __init__(self, filename: str, start_row: int, department: str):
+    def __init__(self, filepath: str, department: str, start_row: int = 2):
         self.department = Department.objects.get(name=department)
-        self.file = openpyxl.open(f'{self.EXCEL_FILE_PATH}{self.department.slug}/{filename}',
-                                  read_only=True).active
-        self.current_col = 1
+        self.file = openpyxl.open(filepath, read_only=True)
+        self.iter_col = 2
         self.start_row = start_row
         self.error_box = []
-        self.schedule = Scheduling()
+        self.schedule = ScheduleTable()
 
     def start(self, start_date, end_date, weekday):
         """ Функция запуска парсинга данных из файла. Функция запускает 3 операции. """
         logger.info('Запущен парсинг расписания')
-        if self.__excel_reader():
+        if self._excel_reader():
             if self.__check_data_db(self.department):
                 groups: list = Schedule.get_date_by_range(start_date, end_date, weekday)
                 self.__save_change_gb(self.department, groups)
         return self.error_box
 
-    def __excel_reader(self):
+    def _excel_reader(self):
         """ Функция чтения данных из файла. """
         logger.info('Чтение данных из файла')
-        while self.current_col < self.file.max_column:
-            group = self.file[1][self.current_col].value.strip()
-            for file_row in range(self.start_row, self.file.max_row + 1):
-                current_cell = self.file[file_row][self.current_col]
-                if current_cell.value is not None:
-                    try:
-                        stream = self.__parse_stream(self.file[file_row][0])
-                        discipline = self.__parse_discipline(self.file[file_row][self.current_col])
-                        teacher = self.__parse_teacher(self.file[file_row][self.current_col])
-                        auditory = self.__parse_auditory(self.file[file_row][self.current_col + 1])
-                        event = Event(group, stream, discipline, teacher, auditory)
-                        self.schedule.add_event(event)
-                    except Exception as e:
-                        self.error_box.append(e)
-            self.current_col += 2
-        return len(self.error_box) == 0
+        sheet = self.file.active
+        while self.iter_col < sheet.max_column:
+            group_cell = sheet.cell(row=1, column=self.iter_col).value
+            for iter_row in range(self.start_row, sheet.max_row + 1):
+                iter_cell = sheet.cell(row=iter_row, column=self.iter_col)
 
-    def __parse_stream(self, cell):
-        if cell.value:
-            return cell.value.strip()
-        raise Exception('Ошибка в ячейки', cell.coordinate, cell.value)
+                if iter_cell.value is None:
+                    continue
 
-    def __parse_discipline(self, cell):
-        if '/' in cell.value and cell.value is not None:
-            return cell.value.split('/')[0].strip()
-        raise Exception('Ошибка в ячейки', cell.coordinate, cell.value)
+                try:
+                    couple_cell = str(sheet.cell(row=iter_row, column=1).value)
+                    discipline_cell = str(sheet.cell(row=iter_row, column=self.iter_col).value.split('/')[0])
+                    teacher_cell = str(sheet.cell(row=iter_row, column=self.iter_col).value.split('/')[1])
+                    auditory_cell = str(sheet.cell(row=iter_row, column=self.iter_col + 1).value)
+                    event = Event(
+                        group=group_cell,
+                        couple=couple_cell,
+                        discipline=discipline_cell,
+                        teacher=teacher_cell,
+                        auditory=auditory_cell
+                    )
+                    self.schedule.add_event_to_schedule_table(event=event)
+                except Exception as e:
+                    logger.error(f'{e}, {iter_cell.coordinate}, {iter_cell.value}')
+                    self.error_box.append(e)
 
-    def __parse_teacher(self, cell):
-        if '/' in cell.value and cell.value is not None:
-            return cell.value.split('/')[1].strip()
-        raise Exception('Ошибка в ячейки', cell.coordinate, cell.value)
+            self.iter_col += 2
 
-    def __parse_auditory(self, cell):
-        if cell.value:
-            return str(cell.value).strip()
-        raise Exception('Ошибка в ячейки', cell.coordinate, cell.value)
+        count_err = len(self.error_box)
+        logger.info(f'Найдено {count_err} ошибок при чтении файла')
+        return count_err == 0
 
     def __check_data_db(self, department):
         """ Функция проверки наличия информации в базе данных """
@@ -88,12 +78,13 @@ class Parsing(Scheduling, Event):
                         stdgrp = Studygroup.objects.get(department=department, name=group)
                         gs = GroupStream.objects.get(group=stdgrp)
                         couple = Couple.objects.get(number=couple, stream=gs.stream)
-                        discipline = Discipline.objects.get(name=event.get('discipline')) # noqa F841
-                        auditory = Auditory.objects.get(number=event.get('auditory'), department=department) # noqa F841
-                        teacher = CustomPerson.objects.get( # noqa 841
-                            last_name=re.split(r'[.\s]', event.get('teacher'))[0],
-                            first_name__contains=re.split(r'[.\s]', event.get('teacher'))[1],
-                            middle_name__contains=re.split(r'[.\s]', event.get('teacher'))[2],
+
+                        Discipline.objects.get(name=event.get('discipline'))
+                        Auditory.objects.get(number=event.get('auditory'), department=department)
+                        CustomPerson.objects.get(
+                            last_name=event.get('teacher').split()[0],
+                            first_name=event.get('teacher').split()[1],
+                            middle_name=event.get('teacher').split()[2],
                             is_teacher=True
                         )
                     except ObjectDoesNotExist as e:
@@ -116,9 +107,9 @@ class Parsing(Scheduling, Event):
                         discipline = Discipline.objects.get(name=event.get('discipline'))
                         auditory = Auditory.objects.get(number=event.get('auditory'), department=department)
                         teacher = CustomPerson.objects.get(
-                            last_name=re.split(r'[.\s]', event.get('teacher'))[0],
-                            first_name__contains=re.split(r'[.\s]', event.get('teacher'))[1],
-                            middle_name__contains=re.split(r'[.\s]', event.get('teacher'))[2],
+                            last_name=event.get('teacher').split()[0],
+                            first_name=event.get('teacher').split()[1],
+                            middle_name=event.get('teacher').split()[2],
                             is_teacher=True
                         )
                         e = model(

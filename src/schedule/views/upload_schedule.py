@@ -3,7 +3,7 @@ from django.views import View
 from django.shortcuts import render
 
 from ..tasks import upload_schedule
-from schedule_parsing.parsing import Parsing # noqa F401
+from schedule_parsing.parsing import ParsingFile # noqa F401
 from college.models import Department
 from schedule.forms import UploadSchedulesFormAdmin
 

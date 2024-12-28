@@ -3,7 +3,7 @@ from django.views import View
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 
-from schedule_parsing.parsing import Parsing # noqa F401
+from schedule_parsing.parsing import ParsingFile # noqa F401
 from college.models import Department
 from schedule.forms import ScheduleDateForm, ScheduleTeacherForm
 from ..models import Schedule
