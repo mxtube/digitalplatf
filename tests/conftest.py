@@ -1,7 +1,9 @@
 import pytest
 import datetime
 from college.models import CustomPerson, Department, Auditory, SiteSettings
+from educationpart.models import Studygroup, Profession
 from reference.models import Reference, Type, Status
+from docs.models import Category, Article
 
 
 @pytest.fixture
@@ -47,7 +49,8 @@ def users():
             middle_name='Александрович',
             email='kafomin@yandex.ru',
             birthday=datetime.date(1993, 10, 31),
-            job_title='Engineer',
+            job_title='Преподаватель',
+            is_teacher=True,
             is_active=True
         ),
         CustomPerson(
@@ -77,7 +80,28 @@ def user_db():
         job_title='Stydent',
         is_active=True
     )
-    return user
+    user.save()
+    yield user
+    user.delete()
+
+
+@pytest.fixture
+def user_student(studygroup):
+    user = CustomPerson.objects.create_user(
+        username='sidorov_ma',
+        password='Pa$$w0rd',
+        first_name='Максим',
+        last_name='Сидоров',
+        middle_name='Александрович',
+        email='sidorov@mail.ru',
+        birthday=datetime.date(1997, 3, 1),
+        job_title='Stydent',
+        group=studygroup,
+        is_active=True
+    )
+    user.save()
+    yield user
+    user.delete()
 
 
 @pytest.fixture
@@ -92,28 +116,60 @@ def department(user_db):
         supervisor=user_db
     )
     department.save()
-    return department
+    yield department
+    department.delete()
+
+
+@pytest.fixture
+def profession(department):
+    prof = Profession(
+        number='09.02.07',
+        name='Информационные системы и программирование',
+        shortname='ИСиП',
+        department=department
+    )
+    prof.save()
+    yield prof
+    prof.delete()
+
+
+@pytest.fixture
+def studygroup(department, users, profession):
+    group = Studygroup(
+        name='ИСиП-41 (11 кл.)',
+        slug='isip-41 (11 kl.)',
+        admin_name='ИСиП2020-1',
+        start_edu=datetime.date(2020, 9, 1),
+        department=department,
+        profession=profession
+    )
+    group.save()
+    yield group
+    group.delete()
 
 
 @pytest.fixture
 def auditory(department):
     auditory = Auditory(number='404', department=department)
     auditory.save()
-    return auditory
+    yield auditory
+    auditory.delete()
 
 
 @pytest.fixture
 def reference_type_military():
     reference_type = Type(name='В военкомат', example='files/military.pdf')
     reference_type.save()
-    return reference_type
+    yield reference_type
+    reference_type.delete()
 
 
 @pytest.fixture
 def reference_status_create():
     reference_status = Status(name='Создан')
     reference_status.save()
-    return reference_status
+    yield reference_status
+    reference_status.delete()
 
 
 @pytest.fixture
@@ -124,4 +180,33 @@ def reference_military(user_db, reference_type_military, reference_status_create
         comment='Военный комиссариат Бабушкинского района СВАО города Москвы'
     )
     reference.save()
-    return reference
+    yield reference
+    reference.delete()
+
+
+@pytest.fixture
+def docs_category_visible():
+    category = Category(
+        name='Тестовый заголовок',
+        slug='test_doc_category',
+        description='Тестовое описание категории',
+        icon='fa-icon-docs',
+        is_active=True
+    )
+    category.save()
+    yield category
+    category.delete()
+
+
+@pytest.fixture
+def docs_article_visible(docs_category_visible):
+    article = Article(
+        category=docs_category_visible,
+        name='Тестовая статья',
+        slug='test_article',
+        content='Тестовое содержание',
+        is_active=True
+    )
+    article.save()
+    yield article
+    article.delete()

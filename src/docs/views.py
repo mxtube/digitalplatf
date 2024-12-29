@@ -1,9 +1,10 @@
-from .models import Article, Category
 from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
+
+from .models import Article, Category
 
 
 class DocsHomePage(ListView):
-
     template_name = 'docs/index.html'
     model = Article
     context_object_name = 'article'
@@ -19,7 +20,6 @@ class DocsHomePage(ListView):
 
 
 class CategoryPage(ListView):
-
     model = Article
     template_name = 'docs/category.html'
     context_object_name = 'articles'
@@ -36,7 +36,6 @@ class CategoryPage(ListView):
 
 
 class ArticlePage(DetailView):
-
     model = Article
     template_name = 'docs/article.html'
     context_object_name = 'article'
@@ -49,7 +48,8 @@ class ArticlePage(DetailView):
         return context
 
     def get_object(self, *, object_list=None, **kwargs):
-        return Article.objects.get(
+        return get_object_or_404(
+            Article,
             is_active=True,
             slug=self.kwargs['article_name'],
             category__slug=self.kwargs['category_name']

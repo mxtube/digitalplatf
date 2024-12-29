@@ -16,10 +16,7 @@ class TestDepartment:
         assert department.supervisor == department.supervisor
         assert department.supervisor.username == user_db.username
 
-        department.delete()
-
     @pytest.mark.django_db
     def test_get_absolute_url(self, department):
         expected_url = reverse('schedule_home', kwargs={'department_name': department.slug})
         assert department.get_absolute_url() == expected_url
-        department.delete()
